@@ -15,6 +15,8 @@ From the geopages prototype:
 ./prototype/deploy-github-pages.sh
 ```
 
-That rebuilds with `--preview`, copies `prototype/dist` into this repo, commits, and pushes to `main`. GitHub Pages serves from `main` / root.
+That rebuilds with `--preview`, copies `prototype/dist` into this repo (plus `.nojekyll` + this README), commits, and pushes to `main`.
+
+**One-time Pages setup** (if the live URL 404s): repo **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `main` / `/ (root)` → Save**.
 
 Do not commit `.env`, Redshift credentials, or the private monorepo into this repository.

@@ -23,17 +23,42 @@
   --ink-soft: #4f5a78;      /* muted Stormy for secondary copy */
   --paper: #ffffff;
   --paper-alt: var(--slate);
+  --stat-band: color-mix(in srgb, var(--slate) 38%, var(--paper));
   --line: var(--slate);
   --radius: 14px;
   --font-display: "Lexend", system-ui, sans-serif;  /* headlines / key messaging */
   --font-body: "Inter", system-ui, sans-serif;      /* body / UI */
   --nav-h: 70px;
+  --preview-banner-h: 0px;
+  /* Sticky offset under site nav (+ preview banner). Redefined on .is-preview so
+     the calc re-resolves — a :root-only calc would freeze preview-banner-h at 0. */
+  --chrome-sticky-top: calc(var(--nav-h) + var(--preview-banner-h));
+  /* Match sticky TOC `top` gap; used so in-page h2s land with the rail under chrome */
+  --anchor-align-gap: 16px;
+  --section-pad-y: 56px;
+  /* Shared content measure: hero wrap + page-shell (stats / TOC / main) */
+  --page-max: 1080px;
+  --page-pad-x: 24px;
+  --page-col-gap: 14px;
+  /* Stat band: background/hairlines extend one pad unit past the text grid */
+  --stat-band-bleed: var(--page-pad-x);
+  --stat-band-fade: var(--stat-band-bleed); /* horizontal fade width in bleed zone */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 12px); }
-.section[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
-.is-preview { scroll-padding-top: calc(var(--nav-h) + 40px); }
+html { scroll-behavior: smooth; }
+/* In-page TOC / hero hash jumps (#find-billboards, #cost, #markets, #plan-campaign,
+   #faqs, #prep): use scroll-margin only — pairing with html scroll-padding-top
+   double-counted chrome (~244px) and buried headings. Subtract section pad so the
+   h2 (not the padding edge) aligns with sticky TOC under nav (+ preview banner). */
+.page-main .section[id] {
+  scroll-margin-top: calc(var(--chrome-sticky-top) + var(--anchor-align-gap) - var(--section-pad-y));
+}
+.is-preview,
+html:has(body.is-preview) {
+  --preview-banner-h: 40px;
+  --chrome-sticky-top: calc(var(--nav-h) + var(--preview-banner-h));
+}
 .preview-banner {
   position: sticky; top: 0; z-index: 10000;
   background: var(--navy); color: #fff;
@@ -43,7 +68,7 @@ html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 12px); }
 body { font-family: var(--font-body); color: var(--ink); background: var(--paper); line-height: 1.6; font-size: 16px; }
 img { max-width: 100%; display: block; }
 a { color: var(--pink); }
-.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+.wrap { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--page-pad-x); }
 
 h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.15; color: var(--navy); }
 h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); letter-spacing: -0.02em; font-weight: 700; }
@@ -52,7 +77,7 @@ h3 { font-size: 1.15rem; font-weight: 600; }
 
 /* ===== Site nav (mirrors live blip-v2-nav) ===== */
 .blip-v2-nav {
-  position: sticky; top: 0; z-index: 100;
+  position: sticky; top: var(--preview-banner-h); z-index: 100;
   background: #fff; border-bottom: 1px solid var(--line);
 }
 .blip-v2-nav-inner {
@@ -125,115 +150,345 @@ h3 { font-size: 1.15rem; font-weight: 600; }
 .btn-lg { padding: 15px 36px; font-size: 1.05rem; }
 .linklike { background: none; border: none; color: var(--pink); text-decoration: underline; cursor: pointer; font: inherit; }
 
-/* Hero — bottom padding is small because the section index sits at the end */
-.hero { padding: 40px 0 8px; background: linear-gradient(180deg, var(--paper-alt) 0%, var(--paper) 100%); }
+/* Hero — title/CTAs above shared page-shell grid (stats + TOC + main) */
+.hero { padding: 40px 0 0; background: linear-gradient(180deg, var(--paper-alt) 0%, var(--paper) 100%); }
 .breadcrumb { font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 26px; }
 .breadcrumb a { color: var(--ink-soft); text-decoration: none; }
 .breadcrumb a:hover { color: var(--pink-dark); text-decoration: underline; }
 .eyebrow { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; font-weight: 700; color: var(--pink-dark); margin-bottom: 10px; }
-.hero-sub { font-family: var(--font-display); font-size: 1.35rem; color: var(--ink-soft); margin: 10px 0 16px; }
-.hero-intro { max-width: 640px; color: var(--ink-soft); margin-bottom: 24px; }
-.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px; }
-
-.stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
-.stat { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; }
-@media (max-width: 640px) {
-  .hero { padding: 28px 0 4px; }
-  .hero-ctas { margin-bottom: 20px; }
-  .hero-intro { margin-bottom: 16px; }
-  .stat-row {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-  }
-  .stat-primary { padding: 14px 12px; }
-  .stat-primary .stat-num { font-size: 1.45rem; }
-  /* Compact secondary stats under the boards/cities pair */
-  .stat-secondary {
-    padding: 8px 10px; grid-column: span 1;
-  }
-  .stat-secondary .stat-num { font-size: 1.05rem; }
-  .stat-secondary .stat-label { font-size: 0.68rem; line-height: 1.3; }
+.hero-sub { font-family: var(--font-display); font-size: 1.35rem; color: var(--ink-soft); margin: 10px 0 12px; max-width: 640px; }
+.hero-intro { max-width: 520px; color: var(--ink-soft); margin-bottom: 22px; font-size: 0.98rem; }
+.hero-ctas {
+  display: flex; align-items: center; gap: 18px 22px; flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.hero-ctas .btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px;
 }
 
-/* Page TOC — Slate band (pink sparingly: hover/focus only; slide 30 ~10–15%) */
-.hero .page-toc {
-  margin-top: 36px;
-  padding: 16px 16px 14px;
-  background: var(--slate);
-  border: 1px solid color-mix(in srgb, var(--navy) 12%, transparent);
-  border-radius: var(--radius);
+/* Quiet stat strip in .page-shell — subtle Slate wash + hairlines (not cards/slab).
+   Shares the same 4-col tracks as TOC + main. Band bleeds --stat-band-bleed past the
+   text grid: widened max-width + inner pad (1128–1199), negative margin + inner pad (≥1200).
+   Wash + top/bottom hairlines live on ::before (inset box-shadow) with a horizontal
+   mask fade in the bleed zone so rules fade with the band (text stays crisp).
+   ≥1200px: vertical hairlines sit in the page-shell column gutters so col1 ≡ TOC
+   and the first rule ≡ TOC|main edge. */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding-inline: var(--page-pad-x);
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+}
+.stat-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--stat-band);
+  /* Hairlines on the masked layer (not box-shadow) so L/R fade applies to rules too */
+  border-top: 1px solid color-mix(in srgb, var(--navy) 12%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--navy) 12%, transparent);
+  pointer-events: none;
+}
+@media (min-width: 1128px) {
+  .stat-row::before {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 var(--stat-band-fade),
+      #000 calc(100% - var(--stat-band-fade)),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 var(--stat-band-fade),
+      #000 calc(100% - var(--stat-band-fade)),
+      transparent 100%
+    );
+  }
+}
+/* Wide viewports below 4-col shell: bleed into side gutters; content stays on grid */
+@media (min-width: 1128px) and (max-width: 1199px) {
+  .stat-row {
+    max-width: calc(var(--page-max) + 2 * var(--stat-band-bleed));
+    padding-inline: calc(var(--page-pad-x) + var(--stat-band-bleed));
+  }
+}
+.stat {
+  display: flex; flex-direction: column; gap: 6px;
+  background: transparent; border: 0; border-radius: 0;
+  padding: 22px 18px;
+  min-width: 0;
+}
+@media (max-width: 1199px) {
+  .stat {
+    border-right: 1px solid color-mix(in srgb, var(--navy) 12%, transparent);
+  }
+  .stat:last-child { border-right: 0; }
+}
+@media (max-width: 640px) {
+  .hero { padding: 28px 0 0; }
+  .hero-ctas { margin-bottom: 18px; gap: 14px 18px; }
+  .hero-intro { margin-bottom: 14px; }
+  .stat-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stat {
+    padding: 16px 14px;
+  }
+  .stat:nth-child(2n) { border-right: 0; }
+  .stat:nth-child(-n+2) {
+    border-bottom: 1px solid color-mix(in srgb, var(--navy) 12%, transparent);
+  }
+  .stat .stat-num { font-size: 1.35rem; }
+  .stat .stat-label { font-size: 0.72rem; line-height: 1.3; }
+}
+
+/* Page shell: stats + TOC + main. <1200 TOC hidden; ≥1200 shared 4-col grid */
+.page-shell { display: block; }
+@media (max-width: 1199px) {
+  .page-toc-rail { display: none; }
+}
+
+/* Page TOC — quiet label + vertical list + continuous left track + pink active
+   segment + read-time foot. Sticky left rail at ≥1200px only; hidden below. */
+.page-toc {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 20px var(--page-pad-x) 18px;
+  background: transparent;
+  border: 0;
+}
+.page-toc-head {
+  margin: 0 0 4px;
+  padding: 0 0 12px 4px; /* left-align with page text; no underline */
 }
 .page-toc-label {
   font-family: var(--font-body);
   font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.14em; color: var(--navy); margin: 0 0 10px;
+  letter-spacing: 0.14em; color: var(--navy); margin: 0;
 }
+.page-toc-foot {
+  margin-top: 4px; /* mirror .page-toc-head margin-bottom */
+  padding: 12px 0 0 4px; /* mirror head pad; title-aligned, not link-indented */
+  border-top: 0;
+}
+/* Metadata only — muted but readable; quieter than nav links */
+.page-toc-read {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--font-body);
+  font-size: 0.7rem; font-weight: 400;
+  color: color-mix(in srgb, var(--navy) 52%, transparent);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  margin: 0;
+  flex-shrink: 0;
+  pointer-events: none;
+  user-select: none;
+}
+.page-toc-read-icon { flex-shrink: 0; opacity: 0.65; color: inherit; }
 .page-toc-list {
-  list-style: none; display: flex; flex-wrap: wrap; align-items: stretch;
-  margin: 0; padding: 0;
-  background: #fff;
-  border: 1px solid color-mix(in srgb, var(--navy) 12%, transparent);
-  border-radius: 10px;
-  overflow: hidden;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  position: relative;
+  margin: 4px 0 0;
+  padding: 0;
+  gap: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+/* Continuous light-gray track (compact equivalent of desktop rail track) */
+.page-toc-list::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: color-mix(in srgb, var(--navy) 16%, transparent);
+  pointer-events: none;
+  z-index: 0;
 }
 .page-toc-list li {
-  flex: 1 1 0; min-width: 0;
-  display: flex;
-  border-right: 1px solid color-mix(in srgb, var(--navy) 10%, transparent);
+  display: block;
+  flex: none;
+  min-width: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  position: relative;
 }
-.page-toc-list li:last-child { border-right: 0; }
 .page-toc-link {
-  display: flex; align-items: center; justify-content: space-between; gap: 10px;
-  flex: 1 1 auto; width: 100%; min-height: 48px; padding: 10px 14px;
-  font-family: var(--font-body); font-size: 0.9rem; font-weight: 600;
-  color: var(--ink); text-decoration: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 44px; /* comfortable tap rows <1200 */
+  /* Same L pad active/inactive — track overlays left edge; text never shifts */
+  padding: 12px 8px 12px 14px;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--navy);
+  text-align: left;
+  text-decoration: none;
+  border-radius: 0;
+  border-left: 0;
+  z-index: 1;
   transition: background 0.12s ease, color 0.12s ease;
 }
 .page-toc-text { min-width: 0; line-height: 1.25; }
-.page-toc-arrow {
-  color: #c4c4cc; font-size: 0.8rem; flex-shrink: 0; line-height: 1;
-}
+.page-toc-arrow { display: none; } /* chip-era ↓; desktop + inline list omit */
+/* Hover: light Slate wash — layout-stable (no pad/border change) */
 .page-toc-link:hover,
 .page-toc-link:focus-visible {
-  background: color-mix(in srgb, var(--pink) 12%, #fff); color: var(--pink);
+  background: color-mix(in srgb, var(--slate) 70%, transparent);
+  color: var(--navy);
 }
-.page-toc-link:hover .page-toc-arrow,
-.page-toc-link:focus-visible .page-toc-arrow { color: var(--pink); }
 .page-toc-link:focus-visible { outline: 2px solid var(--teal); outline-offset: -2px; }
-/* Optional later: .page-toc-link.is-active when section is in view */
-/* Gap from index band bottom → inventory H2 ≈ 64–80px */
-#find-billboards.section { padding-top: 72px; }
-@media (max-width: 900px) {
-  .page-toc-list { display: grid; grid-template-columns: repeat(3, 1fr); }
-  .page-toc-list li { border-right: 0; border-bottom: 1px solid color-mix(in srgb, var(--navy) 10%, transparent); }
-  .page-toc-list li:not(:nth-child(3n)) { border-right: 1px solid color-mix(in srgb, var(--navy) 10%, transparent); }
-  .page-toc-list li:nth-child(n+4) { border-bottom: 0; }
+/* Active: pink segment on the shared track + semibold pink text */
+.page-toc-link.is-active {
+  color: var(--pink);
+  font-weight: 600;
+  background: transparent;
 }
+.page-toc-link.is-active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2.5px;
+  margin-left: -0.75px; /* center thicker segment on the 1px gray track */
+  border-radius: 1px;
+  background: var(--pink);
+  pointer-events: none;
+}
+.page-toc-link.is-active:hover,
+.page-toc-link.is-active:focus-visible {
+  color: var(--pink);
+  background: color-mix(in srgb, var(--slate) 55%, transparent);
+}
+/* Gap from index band → inventory H2 (pad matches --section-pad-y; scroll-margin inherits) */
+#find-billboards.section { padding-top: var(--section-pad-y); }
 @media (max-width: 640px) {
-  .hero .page-toc { margin-top: 32px; padding: 12px 12px 10px; }
-  .page-toc-list {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    background: transparent;
-    border: 0;
-    overflow: visible;
+  .page-toc { padding: 16px 16px 14px; }
+  .page-toc-link { font-size: 0.88rem; }
+  #find-billboards.section {
+    padding-top: 48px;
+    scroll-margin-top: calc(var(--chrome-sticky-top) + var(--anchor-align-gap) - 48px);
   }
-  .page-toc-list li {
-    border: 1px solid color-mix(in srgb, var(--navy) 12%, transparent) !important;
-    border-radius: 10px;
-    background: #fff;
-    overflow: hidden;
+}
+
+/* Large desktop: stats + TOC + main on one 4-col grid (TOC = col 1 = first stat) */
+@media (min-width: 1200px) {
+  /* Sticky TOC rail covers Find boards / Cost; map may sit below fold below this breakpoint */
+  .hero-ctas { display: none; }
+  .page-shell {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: var(--page-col-gap);
+    row-gap: 28px;
+    align-items: stretch;
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 var(--page-pad-x);
   }
-  /* Find|Cost, Markets|FAQs, Campaign insights full-width */
-  .page-toc-item-wide { grid-column: 1 / -1; order: 5; }
-  .page-toc-list li:last-child { order: 4; }
-  .page-toc-link { min-height: 44px; padding: 10px 12px; font-size: 0.88rem; }
-  #find-billboards.section { padding-top: 64px; }
+  .stat-row {
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    /* Must match .page-shell column-gap — base gap:0 would override subgrid inheritance */
+    column-gap: var(--page-col-gap);
+    row-gap: 0;
+    max-width: none;
+    /* Bleed band past page-shell padding; inner pad keeps subgrid ≡ TOC/main */
+    margin-inline: calc(-1 * var(--stat-band-bleed));
+    padding-inline: var(--stat-band-bleed);
+  }
+  /* Fallback: same 4 tracks + gap when subgrid unavailable */
+  @supports not (grid-template-columns: subgrid) {
+    .stat-row {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--page-col-gap);
+    }
+  }
+  .stat {
+    position: relative;
+    /* Match TOC rail inset so number/label share col1’s left edge with “On this page” */
+    padding: 26px 12px 26px 4px;
+    border-right: 0;
+  }
+  /* Hairline centered in the page-shell gutter (aligns with TOC | main edge) */
+  .stat:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--page-col-gap) / -2);
+    width: 1px;
+    background: color-mix(in srgb, var(--navy) 14%, transparent);
+    pointer-events: none;
+  }
+  .page-toc-rail {
+    grid-column: 1;
+    min-width: 0;
+  }
+  .page-main {
+    grid-column: 2 / -1;
+    min-width: 0;
+  }
+  /* Sticky rail only at ≥1200 — base list/track/active/hover styles shared */
+  .page-toc {
+    position: sticky;
+    top: calc(var(--chrome-sticky-top) + var(--anchor-align-gap));
+    max-height: calc(100vh - var(--chrome-sticky-top) - 32px);
+    overflow: auto;
+    max-width: none;
+    margin: 0;
+    padding: 4px 0 8px;
+  }
+  .page-toc-link {
+    display: block;
+    min-height: 0; /* pointer UI; 44px tap targets apply below 1200 */
+    padding: 12px 4px 12px 14px;
+    font-size: 0.88rem;
+  }
+  .page-main .wrap {
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #find-billboards.section {
+    padding-top: 8px;
+    scroll-margin-top: calc(var(--chrome-sticky-top) + var(--anchor-align-gap) - 8px);
+  }
+}
+
+/* Quiet hairline between inventory sub-blocks (map / city finder / popular boards) */
+.section-divider {
+  border: 0;
+  height: 0;
+  margin: 32px 0;
+  border-top: 1px solid color-mix(in srgb, var(--navy) 12%, transparent);
 }
 
 /* Inventory freshness + city finder */
 .inventory-freshness { font-size: 0.82rem; color: #6b7280; margin: -18px 0 24px; }
+#find-billboards .map-shell { margin-bottom: 0; }
 .city-finder { margin: 36px 0 40px; }
+#find-billboards .city-finder { margin: 0; }
 .city-finder h3 { margin-bottom: 14px; }
 .dir-alpha { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px 28px; margin-top: 16px; }
 .dir-letter h4 {
@@ -250,8 +505,12 @@ h3 { font-size: 1.15rem; font-weight: 600; }
 .popular-more { margin-top: 18px; }
 .popular-more summary {
   font-weight: 600; color: var(--pink-dark); cursor: pointer;
-  min-height: 44px; display: flex; align-items: center; padding: 8px 0;
+  min-height: 44px; display: flex; align-items: center; gap: 6px;
+  padding: 8px 0; list-style: none;
 }
+.popular-more summary::-webkit-details-marker { display: none; }
+.popular-more:not([open]) .popular-more-hide { display: none; }
+.popular-more[open] .popular-more-show { display: none; }
 .popular-more .sign-cards { margin-top: 14px; }
 
 .sign-card-cta {
@@ -260,7 +519,6 @@ h3 { font-size: 1.15rem; font-weight: 600; }
 }
 
 /* Plan campaign — 2×2 insight cards with sparkline previews */
-.section-plan { background: var(--paper-alt); }
 .insight-cards {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin: 8px 0 28px;
 }
@@ -310,7 +568,7 @@ h3 { font-size: 1.15rem; font-weight: 600; }
   border-radius: 999px; padding: 4px 10px;
 }
 .insight-card-toggle {
-  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
   margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line);
   font-size: 0.88rem; font-weight: 600; color: var(--pink-dark); min-height: 44px;
 }
@@ -318,6 +576,19 @@ h3 { font-size: 1.15rem; font-weight: 600; }
   display: inline-block; transition: transform 0.15s ease; font-size: 1.1rem; line-height: 1;
 }
 .insight-card[open] .insight-chev { transform: rotate(90deg); }
+
+/* Shared disclosure chevron — › right when closed, down (90°) when open */
+.disclosure-chev {
+  display: inline-block; transition: transform 0.15s ease;
+  font-size: 1.1rem; line-height: 1; flex-shrink: 0;
+}
+details[open] > summary .disclosure-chev { transform: rotate(90deg); }
+.popular-more .disclosure-chev,
+.directory-all .disclosure-chev { color: var(--pink); font-size: 1rem; }
+.market-card-details .disclosure-chev,
+.market-detail .disclosure-chev { color: var(--ink-soft); font-size: 1rem; }
+.faq-item .disclosure-chev,
+.tip-details .disclosure-chev { color: var(--ink-soft); }
 .insight-card[open] .insight-card-summary {
   min-height: 0; border-bottom: 1px solid var(--line); background: #fffafb;
 }
@@ -358,15 +629,10 @@ h3 { font-size: 1.15rem; font-weight: 600; }
 }
 .market-card-details summary::-webkit-details-marker { display: none; }
 .market-summary-head {
-  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
 }
 .market-summary-title { font-family: var(--font-display); font-size: 1.02rem; font-weight: 600; line-height: 1.3; }
 .market-stat-row { font-size: 0.84rem; color: var(--ink-soft); line-height: 1.4; }
-.market-chev {
-  display: inline-block; transition: transform 0.15s ease;
-  font-size: 1rem; line-height: 1; color: var(--ink-soft); flex-shrink: 0;
-}
-.market-card-details[open] > summary .market-chev { transform: rotate(180deg); }
 .market-card-body { padding: 0 18px 16px; display: flex; flex-direction: column; gap: 10px; }
 .market-card-other { background: var(--paper-alt); }
 .market-card-details.market-card-other { grid-column: 1 / -1; }
@@ -398,12 +664,6 @@ h3 { font-size: 1.15rem; font-weight: 600; }
   cursor: pointer; list-style: none; min-height: 44px; text-align: left;
 }
 .market-detail summary::-webkit-details-marker { display: none; }
-.market-detail-toggle {
-  font-size: 1.05rem; line-height: 1; font-weight: 400; color: var(--ink-soft); flex-shrink: 0;
-}
-.market-toggle-open { display: none; }
-.market-detail[open] .market-toggle-closed { display: none; }
-.market-detail[open] .market-toggle-open { display: inline; }
 
 /* Tip accordions */
 .tip-details {
@@ -433,13 +693,35 @@ h3 { font-size: 1.15rem; font-weight: 600; }
 /* High-impact stats: Lexend Black/extrabold sparingly (slide 42) */
 .stat-num {
   font-family: var(--font-display); font-size: 1.7rem; font-weight: 800;
-  display: block; font-variant-numeric: tabular-nums; color: var(--navy);
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.35em 0.45em;
+  font-variant-numeric: tabular-nums; color: var(--navy);
+  line-height: 1.1;
 }
-.stat-label { font-size: 0.8rem; color: var(--ink-soft); }
+.stat-qualifier {
+  font-family: var(--font-body); font-size: 0.72rem; font-weight: 500;
+  color: color-mix(in srgb, var(--navy) 52%, transparent);
+  letter-spacing: 0.01em; white-space: nowrap;
+}
+.stat-label {
+  font-size: 0.78rem; font-weight: 500; color: var(--ink-soft);
+  line-height: 1.35; max-width: 16em;
+}
 
-/* Sections */
-.section { padding: 56px 0; }
-.section-alt { background: var(--paper-alt); }
+/* Sections — hairline separators inside .page-main (not column-scoped alt fills;
+   those stop at the TOC|content edge and look broken with the sticky left rail). */
+.section { padding: var(--section-pad-y) 0; }
+.page-main > .section:not(:first-child),
+.page-main > .nearby-markets {
+  border-top: 1px solid color-mix(in srgb, var(--navy) 14%, transparent);
+}
+/* FAQ items already carry per-item hairlines — skip the section rule above nearby states */
+#faqs:has(+ .nearby-markets) {
+  padding-bottom: 20px;
+}
+#faqs + .nearby-markets {
+  border-top: 0;
+  padding-top: 20px;
+}
 .section-lede { max-width: 660px; color: var(--ink-soft); margin-bottom: 28px; }
 /* Map */
 .map-shell { position: relative; height: 520px; border-radius: var(--radius); border: 1px solid var(--line); overflow: hidden; background: var(--paper-alt); margin-bottom: 36px; }
@@ -512,7 +794,6 @@ h3 { font-size: 1.15rem; font-weight: 600; }
 .hour-chart-mobile + .hour-legend + .insight-callouts { margin-top: 22px; }
 .insight-callouts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-bottom: 22px; }
 .insight-callout { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; }
-.section-alt .insight-callout { background: #fff; }
 .insight-num { font-family: var(--font-display); font-size: 1.65rem; color: var(--pink-dark); margin-bottom: 4px; }
 .insight-label { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.45; }
 
@@ -528,7 +809,6 @@ h3 { font-size: 1.15rem; font-weight: 600; }
 .age-row { display: grid; grid-template-columns: 52px 1fr 52px; align-items: center; gap: 12px; }
 .age-label { font-size: 0.85rem; color: var(--ink-soft); }
 .age-track { background: var(--line); border-radius: 6px; height: 20px; overflow: hidden; }
-.section-alt .age-track { background: #fff; }
 .age-fill { background: var(--pink); height: 100%; border-radius: 6px; }
 .age-pct { font-size: 0.85rem; font-weight: 600; text-align: right; }
 
@@ -693,20 +973,6 @@ body.lightbox-open { overflow: hidden; }
   max-width: 660px; margin: 14px 0 20px; font-size: 0.82rem; color: #6b7280; line-height: 1.5;
 }
 .count-scope { font-weight: 400; color: var(--ink-soft); font-size: 0.92em; }
-.data-notes {
-  max-width: 660px; border-top: 1px solid var(--line); padding-top: 18px;
-}
-.data-notes summary {
-  font-size: 0.88rem; font-weight: 600; color: var(--ink-soft); cursor: pointer; list-style: none;
-  min-height: 44px; padding: 10px 0; display: flex; align-items: center;
-}
-.data-notes summary::-webkit-details-marker { display: none; }
-.data-notes summary::before { content: "+ "; color: var(--pink-dark); font-weight: 700; }
-.data-notes[open] summary::before { content: "− "; }
-.data-notes-list {
-  margin: 12px 0 0; padding-left: 1.1em; font-size: 0.82rem; color: #6b7280; line-height: 1.55;
-}
-.data-notes-list li + li { margin-top: 8px; }
 
 /* Mid-page CTA (after cost module — peak intent) */
 .cta-mid {
@@ -791,7 +1057,12 @@ body.lightbox-open { overflow: hidden; }
 /* FAQ */
 .faq-list { max-width: 760px; }
 .faq-item { border-bottom: 1px solid var(--line); padding: 16px 4px; }
-.faq-item summary { font-weight: 600; cursor: pointer; font-size: 1.02rem; }
+.faq-item summary {
+  font-weight: 600; cursor: pointer; font-size: 1.02rem; line-height: 1.35;
+  display: flex; align-items: center; gap: 8px;
+  list-style: none;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
 .faq-item p { margin-top: 10px; color: var(--ink-soft); max-width: 680px; }
 
 /* Directory */
@@ -800,9 +1071,11 @@ body.lightbox-open { overflow: hidden; }
 .dir-chip span { color: var(--pink-dark); font-weight: 700; margin-left: 4px; }
 .dir-chip:hover { border-color: var(--pink); }
 .directory-all summary {
-  font-weight: 600; cursor: pointer; margin-bottom: 14px;
-  min-height: 44px; display: flex; align-items: center; padding: 8px 0;
+  font-weight: 600; cursor: pointer;
+  min-height: 44px; display: inline-flex; align-items: center; justify-content: flex-start;
+  gap: 6px; padding: 8px 0; width: 100%; list-style: none;
 }
+.directory-all summary::-webkit-details-marker { display: none; }
 .dir-list { list-style: none; columns: 4; gap: 24px; }
 .dir-list li { padding: 3px 0; break-inside: avoid; }
 .dir-list a { font-size: 0.88rem; color: var(--ink-soft); text-decoration: none; }
@@ -815,7 +1088,7 @@ body.lightbox-open { overflow: hidden; }
 .nearby-list a { font-size: 0.9rem; font-weight: 500; text-decoration: none; color: var(--ink-soft); }
 .nearby-list a:hover { color: var(--pink-dark); text-decoration: underline; }
 
-/* Final CTA — Stormy Blue dark band (slide 32) */
+/* Final CTA — full-bleed Stormy Blue band outside .page-shell (slide 32) */
 .cta-final { text-align: center; background: var(--navy); color: #fff; }
 .cta-final h2 { color: #fff; }
 .cta-final p { color: color-mix(in srgb, #fff 72%, var(--slate)); margin: 10px auto 24px; max-width: 480px; }

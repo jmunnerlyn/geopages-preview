@@ -35,7 +35,21 @@
   --chrome-sticky-top: calc(var(--nav-h) + var(--preview-banner-h));
   /* Match sticky TOC `top` gap; used so in-page h2s land with the rail under chrome */
   --anchor-align-gap: 16px;
+  /* Vertical rhythm between section hairlines (equal top + bottom by default) */
   --section-pad-y: 56px;
+  /* Per-section top pad; scroll-margin subtracts this so h2 lands on the align line.
+     Find boards overrides (first in .page-main) — see #find-billboards rules. */
+  --section-pad-top: var(--section-pad-y);
+  /* Desktop: match .page-toc padding-top so Find h2 ≡ “On this page” at rest */
+  --find-pad-top-desktop: 4px;
+  /* <1200: TOC hidden — breathing room under stats without a double-air gap */
+  --find-pad-top-mobile: 32px;
+  /* Internal Find sub-block rules (map / city / popular) — match major section pad */
+  --section-divider-y: var(--section-pad-y);
+  /* FAQ→nearby tightened join (no section hairline; half-pad each side) */
+  --section-join-y: 20px;
+  /* Stats → TOC+Find row gap inside .page-shell (≥1200); section-pad scale */
+  --shell-row-gap: 56px;
   /* Shared content measure: hero wrap + page-shell (stats / TOC / main) */
   --page-max: 1080px;
   --page-pad-x: 24px;
@@ -43,16 +57,21 @@
   /* Stat band: background/hairlines extend one pad unit past the text grid */
   --stat-band-bleed: var(--page-pad-x);
   --stat-band-fade: var(--stat-band-bleed); /* horizontal fade width in bleed zone */
+  /* Micro-label — shared eyebrow / section-label role (not buttons, chips, or H2s) */
+  --micro-label-size: 0.7rem;
+  --micro-label-spacing: 0.12em;
+  --micro-label-muted: #6b7280;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 /* In-page TOC / hero hash jumps (#find-billboards, #cost, #markets, #plan-campaign,
-   #faqs, #prep): use scroll-margin only — pairing with html scroll-padding-top
-   double-counted chrome (~244px) and buried headings. Subtract section pad so the
-   h2 (not the padding edge) aligns with sticky TOC under nav (+ preview banner). */
+   #faqs): use scroll-margin only — pairing with html scroll-padding-top
+   double-counted chrome (~244px) and buried headings. Subtract --section-pad-top
+   so the h2 (not the padding edge) lands on the sticky-TOC align line under nav
+   (+ preview banner). Find uses a smaller pad-top; Cost+ keep --section-pad-y. */
 .page-main .section[id] {
-  scroll-margin-top: calc(var(--chrome-sticky-top) + var(--anchor-align-gap) - var(--section-pad-y));
+  scroll-margin-top: calc(var(--chrome-sticky-top) + var(--anchor-align-gap) - var(--section-pad-top));
 }
 .is-preview,
 html:has(body.is-preview) {
@@ -74,6 +93,30 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
 h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); letter-spacing: -0.02em; font-weight: 700; }
 h2 { font-size: clamp(1.7rem, 3.4vw, 2.3rem); margin-bottom: 0.5em; letter-spacing: -0.01em; }
 h3 { font-size: 1.15rem; font-weight: 600; }
+
+/* Micro-label — structural eyebrows / quiet section labels (Inter, uppercase, ~0.7rem).
+   Color variants keep roles distinct; do not flatten buttons, chips, card titles, or H2s. */
+.micro-label,
+.eyebrow,
+.page-toc-label,
+.examples-label,
+.insight-card-label,
+.market-cities-label,
+.price-eyebrow,
+.audience-block h3,
+.audience-block h4,
+.detail-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--micro-label-size);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--micro-label-spacing);
+  line-height: 1.3;
+}
+.micro-label { color: var(--micro-label-muted); }
+.micro-label--accent { color: var(--pink-dark); }
+.micro-label--navy { color: var(--navy); }
+.micro-label--ink { color: var(--ink); }
 
 /* ===== Site nav (mirrors live blip-v2-nav) ===== */
 .blip-v2-nav {
@@ -155,7 +198,7 @@ h3 { font-size: 1.15rem; font-weight: 600; }
 .breadcrumb { font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 26px; }
 .breadcrumb a { color: var(--ink-soft); text-decoration: none; }
 .breadcrumb a:hover { color: var(--pink-dark); text-decoration: underline; }
-.eyebrow { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; font-weight: 700; color: var(--pink-dark); margin-bottom: 10px; }
+.eyebrow { color: var(--pink-dark); margin-bottom: 10px; }
 .hero-sub { font-family: var(--font-display); font-size: 1.35rem; color: var(--ink-soft); margin: 10px 0 12px; max-width: 640px; }
 .hero-intro { max-width: 520px; color: var(--ink-soft); margin-bottom: 22px; font-size: 0.98rem; }
 .hero-ctas {
@@ -270,11 +313,7 @@ h3 { font-size: 1.15rem; font-weight: 600; }
   margin: 0 0 4px;
   padding: 0 0 12px 4px; /* left-align with page text; no underline */
 }
-.page-toc-label {
-  font-family: var(--font-body);
-  font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.14em; color: var(--navy); margin: 0;
-}
+.page-toc-label { color: var(--navy); margin: 0; }
 .page-toc-foot {
   margin-top: 4px; /* mirror .page-toc-head margin-bottom */
   padding: 12px 0 0 4px; /* mirror head pad; title-aligned, not link-indented */
@@ -381,15 +420,9 @@ h3 { font-size: 1.15rem; font-weight: 600; }
   color: var(--pink);
   background: color-mix(in srgb, var(--slate) 55%, transparent);
 }
-/* Gap from index band → inventory H2 (pad matches --section-pad-y; scroll-margin inherits) */
-#find-billboards.section { padding-top: var(--section-pad-y); }
 @media (max-width: 640px) {
   .page-toc { padding: 16px 16px 14px; }
   .page-toc-link { font-size: 0.88rem; }
-  #find-billboards.section {
-    padding-top: 48px;
-    scroll-margin-top: calc(var(--chrome-sticky-top) + var(--anchor-align-gap) - 48px);
-  }
 }
 
 /* Large desktop: stats + TOC + main on one 4-col grid (TOC = col 1 = first stat) */
@@ -400,12 +433,14 @@ h3 { font-size: 1.15rem; font-weight: 600; }
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     column-gap: var(--page-col-gap);
-    row-gap: 28px;
+    row-gap: var(--shell-row-gap);
     align-items: stretch;
     max-width: var(--page-max);
     margin: 0 auto;
     padding: 0 var(--page-pad-x);
   }
+  /* Hero CTAs gone — intro margin owns hero→stats air (was cramped at 8px) */
+  .hero-intro { margin-bottom: 32px; }
   .stat-row {
     grid-column: 1 / -1;
     grid-template-columns: subgrid;
@@ -470,26 +505,38 @@ h3 { font-size: 1.15rem; font-weight: 600; }
     padding-left: 0;
     padding-right: 0;
   }
-  #find-billboards.section {
-    padding-top: 8px;
-    scroll-margin-top: calc(var(--chrome-sticky-top) + var(--anchor-align-gap) - 8px);
-  }
 }
 
 /* Quiet hairline between inventory sub-blocks (map / city finder / popular boards) */
 .section-divider {
   border: 0;
   height: 0;
-  margin: 32px 0;
+  margin: var(--section-divider-y) 0;
   border-top: 1px solid color-mix(in srgb, var(--navy) 12%, transparent);
 }
 
 /* Inventory freshness + city finder */
 .inventory-freshness { font-size: 0.82rem; color: #6b7280; margin: -18px 0 24px; }
 #find-billboards .map-shell { margin-bottom: 0; }
-.city-finder { margin: 36px 0 40px; }
+.city-finder {
+  --city-finder-gap: 18px;
+  margin: 36px 0 40px;
+}
 #find-billboards .city-finder { margin: 0; }
-.city-finder h3 { margin-bottom: 14px; }
+.city-finder h3 { margin-bottom: var(--city-finder-gap); }
+.city-finder-note {
+  font-size: 0.82rem;
+  color: #6b7280;
+  max-width: 660px;
+  margin: calc(-1 * var(--city-finder-gap) + 6px) 0 var(--city-finder-gap);
+  line-height: 1.45;
+}
+.city-finder-note a { color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.city-finder .directory-top {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-bottom: var(--city-finder-gap);
+}
+.city-finder .directory-all summary { padding-top: 0; }
 .dir-alpha { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px 28px; margin-top: 16px; }
 .dir-letter h4 {
   font-family: var(--font-body); font-size: 0.85rem; font-weight: 700;
@@ -497,14 +544,11 @@ h3 { font-size: 1.15rem; font-weight: 600; }
 }
 .dir-letter .dir-list { columns: 1; gap: 0; margin: 0; }
 
-.examples-label {
-  font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.08em; color: #6b7280; margin: 0 0 12px;
-}
+.examples-label { color: var(--micro-label-muted); margin: 0 0 12px; }
 
 .popular-more { margin-top: 18px; }
 .popular-more summary {
-  font-weight: 600; color: var(--pink-dark); cursor: pointer;
+  font-weight: 600; color: var(--ink); cursor: pointer;
   min-height: 44px; display: flex; align-items: center; gap: 6px;
   padding: 8px 0; list-style: none;
 }
@@ -520,7 +564,7 @@ h3 { font-size: 1.15rem; font-weight: 600; }
 
 /* Plan campaign — 2×2 insight cards with sparkline previews */
 .insight-cards {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin: 8px 0 28px;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin: 0 0 28px;
 }
 .insight-card {
   background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
@@ -532,10 +576,7 @@ h3 { font-size: 1.15rem; font-weight: 600; }
   cursor: pointer; list-style: none;
 }
 .insight-card-summary::-webkit-details-marker { display: none; }
-.insight-card-label {
-  font-family: var(--font-body); font-size: 0.68rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.12em; color: #6b7280;
-}
+.insight-card-label { color: var(--micro-label-muted); }
 .insight-card-fact {
   font-family: var(--font-display); font-size: 1.35rem; font-weight: 500;
   color: var(--ink); line-height: 1.2; margin: 0; text-wrap: balance;
@@ -570,25 +611,21 @@ h3 { font-size: 1.15rem; font-weight: 600; }
 .insight-card-toggle {
   display: flex; align-items: center; justify-content: flex-start; gap: 8px;
   margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line);
-  font-size: 0.88rem; font-weight: 600; color: var(--pink-dark); min-height: 44px;
+  font-size: 0.88rem; font-weight: 600; color: var(--ink); min-height: 44px;
 }
 .insight-chev {
   display: inline-block; transition: transform 0.15s ease; font-size: 1.1rem; line-height: 1;
+  color: var(--pink);
 }
 .insight-card[open] .insight-chev { transform: rotate(90deg); }
 
-/* Shared disclosure chevron — › right when closed, down (90°) when open */
+/* Shared disclosure chevron — › right when closed, down (90°) when open; pink icon, dark label */
 .disclosure-chev {
   display: inline-block; transition: transform 0.15s ease;
-  font-size: 1.1rem; line-height: 1; flex-shrink: 0;
+  font-size: 1rem; line-height: 1; flex-shrink: 0;
+  color: var(--pink);
 }
 details[open] > summary .disclosure-chev { transform: rotate(90deg); }
-.popular-more .disclosure-chev,
-.directory-all .disclosure-chev { color: var(--pink); font-size: 1rem; }
-.market-card-details .disclosure-chev,
-.market-detail .disclosure-chev { color: var(--ink-soft); font-size: 1rem; }
-.faq-item .disclosure-chev,
-.tip-details .disclosure-chev { color: var(--ink-soft); }
 .insight-card[open] .insight-card-summary {
   min-height: 0; border-bottom: 1px solid var(--line); background: #fffafb;
 }
@@ -599,23 +636,11 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
 .module-lede { max-width: 660px; color: var(--ink-soft); margin: 0 0 18px; font-size: 0.92rem; }
 .plan-secondary-link { margin-top: 16px; }
 .plan-secondary-link a { font-weight: 600; font-size: 0.92rem; }
-.plan-cta-band {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
-  gap: 14px 20px; padding: 22px 24px;
-  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
-}
-.plan-cta-copy {
-  margin: 0; font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; color: var(--ink);
-}
-.audience-block h4 {
-  font-family: var(--font-body); font-size: 0.8rem; text-transform: uppercase;
-  letter-spacing: 0.1em; color: var(--ink-soft); margin-bottom: 14px;
-}
+.audience-block h3,
+.audience-block h4 { color: var(--ink-soft); margin-bottom: 14px; }
 @media (max-width: 800px) {
   .insight-cards { grid-template-columns: 1fr; gap: 14px; }
   .insight-card-summary { min-height: 0; }
-  .plan-cta-band { flex-direction: column; align-items: stretch; text-align: center; }
-  .plan-cta-band .btn { width: 100%; text-align: center; }
 }
 
 /* Market card details (accordion cards) */
@@ -626,6 +651,7 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
 .market-card-details summary {
   list-style: none; cursor: pointer; padding: 14px 18px;
   min-height: 44px; display: flex; flex-direction: column; gap: 4px;
+  color: var(--ink);
 }
 .market-card-details summary::-webkit-details-marker { display: none; }
 .market-summary-head {
@@ -638,10 +664,7 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
 .market-card-details.market-card-other { grid-column: 1 / -1; }
 .market-note { font-size: 0.84rem; color: var(--ink-soft); line-height: 1.45; margin: 0; }
 .market-cities-block { display: flex; flex-direction: column; gap: 6px; }
-.market-cities-label {
-  display: block; font-size: 0.68rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.1em; color: #6b7280;
-}
+.market-cities-label { display: block; color: var(--micro-label-muted); }
 .market-city-chips { display: flex; flex-wrap: wrap; gap: 6px 8px; }
 .market-city-chip {
   font-size: 0.82rem; color: var(--ink-soft); line-height: 1.35;
@@ -660,32 +683,10 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
   display: flex; align-items: center; justify-content: flex-start; gap: 8px;
   width: 100%; box-sizing: border-box;
   padding: 10px 0 0; border-top: 1px solid var(--line);
-  font-size: 0.84rem; font-weight: 600; color: var(--ink-soft);
+  font-size: 0.84rem; font-weight: 600; color: var(--ink);
   cursor: pointer; list-style: none; min-height: 44px; text-align: left;
 }
 .market-detail summary::-webkit-details-marker { display: none; }
-
-/* Tip accordions */
-.tip-details {
-  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
-  overflow: hidden;
-}
-.tip-details summary {
-  padding: 18px 22px; cursor: pointer; font-weight: 600; line-height: 1.35;
-  min-height: 44px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px;
-  list-style: none;
-}
-.tip-details summary::-webkit-details-marker { display: none; }
-.tip-details .tip-tag {
-  margin: 0; flex-shrink: 0;
-}
-.tip-details p {
-  padding: 0 22px 20px; font-size: 0.9rem; color: var(--ink-soft);
-}
-@media (min-width: 761px) {
-  .tip-details { border-color: var(--line); }
-  .tip-details summary { font-size: 0.98rem; }
-}
 
 .nearby-all-states { margin-top: 18px; }
 .nearby-all-states a { font-weight: 600; }
@@ -708,19 +709,37 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
 }
 
 /* Sections — hairline separators inside .page-main (not column-scoped alt fills;
-   those stop at the TOC|content edge and look broken with the sticky left rail). */
-.section { padding: var(--section-pad-y) 0; }
+   those stop at the TOC|content edge and look broken with the sticky left rail).
+   Default equal --section-pad-y top/bottom via --section-pad-top; first/last child
+   margins zeroed so hairline→content matches content→next hairline.
+   Scroll-margin subtracts --section-pad-top (not always pad-y). */
+.section { padding: var(--section-pad-top) 0 var(--section-pad-y); }
+.section > .wrap > :first-child { margin-top: 0; }
+.section > .wrap > :last-child { margin-bottom: 0; }
 .page-main > .section:not(:first-child),
 .page-main > .nearby-markets {
   border-top: 1px solid color-mix(in srgb, var(--navy) 14%, transparent);
 }
-/* FAQ items already carry per-item hairlines — skip the section rule above nearby states */
+/* Find boards = first .page-main section: no top hairline. At ≥1200 it shares a
+   grid row with the sticky TOC — pad-top matches .page-toc (4px) so the Find h2
+   optically aligns with “On this page” (not with the first nav link). Cost+ keep
+   full --section-pad-y. <1200: TOC hidden; use --find-pad-top-mobile under stats. */
+#find-billboards {
+  --section-pad-top: var(--find-pad-top-mobile);
+}
+@media (min-width: 1200px) {
+  #find-billboards {
+    --section-pad-top: var(--find-pad-top-desktop);
+  }
+}
+/* FAQ items already carry per-item hairlines — skip the section rule above nearby states;
+   tighten the join to one visual section pad (join-y + join-y) instead of pad-y + pad-y. */
 #faqs:has(+ .nearby-markets) {
-  padding-bottom: 20px;
+  padding-bottom: var(--section-join-y);
 }
 #faqs + .nearby-markets {
   border-top: 0;
-  padding-top: 20px;
+  padding-top: var(--section-join-y);
 }
 .section-lede { max-width: 660px; color: var(--ink-soft); margin-bottom: 28px; }
 /* Map */
@@ -800,7 +819,6 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
 /* Audience module */
 .audience-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; margin: 26px 0 10px; }
 @media (max-width: 760px) { .audience-grid { grid-template-columns: 1fr; } }
-.audience-block h3 { font-family: var(--font-body); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); margin-bottom: 14px; }
 .gender-bar { display: flex; height: 54px; border-radius: 10px; overflow: hidden; font-size: 0.85rem; font-weight: 600; }
 .gender-f { background: var(--pink); color: #fff; display: flex; align-items: center; padding-left: 14px; }
 .gender-m { background: var(--navy); color: #fff; display: flex; align-items: center; padding-left: 14px; }
@@ -888,7 +906,7 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
   margin: 0; font-size: 0.82rem; color: var(--ink-soft); padding: 16px;
 }
 .detail-body { padding: 16px 18px 20px; }
-.detail-eyebrow { text-transform: uppercase; font-size: 0.66rem; letter-spacing: 0.14em; font-weight: 700; color: var(--pink-dark); }
+.detail-eyebrow { color: var(--pink-dark); }
 .detail-name { font-family: var(--font-body); font-size: 1.15rem; font-weight: 700; line-height: 1.25; margin: 4px 0 2px; }
 .detail-sub { font-size: 0.85rem; color: #6b7280; margin-bottom: 14px; }
 .detail-rows { margin-bottom: 14px; }
@@ -957,10 +975,10 @@ body.lightbox-open { overflow: hidden; }
 }
 
 /* Pricing */
-.price-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin: 10px 0 32px; }
+.price-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin: 10px 0 12px; }
 .price-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 24px; text-align: center; background: #fff; }
 .price-card-featured { border-color: var(--pink); box-shadow: 0 8px 26px rgba(255,12,104,0.12); }
-.price-eyebrow { text-transform: uppercase; font-size: 0.68rem; letter-spacing: 0.12em; font-weight: 700; color: var(--pink-dark); margin-bottom: 8px; }
+.price-eyebrow { color: var(--pink-dark); margin-bottom: 8px; }
 .price-card-featured .price-eyebrow { color: var(--pink); }
 .price-budget {
   font-family: var(--font-display); font-size: 2.1rem; font-weight: 800;
@@ -972,6 +990,18 @@ body.lightbox-open { overflow: hidden; }
 .efficiency-note {
   max-width: 660px; margin: 14px 0 20px; font-size: 0.82rem; color: #6b7280; line-height: 1.5;
 }
+.cost-data-notes {
+  max-width: 660px; margin: 10px 0 20px;
+}
+.cost-data-notes summary {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.84rem; font-weight: 600; color: var(--ink);
+  cursor: pointer; list-style: none; min-height: 44px; padding: 4px 0;
+}
+.cost-data-notes summary::-webkit-details-marker { display: none; }
+.cost-data-notes-body { padding: 2px 0 4px 1.25rem; }
+.cost-data-notes-body .efficiency-note { margin: 0 0 10px; }
+.cost-data-notes-body .efficiency-note:last-child { margin-bottom: 0; }
 .count-scope { font-weight: 400; color: var(--ink-soft); font-size: 0.92em; }
 
 /* Mid-page CTA (after cost module — peak intent) */
@@ -1047,31 +1077,23 @@ body.lightbox-open { overflow: hidden; }
 .todo-note { display: block; margin-top: 8px; color: #b48a00; font-size: 0.8rem; }
 .body-copy { max-width: 660px; color: var(--ink-soft); }
 
-/* Tips */
-.tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
-.tip { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
-.tip-tag { text-transform: uppercase; font-size: 0.68rem; letter-spacing: 0.12em; font-weight: 700; color: var(--pink-dark); margin-bottom: 8px; }
-.tip h3 { margin-bottom: 8px; }
-.tip p { font-size: 0.9rem; color: var(--ink-soft); }
-
 /* FAQ */
 .faq-list { max-width: 760px; }
 .faq-item { border-bottom: 1px solid var(--line); padding: 16px 4px; }
 .faq-item summary {
   font-weight: 600; cursor: pointer; font-size: 1.02rem; line-height: 1.35;
   display: flex; align-items: center; gap: 8px;
-  list-style: none;
+  list-style: none; color: var(--ink);
 }
 .faq-item summary::-webkit-details-marker { display: none; }
 .faq-item p { margin-top: 10px; color: var(--ink-soft); max-width: 680px; }
 
 /* Directory */
-.directory-top { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
 .dir-chip { border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 8px 16px; font-size: 0.88rem; font-weight: 500; text-decoration: none; color: var(--ink); }
 .dir-chip span { color: var(--pink-dark); font-weight: 700; margin-left: 4px; }
 .dir-chip:hover { border-color: var(--pink); }
 .directory-all summary {
-  font-weight: 600; cursor: pointer;
+  font-weight: 600; cursor: pointer; color: var(--ink);
   min-height: 44px; display: inline-flex; align-items: center; justify-content: flex-start;
   gap: 6px; padding: 8px 0; width: 100%; list-style: none;
 }

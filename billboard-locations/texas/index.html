@@ -98,7 +98,8 @@
     <h1>Texas Billboards</h1>
     <p class="hero-sub">Explore billboard inventory across Texas &mdash; where boards are, what they cost, and who they reach.</p>
     <p class="hero-intro">
-      Self-serve digital boards with no minimum spend or long-term contract &mdash; browse inventory and pricing at your pace.
+      Select from <strong>320 premium roadside digital billboards</strong> as well as
+      <strong>187 place-based signs</strong> &mdash; self-serve, no minimum spend or long-term contract.
     </p>
     <div class="hero-ctas">
       <a class="btn btn-primary" href="#find-billboards">Browse Texas billboards</a>
@@ -110,8 +111,8 @@
 
 <div class="page-shell">
   <div class="stat-row" role="list">
-    <div class="stat" role="listitem"><span class="stat-num">507</span><span class="stat-label">Active boards statewide</span></div>
-    <div class="stat" role="listitem"><span class="stat-num">133</span><span class="stat-label">Cities served</span></div>
+    <div class="stat" role="listitem"><span class="stat-num">320</span><span class="stat-label">Roadside digital billboards</span></div>
+    <div class="stat" role="listitem"><span class="stat-num">187</span><span class="stat-label">Place-based signs</span></div>
     <div class="stat" role="listitem"><span class="stat-num">369<span class="stat-qualifier">last 12 mo</span></span><span class="stat-label">Texas businesses advertising</span></div>
     <div class="stat" role="listitem"><span class="stat-num">$25/day</span><span class="stat-label">Typical Texas budget</span></div>
   </div>
@@ -146,25 +147,46 @@
   <div class="wrap">
     <h2>Find Digital Billboards in Texas</h2>
     <p class="section-lede">
-      Blip lists <strong>507 digital billboards</strong> across
+      Select from <strong>320 premium roadside digital billboards</strong> as well as
+      <strong>187 place-based signs</strong>
+      (507 boards) across
       <strong>133 Texas cities</strong>.
       The <strong>285</strong> large-format roadside boards with a measured audience reach a combined
       <strong>~11.8 million daily impressions among adults 18+</strong>.
       Explore the map, browse by city, or compare regional coverage later on this page.
     </p>
-    <p class="inventory-freshness">Inventory updated 2026-07-25.</p>
-
-    <div id="map-container" class="map-shell" data-bounds="-106.65,25.84,-93.51,36.5" data-signs="./texas-signs.json" data-state-name="Texas" data-nearby='[{"bearing": "north", "name": "Oklahoma", "slug": "oklahoma"}, {"bearing": "northeast", "name": "Arkansas", "slug": "arkansas"}, {"bearing": "east", "name": "Louisiana", "slug": "louisiana"}, {"bearing": "west", "name": "New Mexico", "slug": "new-mexico"}]'>
+    <div id="map-container" class="map-shell" data-bounds="-106.65,25.84,-93.51,36.5" data-signs="./texas-signs.json" data-state-name="Texas" data-nearby='[{"bearing": "north", "name": "Oklahoma", "sign_count": 34, "slug": "oklahoma"}, {"bearing": "northeast", "name": "Arkansas", "sign_count": 31, "slug": "arkansas"}, {"bearing": "east", "name": "Louisiana", "sign_count": 129, "slug": "louisiana"}, {"bearing": "west", "name": "New Mexico", "sign_count": 46, "slug": "new-mexico"}]'>
       <div id="map-oob-banner" class="map-oob-banner" hidden role="status" aria-live="polite">
         <p class="map-oob-text">You&rsquo;ve panned outside Texas. <a class="map-oob-link" href="#">View neighboring billboards →</a></p>
         <button type="button" class="map-oob-dismiss" aria-label="Dismiss out-of-state notice">×</button>
       </div>
       <div class="map-placeholder">
-        <p><strong>507 boards across Texas</strong></p>
+        <p><strong>320 roadside billboards · 187 place-based</strong></p>
         <p>Interactive map loads here &mdash; scroll or <button class="linklike" id="load-map">tap to load</button>.</p>
       </div>
       <aside id="sign-detail" class="sign-detail" hidden aria-label="Selected billboard details"></aside>
     </div>
+    <fieldset class="inventory-class-filter" aria-label="Filter boards by type">
+      <legend class="inventory-class-filter-legend">Show</legend>
+      <label class="inventory-class-filter-option">
+        <svg class="map-legend-pin-icon" viewBox="0 0 30 40" width="18" height="24" aria-hidden="true" focusable="false">
+          <path d="M15 1C7.3 1 1 7.3 1 15c0 10.5 14 24 14 24s14-13.5 14-24C29 7.3 22.7 1 15 1z" fill="#FF0C68" stroke="#fff" stroke-width="2"/>
+          <rect x="8" y="9" width="14" height="8" rx="1" fill="#fff"/>
+          <path d="M15 17v5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <span>Roadside billboards</span>
+        <input type="checkbox" name="inventory-class" value="roadside" checked>
+      </label>
+      <label class="inventory-class-filter-option">
+        <svg class="map-legend-pin-icon" viewBox="0 0 30 40" width="18" height="24" aria-hidden="true" focusable="false">
+          <path d="M15 1C7.3 1 1 7.3 1 15c0 10.5 14 24 14 24s14-13.5 14-24C29 7.3 22.7 1 15 1z" fill="#C21972" stroke="#fff" stroke-width="2"/>
+          <path d="M9 20V11h12v9" fill="none" stroke="#fff" stroke-width="1.6"/>
+          <path d="M11 20v-4h3v4M16 20v-6h4v6" fill="#fff"/>
+        </svg>
+        <span>Place-based screens</span>
+        <input type="checkbox" name="inventory-class" value="place_based" checked>
+      </label>
+    </fieldset>
 
     <hr class="section-divider" aria-hidden="true">
 
@@ -623,7 +645,7 @@
 
     <hr class="section-divider" aria-hidden="true">
 
-    <h3 class="cards-title">Popular Texas boards</h3>
+    <h3 class="cards-title">Popular Texas roadside boards</h3>
     <div class="sign-cards">
       
       
@@ -634,16 +656,30 @@
   </button>
   
   <div class="sign-card-body">
-    <h4>6650 North Central Expressway, Dallas</h4>
-    <p class="sign-meta">Dallas, TX · TX-119780</p>
+    <p class="sign-card-class">Roadside billboard</p>
+    <h4>6650 North Central Expressway</h4>
+    <p class="sign-meta">TX-119780 · Dallas, TX</p>
     <ul class="sign-facts">
       <li><strong>233,792</strong> daily impressions (adults 18+)</li>
       <li>28 advertisers in last 90 days</li>
-      <li>Board: 48 x 14 ft · N facing · L read</li>
-      <li>Creative: 720 x 208 px (Landscape)</li>
-      
+      <li>Board 48 x 14 ft</li>
+      <li>Creative 720 x 208 px (Landscape)</li>
     </ul>
-    <a class="btn btn-sm btn-ghost sign-card-cta" href="https://marketplace.blipbillboards.com/register">Start a campaign</a>
+    
+    <div class="sign-card-chips">
+      <span class="sign-card-chip">N facing</span>
+      <span class="sign-card-chip">Left read</span>
+      
+    </div>
+    
+    <div class="sign-card-links">
+      <a href="https://www.google.com/maps/@?api=1&amp;map_action=pano&amp;viewpoint=32.850321,-96.770907" target="_blank" rel="noopener noreferrer">Street View ↗</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=32.850321,-96.770907" target="_blank" rel="noopener noreferrer">Google Maps ↗</a>
+    </div>
+    <div class="sign-card-footer">
+      
+      <a class="btn btn-sm btn-ghost sign-card-cta" href="https://marketplace.blipbillboards.com/register">Start a campaign</a>
+    </div>
   </div>
 </article>
 
@@ -651,21 +687,35 @@
       
 <article class="sign-card">
   
-  <button type="button" class="sign-card-photo-btn" aria-label="View larger photo of billboard at 10702 East Freeway, Jacinto City">
-    <img src="https://blipboards-bb-storage.s3.amazonaws.com/lambda-images/sign-photos/resized/SignPhoto-zy49g7-resized.jpg" alt="Digital billboard at 10702 East Freeway, Jacinto City, TX" loading="lazy" decoding="async" width="400" height="260" referrerpolicy="strict-origin-when-cross-origin" onerror="this.closest('.sign-card-photo-btn').hidden=true">
+  <button type="button" class="sign-card-photo-btn" aria-label="View larger photo of billboard at 2698 N US 75-Central Expy 1000, McKinney">
+    <img src="https://blipboards-bb-storage.s3.amazonaws.com/lambda-images/sign-photos/resized/SignPhoto-yhc4ta-resized.jpg" alt="Digital billboard at 2698 N US 75-Central Expy 1000, McKinney, TX" loading="lazy" decoding="async" width="400" height="260" referrerpolicy="strict-origin-when-cross-origin" onerror="this.closest('.sign-card-photo-btn').hidden=true">
   </button>
   
   <div class="sign-card-body">
-    <h4>10702 East Freeway, Jacinto City</h4>
-    <p class="sign-meta">Jacinto City, TX · TX-24256</p>
+    <p class="sign-card-class">Roadside billboard</p>
+    <h4>2698 N US 75-Central Expy 1000</h4>
+    <p class="sign-meta">TX-06603 · McKinney, TX</p>
     <ul class="sign-facts">
-      <li><strong>78,507</strong> daily impressions (adults 18+)</li>
-      <li>24 advertisers in last 90 days</li>
-      <li>Board: 48 x 14 ft · W facing · R read</li>
-      <li>Creative: 880 x 260 px (Landscape)</li>
-      <li>I-10 traffic</li>
+      <li><strong>9,724</strong> daily impressions (adults 18+)</li>
+      <li>23 advertisers in last 90 days</li>
+      <li>Board 30 x 10 ft</li>
+      <li>Creative 464 x 144 px (Landscape)</li>
     </ul>
-    <a class="btn btn-sm btn-ghost sign-card-cta" href="https://marketplace.blipbillboards.com/register">Start a campaign</a>
+    
+    <div class="sign-card-chips">
+      <span class="sign-card-chip">N facing</span>
+      <span class="sign-card-chip">Left read</span>
+      <span class="sign-card-chip">Hwy 75 traffic</span>
+    </div>
+    
+    <div class="sign-card-links">
+      <a href="https://www.google.com/maps/@?api=1&amp;map_action=pano&amp;viewpoint=33.227772,-96.632627" target="_blank" rel="noopener noreferrer">Street View ↗</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=33.227772,-96.632627" target="_blank" rel="noopener noreferrer">Google Maps ↗</a>
+    </div>
+    <div class="sign-card-footer">
+      
+      <a class="btn btn-sm btn-ghost sign-card-cta" href="https://marketplace.blipbillboards.com/register">Start a campaign</a>
+    </div>
   </div>
 </article>
 
@@ -688,16 +738,66 @@
   </button>
   
   <div class="sign-card-body">
-    <h4>2706 Settemont Road, Missouri City</h4>
-    <p class="sign-meta">Missouri City, TX · TX-24266</p>
+    <p class="sign-card-class">Roadside billboard</p>
+    <h4>2706 Settemont Road</h4>
+    <p class="sign-meta">TX-24266 · Missouri City, TX</p>
     <ul class="sign-facts">
       <li><strong>40,985</strong> daily impressions (adults 18+)</li>
       <li>23 advertisers in last 90 days</li>
-      <li>Board: 60 x 20 ft · NW facing · R read</li>
-      <li>Creative: 1140 x 380 px (Landscape)</li>
-      
+      <li>Board 60 x 20 ft</li>
+      <li>Creative 1140 x 380 px (Landscape)</li>
     </ul>
-    <a class="btn btn-sm btn-ghost sign-card-cta" href="https://marketplace.blipbillboards.com/register">Start a campaign</a>
+    
+    <div class="sign-card-chips">
+      <span class="sign-card-chip">NW facing</span>
+      <span class="sign-card-chip">Right read</span>
+      
+    </div>
+    
+    <div class="sign-card-links">
+      <a href="https://www.google.com/maps/@?api=1&amp;map_action=pano&amp;viewpoint=29.620078,-95.510193" target="_blank" rel="noopener noreferrer">Street View ↗</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=29.620078,-95.510193" target="_blank" rel="noopener noreferrer">Google Maps ↗</a>
+    </div>
+    <div class="sign-card-footer">
+      
+      <a class="btn btn-sm btn-ghost sign-card-cta" href="https://marketplace.blipbillboards.com/register">Start a campaign</a>
+    </div>
+  </div>
+</article>
+
+        
+        
+<article class="sign-card">
+  
+  <button type="button" class="sign-card-photo-btn" aria-label="View larger photo of billboard at 10702 East Freeway, Jacinto City">
+    <img src="https://blipboards-bb-storage.s3.amazonaws.com/lambda-images/sign-photos/resized/SignPhoto-zy49g7-resized.jpg" alt="Digital billboard at 10702 East Freeway, Jacinto City, TX" loading="lazy" decoding="async" width="400" height="260" referrerpolicy="strict-origin-when-cross-origin" onerror="this.closest('.sign-card-photo-btn').hidden=true">
+  </button>
+  
+  <div class="sign-card-body">
+    <p class="sign-card-class">Roadside billboard</p>
+    <h4>10702 East Freeway</h4>
+    <p class="sign-meta">TX-24256 · Jacinto City, TX</p>
+    <ul class="sign-facts">
+      <li><strong>78,507</strong> daily impressions (adults 18+)</li>
+      <li>23 advertisers in last 90 days</li>
+      <li>Board 48 x 14 ft</li>
+      <li>Creative 880 x 260 px (Landscape)</li>
+    </ul>
+    
+    <div class="sign-card-chips">
+      <span class="sign-card-chip">W facing</span>
+      <span class="sign-card-chip">Right read</span>
+      <span class="sign-card-chip">I-10 traffic</span>
+    </div>
+    
+    <div class="sign-card-links">
+      <a href="https://www.google.com/maps/@?api=1&amp;map_action=pano&amp;viewpoint=29.77325322,-95.24032863" target="_blank" rel="noopener noreferrer">Street View ↗</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=29.77325322,-95.24032863" target="_blank" rel="noopener noreferrer">Google Maps ↗</a>
+    </div>
+    <div class="sign-card-footer">
+      
+      <a class="btn btn-sm btn-ghost sign-card-cta" href="https://marketplace.blipbillboards.com/register">Start a campaign</a>
+    </div>
   </div>
 </article>
 
@@ -710,38 +810,30 @@
   </button>
   
   <div class="sign-card-body">
-    <h4>26726 Interstate 45 North, The Woodlands</h4>
-    <p class="sign-meta">The Woodlands, TX · TX-121797</p>
+    <p class="sign-card-class">Roadside billboard</p>
+    <h4>26726 Interstate 45 North</h4>
+    <p class="sign-meta">TX-121797 · The Woodlands, TX</p>
     <ul class="sign-facts">
       <li><strong>68,371</strong> daily impressions (adults 18+)</li>
-      <li>21 advertisers in last 90 days</li>
-      <li>Board: 48 x 14 ft · S facing · R read</li>
-      <li>Creative: 720 x 208 px (Landscape)</li>
+      <li>22 advertisers in last 90 days</li>
+      <li>Board 48 x 14 ft</li>
+      <li>Creative 720 x 208 px (Landscape)</li>
+    </ul>
+    
+    <div class="sign-card-chips">
+      <span class="sign-card-chip">S facing</span>
+      <span class="sign-card-chip">Right read</span>
       
-    </ul>
-    <a class="btn btn-sm btn-ghost sign-card-cta" href="https://marketplace.blipbillboards.com/register">Start a campaign</a>
-  </div>
-</article>
-
-        
-        
-<article class="sign-card">
-  
-  <button type="button" class="sign-card-photo-btn" aria-label="View larger photo of billboard at 2698 N US 75-Central Expy 1000, McKinney">
-    <img src="https://blipboards-bb-storage.s3.amazonaws.com/lambda-images/sign-photos/resized/SignPhoto-yhc4ta-resized.jpg" alt="Digital billboard at 2698 N US 75-Central Expy 1000, McKinney, TX" loading="lazy" decoding="async" width="400" height="260" referrerpolicy="strict-origin-when-cross-origin" onerror="this.closest('.sign-card-photo-btn').hidden=true">
-  </button>
-  
-  <div class="sign-card-body">
-    <h4>2698 N US 75-Central Expy 1000, McKinney</h4>
-    <p class="sign-meta">McKinney, TX · TX-06603</p>
-    <ul class="sign-facts">
-      <li><strong>9,724</strong> daily impressions (adults 18+)</li>
-      <li>21 advertisers in last 90 days</li>
-      <li>Board: 30 x 10 ft · N facing · L read</li>
-      <li>Creative: 464 x 144 px (Landscape)</li>
-      <li>Hwy 75 traffic</li>
-    </ul>
-    <a class="btn btn-sm btn-ghost sign-card-cta" href="https://marketplace.blipbillboards.com/register">Start a campaign</a>
+    </div>
+    
+    <div class="sign-card-links">
+      <a href="https://www.google.com/maps/@?api=1&amp;map_action=pano&amp;viewpoint=30.15202,-95.447646" target="_blank" rel="noopener noreferrer">Street View ↗</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=30.15202,-95.447646" target="_blank" rel="noopener noreferrer">Google Maps ↗</a>
+    </div>
+    <div class="sign-card-footer">
+      
+      <a class="btn btn-sm btn-ghost sign-card-cta" href="https://marketplace.blipbillboards.com/register">Start a campaign</a>
+    </div>
   </div>
 </article>
 
@@ -754,16 +846,30 @@
   </button>
   
   <div class="sign-card-body">
-    <h4>2044 West State Highway 114, Grapevine</h4>
-    <p class="sign-meta">Grapevine, TX · TX-119767</p>
+    <p class="sign-card-class">Roadside billboard</p>
+    <h4>2044 West State Highway 114</h4>
+    <p class="sign-meta">TX-119767 · Grapevine, TX</p>
     <ul class="sign-facts">
       <li><strong>100,958</strong> daily impressions (adults 18+)</li>
-      <li>19 advertisers in last 90 days</li>
-      <li>Board: 48 x 14 ft · SE facing · L read</li>
-      <li>Creative: 720 x 208 px (Landscape)</li>
-      <li>Hwy 114 traffic</li>
+      <li>18 advertisers in last 90 days</li>
+      <li>Board 48 x 14 ft</li>
+      <li>Creative 720 x 208 px (Landscape)</li>
     </ul>
-    <a class="btn btn-sm btn-ghost sign-card-cta" href="https://marketplace.blipbillboards.com/register">Start a campaign</a>
+    
+    <div class="sign-card-chips">
+      <span class="sign-card-chip">SE facing</span>
+      <span class="sign-card-chip">Left read</span>
+      <span class="sign-card-chip">Hwy 114 traffic</span>
+    </div>
+    
+    <div class="sign-card-links">
+      <a href="https://www.google.com/maps/@?api=1&amp;map_action=pano&amp;viewpoint=32.933266,-97.096789" target="_blank" rel="noopener noreferrer">Street View ↗</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=32.933266,-97.096789" target="_blank" rel="noopener noreferrer">Google Maps ↗</a>
+    </div>
+    <div class="sign-card-footer">
+      
+      <a class="btn btn-sm btn-ghost sign-card-cta" href="https://marketplace.blipbillboards.com/register">Start a campaign</a>
+    </div>
   </div>
 </article>
 
@@ -779,9 +885,10 @@
   <div class="wrap">
     <h2>How much do billboards cost in Texas?</h2>
     <p class="section-lede">
-      Here&rsquo;s what recent Texas daily budgets delivered. With Blip there&rsquo;s no minimum spend: you set a daily budget and pay per <em>blip</em> &mdash; a 7.5&ndash;10 second
+      Here&rsquo;s what recent Texas daily budgets delivered on <strong>roadside digital billboards</strong>.
+      With Blip there&rsquo;s no minimum spend: you set a daily budget and pay per <em>blip</em> &mdash; a 7.5&ndash;10 second
       ad display on a rotating digital board. Price per blip varies by board, time of day, and advertiser demand.
-      These are observed outcomes from recent Texas campaigns, not fixed packages:
+      These are observed outcomes from recent Texas roadside campaigns, not fixed packages:
     </p>
     <p class="examples-label">Examples&mdash;not fixed packages or guaranteed rates</p>
     <div class="price-cards">
@@ -796,22 +903,22 @@
       <div class="price-card price-card-featured">
         <p class="price-eyebrow">Most common</p>
         <p class="price-budget">$25<span>/day</span></p>
-        <p class="price-flips">~625 blips per day</p>
+        <p class="price-flips">~600 blips per day</p>
         <p class="price-note">The typical Texas daily budget</p>
       </div>
       
       <div class="price-card">
         <p class="price-eyebrow">Higher daily volume</p>
         <p class="price-budget">$50<span>/day</span></p>
-        <p class="price-flips">~825 blips per day</p>
-        <p class="price-note">More plays, or the same spend spread across more boards.</p>
+        <p class="price-flips">~725 blips per day</p>
+        <p class="price-note">More plays across more boards</p>
       </div>
       
     </div>
     <details class="cost-data-notes">
       <summary><span class="disclosure-chev" aria-hidden="true">›</span>About this data</summary>
       <div class="cost-data-notes-body">
-        <p class="efficiency-note">These are medians from separate campaign cohorts, not a linear rate calculator; higher-spend campaigns often selected more expensive boards or hours.</p>
+        <p class="efficiency-note">These are medians from separate roadside digital billboard campaign cohorts (place-based screens excluded), not a linear rate calculator; higher-spend campaigns often selected more expensive boards or hours.</p>
         <p class="efficiency-note">A lower price per blip does not always mean cheaper reach — cost per 1,000 views depends on how many people see each play (buyer-scoped CPM), not the play price alone.</p>
       </div>
     </details>
@@ -1382,6 +1489,13 @@
         </div>
       </details>
     </div>
+    
+    <aside class="markets-access-callout" aria-label="Blip Access">
+      <h3>Need guaranteed or broader OOH coverage?</h3>
+      <p>The inventory on this page is available for self-serve digital campaigns. <strong>Blip Access</strong>&mdash;expert-supported OOH buying&mdash;provides planning and execution for guaranteed, multi-market, and multi-format campaigns, all through the same Blip marketplace.</p>
+      <p class="markets-access-action"><a class="markets-access-link" href="https://www.blipbillboards.com/access/">Explore Blip Access &rarr;</a></p>
+    </aside>
+    
   </div>
 </section>
 
@@ -2012,17 +2126,17 @@
   <div class="wrap">
     <h2>Explore nearby states</h2>
     <p class="section-lede">Blip also runs digital boards in markets that border Texas.</p>
-    <ul class="nearby-list">
+    <div class="directory-top nearby-chips">
       
-      <li><a href="https://www.blipbillboards.com/billboard-locations/oklahoma/">Oklahoma billboards</a></li>
+      <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/oklahoma/">Oklahoma <span>34</span></a>
       
-      <li><a href="https://www.blipbillboards.com/billboard-locations/arkansas/">Arkansas billboards</a></li>
+      <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/arkansas/">Arkansas <span>31</span></a>
       
-      <li><a href="https://www.blipbillboards.com/billboard-locations/louisiana/">Louisiana billboards</a></li>
+      <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/louisiana/">Louisiana <span>129</span></a>
       
-      <li><a href="https://www.blipbillboards.com/billboard-locations/new-mexico/">New Mexico billboards</a></li>
+      <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/new-mexico/">New Mexico <span>46</span></a>
       
-    </ul>
+    </div>
     <p class="nearby-all-states"><a href="https://www.blipbillboards.com/billboard-locations/">Browse billboards in other states →</a></p>
   </div>
 </aside>
@@ -2036,7 +2150,8 @@
   <div class="wrap">
     <h2>Create your free account today</h2>
     <p>Pick Texas boards, set any budget, and launch in minutes. No contracts, no minimums, no sales calls.</p>
-    <a class="btn btn-primary btn-lg" href="https://marketplace.blipbillboards.com/register">Start advertising</a>
+    <a class="btn btn-primary btn-lg" href="https://marketplace.blipbillboards.com/register">Start a self-serve campaign</a>
+    <p class="cta-final-access">Need expert support or guaranteed placements? <a href="https://www.blipbillboards.com/access/">Explore Blip Access</a>.</p>
   </div>
 </section>
 
@@ -2044,7 +2159,7 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <p>© 2026 Blip® — Internal preview rendered 2026-07-29 from live inventory and pricing data. Not production. <code>noindex</code>.</p>
+    <p>© 2026 Blip® — Internal preview rendered 2026-07-30 from live inventory and pricing data. Not production. <code>noindex</code>.</p>
   </div>
 </footer>
 
@@ -2057,6 +2172,164 @@
 (function () {
   var shell = document.getElementById('map-container');
   var loaded = false;
+  var classFilter = { roadside: true, place_based: true };
+  var detailStackMembers = null;
+  var detailStackIndex = 0;
+
+  function featurePassesClass(f) {
+    var cls = (f.properties && f.properties.inventory_class) || 'place_based';
+    return !!classFilter[cls];
+  }
+
+  function buildSitesFromGeo(geo) {
+    var groups = {};
+    (geo.features || []).forEach(function (f) {
+      if (!f.geometry || !f.geometry.coordinates) return;
+      if (!featurePassesClass(f)) return;
+      var c = f.geometry.coordinates;
+      var key = String(c[0]) + ',' + String(c[1]);
+      if (!groups[key]) groups[key] = [];
+      groups[key].push(f);
+    });
+    window.__protoSiteMembers = {};
+    var features = [];
+    var heatFeatures = [];
+    Object.keys(groups).forEach(function (key, i) {
+      var members = groups[key];
+      var siteId = 'site-' + i;
+      window.__protoSiteMembers[siteId] = members;
+      var coords = members[0].geometry.coordinates;
+      var n = members.length;
+      var allRoadside = members.every(function (m) {
+        return ((m.properties && m.properties.inventory_class) || 'place_based') === 'roadside';
+      });
+      // App-like “N signs” bubble only for roadside stacks; place-based multi-packs
+      // keep the place-based pin but still open a tabbed detail on click.
+      var showStack = n > 1 && allRoadside;
+      var props = {
+        site_id: siteId,
+        sign_count: n,
+        show_stack: showStack ? 1 : 0,
+        inventory_class: (members[0].properties && members[0].properties.inventory_class) || 'place_based'
+      };
+      if (!showStack) {
+        var face = members[0].properties || {};
+        props.id = face.id;
+        props.name = face.name;
+        props.address = face.address;
+        props.city = face.city;
+        props.state = face.state;
+        props.views = face.views;
+        props.board_size = face.board_size;
+        props.creative = face.creative;
+        props.orientation = face.orientation;
+        props.facing = face.facing;
+        props.read = face.read;
+        props.photo = face.photo;
+        props.booked = face.booked;
+        props.inventory_class_label = face.inventory_class_label;
+      }
+      features.push({
+        type: 'Feature',
+        geometry: { type: 'Point', coordinates: coords },
+        properties: props
+      });
+      members.forEach(function (m) {
+        heatFeatures.push({
+          type: 'Feature',
+          geometry: m.geometry,
+          properties: { inventory_class: (m.properties && m.properties.inventory_class) || 'place_based' }
+        });
+      });
+    });
+    return {
+      sites: { type: 'FeatureCollection', features: features },
+      heat: { type: 'FeatureCollection', features: heatFeatures }
+    };
+  }
+
+  function refreshMapSites() {
+    var map = window.__protoMap;
+    var geo = window.__protoGeo;
+    if (!map || !geo || !map.getSource) return;
+    var built = buildSitesFromGeo(geo);
+    var sitesSrc = map.getSource('sites');
+    var heatSrc = map.getSource('signs-heat');
+    if (sitesSrc) sitesSrc.setData(built.sites);
+    if (heatSrc) heatSrc.setData(built.heat);
+  }
+
+  function applyInventoryClassFilter() {
+    refreshMapSites();
+    var detail = document.getElementById('sign-detail');
+    if (!detail || detail.hidden) return;
+    if (detailStackMembers && detailStackMembers.length) {
+      var kept = detailStackMembers.filter(featurePassesClass);
+      if (!kept.length) closeDetail();
+      else if (kept.length !== detailStackMembers.length) openDetailStack(kept, Math.min(detailStackIndex, kept.length - 1));
+      return;
+    }
+    var cls = detail.getAttribute('data-inventory-class');
+    if (cls && !classFilter[cls]) closeDetail();
+  }
+
+  function initInventoryClassFilter() {
+    var root = document.querySelector('.inventory-class-filter');
+    if (!root) return;
+    root.addEventListener('change', function (e) {
+      var input = e.target;
+      if (!input || input.type !== 'checkbox') return;
+      if (!input.checked) {
+        var checked = root.querySelectorAll('input[type="checkbox"]:checked');
+        if (!checked.length) {
+          input.checked = true;
+          return;
+        }
+      }
+      classFilter[input.value] = input.checked;
+      applyInventoryClassFilter();
+    });
+  }
+
+  function stackBubbleSvg(n) {
+    var label = n + ' signs';
+    // Match app: pin-scale height, softer (not pill) corners, readable type.
+    var w = Math.max(58, 12 + label.length * 7.2);
+    var h = 38;
+    var bubbleH = 26;
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '">' +
+      '<rect x="1" y="1" width="' + (w - 2) + '" height="' + bubbleH + '" rx="5" fill="#FF0C68" stroke="#fff" stroke-width="2"/>' +
+      '<path d="M' + (w / 2 - 5) + ' ' + bubbleH + ' L' + (w / 2) + ' ' + (h - 1) + ' L' + (w / 2 + 5) + ' ' + bubbleH + ' Z" fill="#FF0C68"/>' +
+      '<text x="' + (w / 2) + '" y="19" text-anchor="middle" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="500">' + label + '</text>' +
+      '</svg>';
+  }
+
+  function addStackImages(map, done) {
+    var maxN = 8;
+    var remaining = maxN - 1;
+    for (var n = 2; n <= maxN; n++) {
+      (function (n) {
+        var id = 'blip-stack-' + n;
+        if (map.hasImage(id)) {
+          remaining -= 1;
+          if (remaining <= 0) done();
+          return;
+        }
+        var img = new Image();
+        img.onload = function () {
+          if (!map.hasImage(id)) map.addImage(id, img);
+          remaining -= 1;
+          if (remaining <= 0) done();
+        };
+        img.onerror = function () {
+          remaining -= 1;
+          if (remaining <= 0) done();
+        };
+        img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(stackBubbleSvg(n));
+      })(n);
+    }
+  }
+
   // Prototype uses MapLibre + Carto Positron (token-free). Production would use
   // Blip's Mapbox account/style, same GL API surface.
   function loadMap() {
@@ -2093,42 +2366,104 @@
     map.addControl(createResetViewControl(initialBounds, fitBoundsOptions), 'top-left');
     setupOutOfStateBanner(map, b);
     map.on('load', function () {
-      // Teardrop pin icon (blip pink) as inline SVG.
-      var pinSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="0 0 30 40">' +
+      // Two-class pins: roadside billboard vs place-based screen.
+      var pinRoadside = '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="0 0 30 40">' +
         '<path d="M15 1C7.3 1 1 7.3 1 15c0 10.5 14 24 14 24s14-13.5 14-24C29 7.3 22.7 1 15 1z" fill="#FF0C68" stroke="#fff" stroke-width="2"/>' +
-        '<circle cx="15" cy="15" r="5.5" fill="#fff"/></svg>';
-      var img = new Image(30, 40);
-      img.onload = function () {
-        map.addImage('blip-pin', img);
-        fetch(shell.dataset.signs).then(function (r) { return r.json(); }).then(function (geo) {
-          map.addSource('signs', { type: 'geojson', data: geo });
-          // Soft coverage heatmap under the pins (PoC "radial" look).
-          map.addLayer({ id: 'sign-heat', type: 'heatmap', source: 'signs',
-            paint: {
-              'heatmap-radius': ['interpolate', ['linear'], ['zoom'], 4, 30, 9, 60],
-              'heatmap-intensity': 0.6,
-              'heatmap-opacity': ['interpolate', ['linear'], ['zoom'], 7, 0.55, 11, 0],
-              'heatmap-color': ['interpolate', ['linear'], ['heatmap-density'],
-                0, 'rgba(255,12,104,0)', 0.4, 'rgba(255,12,104,0.12)', 1, 'rgba(194,25,114,0.35)']
-            } });
-          // Individual pins at every zoom level — no clustering.
-          map.addLayer({ id: 'sign-pt', type: 'symbol', source: 'signs',
-            layout: { 'icon-image': 'blip-pin', 'icon-size': ['interpolate', ['linear'], ['zoom'], 4, 0.55, 9, 0.8, 13, 1],
-              'icon-anchor': 'bottom', 'icon-allow-overlap': true } });
-          map.on('click', 'sign-pt', function (e) { openDetail(e.features[0]); });
-          window.__protoMap = map; window.__protoOpenDetail = openDetail; window.__protoGeo = geo;
-          map.on('mouseenter', 'sign-pt', function () { map.getCanvas().style.cursor = 'pointer'; });
-          map.on('mouseleave', 'sign-pt', function () { map.getCanvas().style.cursor = ''; });
+        '<rect x="8" y="9" width="14" height="8" rx="1" fill="#fff"/>' +
+        '<path d="M15 17v5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>';
+      var pinPlace = '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="0 0 30 40">' +
+        '<path d="M15 1C7.3 1 1 7.3 1 15c0 10.5 14 24 14 24s14-13.5 14-24C29 7.3 22.7 1 15 1z" fill="#C21972" stroke="#fff" stroke-width="2"/>' +
+        '<path d="M9 20V11h12v9" fill="none" stroke="#fff" stroke-width="1.6"/>' +
+        '<path d="M11 20v-4h3v4M16 20v-6h4v6" fill="#fff"/></svg>';
+      var pinsReady = 0;
+      function onPinsReady() {
+        pinsReady += 1;
+        if (pinsReady < 2) return;
+        addStackImages(map, function () {
+          fetch(shell.dataset.signs).then(function (r) { return r.json(); }).then(function (geo) {
+            window.__protoMap = map;
+            window.__protoGeo = geo;
+            window.__protoOpenDetail = openSiteFromFeature;
+            var built = buildSitesFromGeo(geo);
+            map.addSource('signs-heat', { type: 'geojson', data: built.heat });
+            map.addSource('sites', { type: 'geojson', data: built.sites });
+            map.addLayer({ id: 'sign-heat', type: 'heatmap', source: 'signs-heat',
+              paint: {
+                'heatmap-radius': ['interpolate', ['linear'], ['zoom'], 4, 30, 9, 60],
+                'heatmap-intensity': 0.6,
+                'heatmap-opacity': ['interpolate', ['linear'], ['zoom'], 7, 0.55, 11, 0],
+                'heatmap-color': ['interpolate', ['linear'], ['heatmap-density'],
+                  0, 'rgba(255,12,104,0)', 0.4, 'rgba(255,12,104,0.12)', 1, 'rgba(194,25,114,0.35)']
+              } });
+            map.addLayer({ id: 'sign-pt', type: 'symbol', source: 'sites',
+              filter: ['==', ['get', 'show_stack'], 0],
+              layout: {
+                'icon-image': [
+                  'match', ['get', 'inventory_class'],
+                  'roadside', 'blip-pin-roadside',
+                  'blip-pin-place'
+                ],
+                'icon-size': ['interpolate', ['linear'], ['zoom'], 4, 0.55, 9, 0.8, 13, 1],
+                'icon-anchor': 'bottom',
+                'icon-allow-overlap': true
+              } });
+            map.addLayer({ id: 'sign-stack', type: 'symbol', source: 'sites',
+              filter: ['==', ['get', 'show_stack'], 1],
+              layout: {
+                'icon-image': [
+                  'concat', 'blip-stack-',
+                  ['to-string', ['min', ['get', 'sign_count'], 8]]
+                ],
+                'icon-size': ['interpolate', ['linear'], ['zoom'], 4, 0.55, 9, 0.8, 13, 1],
+                'icon-anchor': 'bottom',
+                'icon-allow-overlap': true
+              } });
+            function onSiteClick(e) {
+              if (!e.features || !e.features.length) return;
+              openSiteFromFeature(e.features[0]);
+            }
+            map.on('click', 'sign-pt', onSiteClick);
+            map.on('click', 'sign-stack', onSiteClick);
+            ['sign-pt', 'sign-stack'].forEach(function (layerId) {
+              map.on('mouseenter', layerId, function () { map.getCanvas().style.cursor = 'pointer'; });
+              map.on('mouseleave', layerId, function () { map.getCanvas().style.cursor = ''; });
+            });
+          });
         });
-      };
-      img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(pinSvg);
+      }
+      var imgR = new Image(30, 40);
+      var imgP = new Image(30, 40);
+      imgR.onload = function () { map.addImage('blip-pin-roadside', imgR); onPinsReady(); };
+      imgP.onload = function () { map.addImage('blip-pin-place', imgP); onPinsReady(); };
+      imgR.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(pinRoadside);
+      imgP.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(pinPlace);
     });
   }
 
   function closeDetail() {
     var el = document.getElementById('sign-detail');
     el.hidden = true;
+    el.removeAttribute('data-inventory-class');
+    detailStackMembers = null;
+    detailStackIndex = 0;
     document.body.classList.remove('sign-detail-open');
+  }
+
+  function openSiteFromFeature(siteFeature) {
+    var siteId = siteFeature.properties && siteFeature.properties.site_id;
+    var members = (siteId && window.__protoSiteMembers && window.__protoSiteMembers[siteId]) || null;
+    if (!members || !members.length) return;
+    if (members.length === 1) openDetail(members[0]);
+    else openDetailStack(members, 0);
+  }
+
+  function tabLabelForFace(pr, index) {
+    var parts = [];
+    if (pr.facing) parts.push(pr.facing);
+    if (pr.read) parts.push(pr.read === 'R' ? 'Right' : pr.read === 'L' ? 'Left' : pr.read);
+    if (parts.length) return parts.join(' · ');
+    if (pr.id) return String(pr.id).replace(/^TX-/, '');
+    return 'Sign ' + (index + 1);
   }
 
   function createResetViewControl(bounds, fitOpts) {
@@ -2216,7 +2551,7 @@
     map.on('moveend', update);
   }
 
-  function openDetail(f) {
+  function faceDetailBodyHtml(f) {
     var pr = f.properties;
     var lat = f.geometry.coordinates[1], lng = f.geometry.coordinates[0];
     var streetView = 'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=' + lat + ',' + lng;
@@ -2224,26 +2559,17 @@
     var chips = [];
     if (pr.facing) chips.push(pr.facing + ' facing');
     if (pr.read) chips.push((pr.read === 'R' ? 'Right' : pr.read === 'L' ? 'Left' : pr.read) + ' read');
+    if (pr.booked === true || pr.booked === 'true') chips.push('Currently booked');
     var rows = [
       ['Daily impressions (18+)', pr.views ? Number(pr.views).toLocaleString() : '—'],
       ['Board size', pr.board_size || '—'],
       ['Creative', (pr.creative || '—') + (pr.orientation ? ' · ' + pr.orientation : '')]
     ];
-    var el = document.getElementById('sign-detail');
-    var photoAlt = 'Billboard at ' + (pr.address || '') + ', ' + (pr.city || '');
-    var detailGen = (el._detailGen || 0) + 1;
-    el._detailGen = detailGen;
-    el.innerHTML =
-      '<div class="detail-header">' +
-        '<p class="detail-header-label">Selected board</p>' +
-        '<button type="button" class="detail-close" aria-label="Close details">×</button>' +
-      '</div>' +
-      '<div class="detail-scroll">' +
-      (pr.photo
+    return (pr.photo
         ? '<div class="detail-photo-slot" aria-hidden="true"><span class="detail-photo-pending">Loading photo…</span></div>'
         : '') +
       '<div class="detail-body">' +
-        '<p class="detail-eyebrow">Billboard</p>' +
+        '<p class="detail-eyebrow">' + (pr.inventory_class_label || (pr.inventory_class === 'place_based' ? 'Place-based screen' : 'Roadside billboard')) + '</p>' +
         '<h3 class="detail-name">' + (pr.address || pr.name) + '</h3>' +
         '<p class="detail-sub">' + pr.id + ' · ' + pr.city + ', ' + pr.state + '</p>' +
         '<dl class="detail-rows">' + rows.map(function (r) {
@@ -2255,45 +2581,99 @@
           '<a href="' + streetView + '" target="_blank" rel="noopener">Street View ↗</a>' +
           '<a href="' + gmaps + '" target="_blank" rel="noopener">Google Maps ↗</a>' +
         '</div>' +
+      '</div>';
+  }
+
+  function wireDetailPhoto(el, f, detailGen) {
+    var pr = f.properties;
+    if (!pr.photo) return;
+    var slot = el.querySelector('.detail-photo-slot');
+    var photoAlt = 'Billboard at ' + (pr.address || '') + ', ' + (pr.city || '');
+    var pre = new Image();
+    pre.decoding = 'async';
+    pre.referrerPolicy = 'strict-origin-when-cross-origin';
+    pre.onload = function () {
+      if (el._detailGen !== detailGen || !slot) return;
+      slot.removeAttribute('aria-hidden');
+      slot.innerHTML =
+        '<button type="button" class="detail-photo-btn" aria-label="View larger photo">' +
+          '<img class="detail-photo" src="' + pr.photo + '" alt="' + photoAlt + '" ' +
+            'referrerpolicy="strict-origin-when-cross-origin" decoding="async">' +
+        '</button>';
+      var photoBtn = slot.querySelector('.detail-photo-btn');
+      if (photoBtn) {
+        photoBtn.addEventListener('click', function () {
+          openPhotoLightbox(pr.photo, photoAlt);
+        });
+      }
+    };
+    pre.onerror = function () {
+      if (el._detailGen !== detailGen || !slot) return;
+      slot.innerHTML = '<p class="detail-photo-missing">Photo unavailable</p>';
+    };
+    pre.src = pr.photo;
+  }
+
+  function openDetail(f) {
+    detailStackMembers = null;
+    detailStackIndex = 0;
+    var pr = f.properties;
+    var el = document.getElementById('sign-detail');
+    el.setAttribute('data-inventory-class', pr.inventory_class || 'place_based');
+    var detailGen = (el._detailGen || 0) + 1;
+    el._detailGen = detailGen;
+    el.innerHTML =
+      '<div class="detail-header">' +
+        '<p class="detail-header-label">Selected board</p>' +
+        '<button type="button" class="detail-close" aria-label="Close details">×</button>' +
       '</div>' +
-      '</div>' +
+      '<div class="detail-scroll">' + faceDetailBodyHtml(f) + '</div>' +
       '<div class="detail-cta-bar">' +
         '<a class="btn btn-primary detail-cta" href="https://marketplace.blipbillboards.com/register">Start a campaign</a>' +
       '</div>';
     el.hidden = false;
     document.body.classList.add('sign-detail-open');
     el.querySelector('.detail-close').addEventListener('click', closeDetail);
+    wireDetailPhoto(el, f, detailGen);
+  }
 
-    // Preload photo before injecting <img>. S3 objects are labeled Content-Encoding: base64
-    // while the body is raw JPEG — some browsers flake on that; skipping broken URLs avoids
-    // the intermittent empty/broken map-card image. Also ignores stale loads after fast pin clicks.
-    // Use strict-origin-when-cross-origin (not no-referrer) — some asset CDNs flake without Referer.
-    if (pr.photo) {
-      var slot = el.querySelector('.detail-photo-slot');
-      var pre = new Image();
-      pre.decoding = 'async';
-      pre.referrerPolicy = 'strict-origin-when-cross-origin';
-      pre.onload = function () {
-        if (el._detailGen !== detailGen || !slot) return;
-        slot.removeAttribute('aria-hidden');
-        slot.innerHTML =
-          '<button type="button" class="detail-photo-btn" aria-label="View larger photo">' +
-            '<img class="detail-photo" src="' + pr.photo + '" alt="' + photoAlt + '" ' +
-              'referrerpolicy="strict-origin-when-cross-origin" decoding="async">' +
-          '</button>';
-        var photoBtn = slot.querySelector('.detail-photo-btn');
-        if (photoBtn) {
-          photoBtn.addEventListener('click', function () {
-            openPhotoLightbox(pr.photo, photoAlt);
-          });
-        }
-      };
-      pre.onerror = function () {
-        if (el._detailGen !== detailGen || !slot) return;
-        slot.innerHTML = '<p class="detail-photo-missing">Photo unavailable</p>';
-      };
-      pre.src = pr.photo;
-    }
+  function openDetailStack(members, activeIndex) {
+    detailStackMembers = members;
+    detailStackIndex = activeIndex || 0;
+    if (detailStackIndex < 0 || detailStackIndex >= members.length) detailStackIndex = 0;
+    var active = members[detailStackIndex];
+    var pr = active.properties;
+    var el = document.getElementById('sign-detail');
+    el.setAttribute('data-inventory-class', pr.inventory_class || 'place_based');
+    var detailGen = (el._detailGen || 0) + 1;
+    el._detailGen = detailGen;
+    var tabsHtml = '<div class="detail-tabs" role="tablist" aria-label="Faces at this location">' +
+      members.map(function (m, i) {
+        var selected = i === detailStackIndex;
+        return '<button type="button" class="detail-tab' + (selected ? ' is-active' : '') + '" role="tab" aria-selected="' +
+          (selected ? 'true' : 'false') + '" data-face-index="' + i + '">' +
+          tabLabelForFace(m.properties, i) + '</button>';
+      }).join('') + '</div>';
+    el.innerHTML =
+      '<div class="detail-header">' +
+        '<p class="detail-header-label">' + members.length + ' signs at this location</p>' +
+        '<button type="button" class="detail-close" aria-label="Close details">×</button>' +
+      '</div>' +
+      tabsHtml +
+      '<div class="detail-scroll" id="detail-face-panel">' + faceDetailBodyHtml(active) + '</div>' +
+      '<div class="detail-cta-bar">' +
+        '<a class="btn btn-primary detail-cta" href="https://marketplace.blipbillboards.com/register">Start a campaign</a>' +
+      '</div>';
+    el.hidden = false;
+    document.body.classList.add('sign-detail-open');
+    el.querySelector('.detail-close').addEventListener('click', closeDetail);
+    el.querySelectorAll('.detail-tab').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var idx = Number(btn.getAttribute('data-face-index'));
+        if (!isNaN(idx)) openDetailStack(members, idx);
+      });
+    });
+    wireDetailPhoto(el, active, detailGen);
   }
 
   // Fullscreen photo lightbox (map detail + representative sign cards)
@@ -2369,6 +2749,8 @@
       }
     });
   });
+
+  initInventoryClassFilter();
 
   // Quiet scroll-spy for TOC active section (desktop rail + inline band share one nav)
   (function initTocSpy() {

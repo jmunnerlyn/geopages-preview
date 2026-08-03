@@ -3,9 +3,11 @@
 Public **noindex** preview of the Blip Texas geo location-page prototype.
 
 - **Live:** https://jmunnerlyn.github.io/geopages-preview/billboard-locations/texas/
+- **Houston:** https://jmunnerlyn.github.io/geopages-preview/billboard-locations/texas/houston-tx/
 - **Source:** Blip geopages prototype (`build.py --preview` → static `dist/`)
 - **Indexing:** Disabled (`robots.txt` Disallow, `noindex` meta, preview banner). Internal team share only.
 - **Contents:** Built static files only — not the monorepo, not secrets, not source pipelines.
+- **Production host (later):** marketing site Astro repo (`blipbillboards.com`) — this preview is not that cutover.
 
 ## Refresh
 

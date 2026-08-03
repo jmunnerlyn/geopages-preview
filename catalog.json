@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "generated_at": "2026-08-03",
+  "owner": "geopages",
+  "consumer": "blipbillboards.com Astro (future; do not edit Astro in this phase)",
+  "url_shape": {
+    "state": "/billboard-locations/{state_slug}/",
+    "city": "/billboard-locations/{state_slug}/{city_slug}/"
+  },
+  "pages": [
+    {
+      "entryId": "texas",
+      "pageKind": "state",
+      "path": "/billboard-locations/texas/",
+      "canonicalUrl": "https://www.blipbillboards.com/billboard-locations/texas/",
+      "dataFile": "texas.json",
+      "renderMode": "inventory",
+      "signsGeojson": "texas-signs.json"
+    },
+    {
+      "entryId": "texas__houston-tx",
+      "pageKind": "city",
+      "path": "/billboard-locations/texas/houston-tx/",
+      "canonicalUrl": "https://www.blipbillboards.com/billboard-locations/texas/houston-tx/",
+      "dataFile": "houston.json",
+      "renderMode": "inventory",
+      "scope": "in_city",
+      "stateSlug": "texas",
+      "citySlug": "houston-tx",
+      "signsGeojson": "houston-signs.json"
+    }
+  ]
+}

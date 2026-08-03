@@ -1095,6 +1095,42 @@ body.lightbox-open { overflow: hidden; }
 .sign-card-avail.is-booked { color: var(--ink-soft); font-weight: 600; }
 .sign-card-footer .sign-card-cta { margin: 0; }
 
+/* City page: single media-market context — full-width split, not a lone 1/3 market card */
+.market-context-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 28px 40px;
+  align-items: start;
+  padding: 22px 0 0;
+  /* Top hairline only — next .section already draws the bottom join rule. */
+  border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+}
+.market-context-name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+.market-context-stats {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.market-context-stats strong { font-weight: 700; }
+.market-context-main .market-note { margin-bottom: 12px; }
+.market-context-main .market-map-action { margin: 0; }
+.market-context-cities .market-cities-label { display: block; margin-bottom: 10px; }
+@media (max-width: 800px) {
+  .market-context-panel {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-top: 18px;
+  }
+}
+
 /* Market cards — 6 metros in an even grid, with the remainder card spanning the full row */
 .market-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
 @media (max-width: 980px) { .market-cards { grid-template-columns: repeat(2, 1fr); } }

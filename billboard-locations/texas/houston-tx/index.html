@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -273,12 +275,16 @@
           class="board-index-summary-label"
           data-board-index-total="71"
           data-city-name="Houston"
+          data-board-index-near="0"
+          data-place-phrase="in"
         >Browse all 71 Houston boards</span>
       </summary>
       <p class="board-index-lede">
+        
         Full list of <strong>71 billboards in Houston</strong> &mdash; photos,
         specs, Street View, and campaign links. Highway billboards first, then place-based screens.
         For nearby options, use the map or city links above.
+        
       </p>
       
       
@@ -2832,7 +2838,7 @@
         <p class="price-eyebrow">Plays per dollar</p>
         <p class="price-budget">~47.4</p>
         <p class="price-flips">blips for every dollar spent</p>
-        <p class="price-note">Average across recent Houston campaigns</p>
+        <p class="price-note">Average across recent campaigns in Houston</p>
       </div>
     </div>
     <details class="cost-data-notes">
@@ -2885,8 +2891,8 @@
     <h2>Billboard rental in Houston</h2>
     <p class="section-lede">
       
-      All <strong>71 Houston boards</strong> were open for campaigns as of
-      2026-07-30.
+      All <strong>71 boards in Houston</strong> were open for campaigns as of
+      2026-08-03.
       
       Check live availability when you start.
     </p>
@@ -3617,7 +3623,7 @@
 <section class="section cta-final">
   <div class="wrap">
     <h2>Create your free account today</h2>
-    <p>Set any budget, then use Blip Optimized or choose your own Houston signs &mdash; launch in minutes. No contracts, no minimums, no sales calls.</p>
+    <p>Set any budget, then use Blip Optimized or choose your own signs in Houston &mdash; launch in minutes. No contracts, no minimums, no sales calls.</p>
     <a class="btn btn-primary btn-lg" href="https://marketplace.blipbillboards.com/register">Start a self-serve campaign</a>
     
     
@@ -3745,7 +3751,13 @@
     if (!label) return;
     var total = Number(label.getAttribute('data-board-index-total') || items.length);
     var city = label.getAttribute('data-city-name') || '';
-    if (visible >= total) {
+    var near = label.getAttribute('data-board-index-near') === '1';
+    var phrase = label.getAttribute('data-place-phrase') || 'near';
+    if (near) {
+      label.textContent = visible >= total
+        ? ('Browse all ' + total + ' boards ' + phrase + ' ' + city)
+        : ('Browse ' + visible + ' of ' + total + ' boards ' + phrase + ' ' + city);
+    } else if (visible >= total) {
       label.textContent = 'Browse all ' + total + ' ' + city + ' boards';
     } else {
       label.textContent = 'Browse ' + visible + ' of ' + total + ' ' + city + ' boards';

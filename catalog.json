@@ -28,6 +28,18 @@
       "stateSlug": "texas",
       "citySlug": "houston-tx",
       "signsGeojson": "houston-signs.json"
+    },
+    {
+      "entryId": "texas__addison-tx",
+      "pageKind": "city",
+      "path": "/billboard-locations/texas/addison-tx/",
+      "canonicalUrl": "https://www.blipbillboards.com/billboard-locations/texas/addison-tx/",
+      "dataFile": "addison.json",
+      "renderMode": "inventory",
+      "scope": "near_city",
+      "stateSlug": "texas",
+      "citySlug": "addison-tx",
+      "signsGeojson": "addison-signs.json"
     }
   ]
 }

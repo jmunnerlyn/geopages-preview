@@ -571,15 +571,27 @@ h3 { font-size: 1.15rem; font-weight: 600; }
 
 /* Plan campaign — 2×2 insight cards with sparkline previews */
 .insight-cards {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin: 0 0 28px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin: 0 0 28px;
+  /* Keep closed cards at their own height when a neighbor expands. */
+  align-items: start;
 }
 .insight-card {
   background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
   display: flex; flex-direction: column; overflow: hidden;
+  /* fit-content + start: closed cards must not inherit a stretched row height */
+  height: fit-content;
+  max-height: fit-content;
+  align-self: start;
+  justify-self: stretch;
 }
 .insight-card-summary {
   display: flex; flex-direction: column; gap: 8px;
-  flex: 1; min-height: 280px; padding: 20px 20px 16px;
+  /* Do not flex-grow — growing summary + margin-top:auto on sparklines
+     creates a large empty gap when a grid neighbor stretches the card. */
+  flex: 0 1 auto; min-height: 280px; padding: 20px 20px 16px;
   cursor: pointer; list-style: none;
 }
 .insight-card-summary::-webkit-details-marker { display: none; }
@@ -934,16 +946,31 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
 /* Audience module */
 .audience-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; margin: 26px 0 10px; }
 @media (max-width: 760px) { .audience-grid { grid-template-columns: 1fr; } }
+/* Insight cards are ~½ page width — stack gender/age so % labels are not clipped. */
+.insight-card-body .audience-grid {
+  grid-template-columns: 1fr;
+  gap: 22px;
+  margin: 18px 0 0;
+}
 .gender-bar { display: flex; height: 54px; border-radius: 10px; overflow: hidden; font-size: 0.85rem; font-weight: 600; }
 .gender-f { background: var(--pink); color: #fff; display: flex; align-items: center; padding-left: 14px; }
 .gender-m { background: var(--navy); color: #fff; display: flex; align-items: center; padding-left: 14px; }
 .gender-bar span { white-space: nowrap; }
-.age-bars { display: flex; flex-direction: column; gap: 10px; }
-.age-row { display: grid; grid-template-columns: 52px 1fr 52px; align-items: center; gap: 12px; }
-.age-label { font-size: 0.85rem; color: var(--ink-soft); }
-.age-track { background: var(--line); border-radius: 6px; height: 20px; overflow: hidden; }
+.age-bars { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.age-row {
+  display: grid;
+  /* minmax(0,1fr) lets the track shrink; pct column sized for "xx.x%" */
+  grid-template-columns: 3rem minmax(0, 1fr) 3.5rem;
+  align-items: center;
+  gap: 10px;
+}
+.age-label { font-size: 0.85rem; color: var(--ink-soft); white-space: nowrap; }
+.age-track { background: var(--line); border-radius: 6px; height: 20px; overflow: hidden; min-width: 0; }
 .age-fill { background: var(--pink); height: 100%; border-radius: 6px; }
-.age-pct { font-size: 0.85rem; font-weight: 600; text-align: right; }
+.age-pct {
+  font-size: 0.85rem; font-weight: 600; text-align: right;
+  white-space: nowrap; font-variant-numeric: tabular-nums;
+}
 
 /* Industry mix module */
 .industry-bars { display: flex; flex-direction: column; gap: 12px; margin: 26px 0 18px; }

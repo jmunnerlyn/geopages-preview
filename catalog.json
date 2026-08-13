@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-08-06",
+  "generated_at": "2026-08-13",
   "owner": "geopages",
   "consumer": "blipbillboards.com Astro (future; do not edit Astro in this phase)",
   "url_shape": {
@@ -15,19 +15,8 @@
       "canonicalUrl": "https://www.blipbillboards.com/billboard-locations/texas/",
       "dataFile": "texas.json",
       "renderMode": "inventory",
-      "signsGeojson": "texas-signs.json"
-    },
-    {
-      "entryId": "texas__houston-tx",
-      "pageKind": "city",
-      "path": "/billboard-locations/texas/houston-tx/",
-      "canonicalUrl": "https://www.blipbillboards.com/billboard-locations/texas/houston-tx/",
-      "dataFile": "houston.json",
-      "renderMode": "inventory",
-      "scope": "in_city",
-      "stateSlug": "texas",
-      "citySlug": "houston-tx",
-      "signsGeojson": "houston-signs.json"
+      "signsGeojson": "texas-signs.json",
+      "name": "Texas"
     },
     {
       "entryId": "texas__addison-tx",
@@ -39,7 +28,21 @@
       "scope": "near_city",
       "stateSlug": "texas",
       "citySlug": "addison-tx",
-      "signsGeojson": "addison-signs.json"
+      "signsGeojson": "addison-signs.json",
+      "name": "Addison"
+    },
+    {
+      "entryId": "texas__houston-tx",
+      "pageKind": "city",
+      "path": "/billboard-locations/texas/houston-tx/",
+      "canonicalUrl": "https://www.blipbillboards.com/billboard-locations/texas/houston-tx/",
+      "dataFile": "houston.json",
+      "renderMode": "inventory",
+      "scope": "in_city",
+      "stateSlug": "texas",
+      "citySlug": "houston-tx",
+      "signsGeojson": "houston-signs.json",
+      "name": "Houston"
     }
   ]
 }

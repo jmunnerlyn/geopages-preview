@@ -23,14 +23,22 @@
 <meta property="og:image:type" content="image/jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/geopages-preview/assets/location.css?v=insight-align-3">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600;700;800&family=Lexend:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/geopages-preview/assets/location.css?v=city-parity-1">
 
 </head>
 <body class="is-preview page-city">
 
 <div class="preview-banner" role="status">Internal preview — not indexed, not production</div>
 
+
+<div class="copy-mode-bar" id="copy-mode-toggle" hidden>
+  <p class="copy-mode-label">Interpretation copy</p>
+  <div class="copy-mode-btns" role="group" aria-label="Switch interpretation copy">
+    <button type="button" class="copy-mode-btn" data-copy-mode-btn="fallback">Fallback</button>
+    <button type="button" class="copy-mode-btn is-active" data-copy-mode-btn="ai" aria-pressed="true">AI</button>
+  </div>
+</div>
 
 <nav class="blip-v2-nav" id="main-menu" aria-label="Primary navigation">
   <div class="blip-v2-nav-inner">
@@ -92,25 +100,18 @@
 <section class="hero">
   <div class="wrap">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="https://www.blipbillboards.com/">Home</a> ›
-      <a href="https://www.blipbillboards.com/billboard-locations/">Billboard Locations</a> ›
-      <a href="/geopages-preview/billboard-locations/texas/">Texas</a> ›
-      <span aria-current="page">Houston</span>
+      <ol class="breadcrumb-list">
+        <li class="breadcrumb-item"><a class="breadcrumb-pill" href="https://www.blipbillboards.com/">Home</a></li>
+        <li class="breadcrumb-item"><a class="breadcrumb-pill" href="https://www.blipbillboards.com/billboard-locations/">Billboard Locations</a></li>
+        <li class="breadcrumb-item"><a class="breadcrumb-pill" href="/geopages-preview/billboard-locations/texas/">Texas</a></li>
+        <li class="breadcrumb-item"><span class="breadcrumb-pill is-current" aria-current="page">Houston</span></li>
+      </ol>
     </nav>
     <p class="eyebrow">Houston Billboard Advertising</p>
     
     <h1>Houston Billboards</h1>
-    <p class="hero-sub">Explore digital billboards in Houston &mdash; where to find them, what advertisers typically spend, and how to get started.</p>
-    <p class="hero-intro">
-      
-      Advertise across <strong>144 billboards</strong> in Houston and nearby cities:
-      <strong>31 roadside</strong> and
-      <strong>113 place-based screens</strong>.
-      <strong>71</strong> are in Houston;
-      <strong>73</strong> are in surrounding towns.
-      Use Blip Optimized or choose your own signs &mdash; no minimum spend or long-term contract.
-      
-    </p>
+    <p class="hero-sub">Explore billboard inventory in Houston &mdash; where boards are, what they cost, and who they reach.</p>
+    <p class="hero-intro">Self-serve digital boards with no minimum spend or long-term contract &mdash; browse inventory and pricing at your pace.</p>
     <div class="hero-ctas">
       <a class="btn btn-primary" href="#find-billboards">Browse Houston billboards</a>
       <a class="btn btn-ghost" href="#cost">See pricing</a>
@@ -119,7 +120,7 @@
 </section>
 
 <div class="page-shell">
-  <div class="stat-row" role="list">
+  <div class="stat-row" role="list" data-stat-count="5" style="--stat-count: 5;">
     
     
     <div class="stat" role="listitem">
@@ -129,7 +130,7 @@
     </div>
     
     
-    <div class="stat" role="listitem">
+    <div class="stat stat-place-based" role="listitem">
       <span class="stat-num">113</span>
       <span class="stat-label">Place-based screens</span>
       <span class="stat-split">69 in Houston · 44 nearby</span>
@@ -142,7 +143,10 @@
     </div>
     
     
-    <div class="stat" role="listitem"><span class="stat-num">$12/day</span><span class="stat-label">Typical recent daily spend</span></div>
+    <div class="stat" role="listitem"><span class="stat-num">$13/day</span><span class="stat-label">Typical recent daily spend</span></div>
+    
+    
+    <div class="stat" role="listitem"><span class="stat-num">1.3M</span><span class="stat-label">Daily impressions (adults 18+)</span></div>
     
   </div>
 
@@ -152,22 +156,26 @@
         <p class="page-toc-label">On this page</p>
       </div>
       <ul class="page-toc-list">
-        <li><a class="page-toc-link" href="#find-billboards"><span class="page-toc-text">Find boards</span><span class="page-toc-arrow" aria-hidden="true">↓</span></a></li>
-        <li><a class="page-toc-link" href="#cost"><span class="page-toc-text">Cost</span><span class="page-toc-arrow" aria-hidden="true">↓</span></a></li>
+        
+        <li><a class="page-toc-link" href="#why-it-works"><span class="page-toc-text">Why it works here</span><span class="page-toc-arrow" aria-hidden="true">↓</span></a></li>
+        
+        <li><a class="page-toc-link" href="#find-billboards"><span class="page-toc-text">Where the boards are</span><span class="page-toc-arrow" aria-hidden="true">↓</span></a></li>
+        <li><a class="page-toc-link" href="#cost"><span class="page-toc-text">What it costs</span><span class="page-toc-arrow" aria-hidden="true">↓</span></a></li>
         <li><a class="page-toc-link" href="#rental"><span class="page-toc-text">Rental</span><span class="page-toc-arrow" aria-hidden="true">↓</span></a></li>
         
         <li><a class="page-toc-link" href="#market-context"><span class="page-toc-text">Market context</span><span class="page-toc-arrow" aria-hidden="true">↓</span></a></li>
         
         
-        <li class="page-toc-item-wide"><a class="page-toc-link" href="#plan-campaign"><span class="page-toc-text">Campaign insights</span><span class="page-toc-arrow" aria-hidden="true">↓</span></a></li>
+        <li class="page-toc-item-wide"><a class="page-toc-link" href="#plan-campaign"><span class="page-toc-text">Plan your campaign</span><span class="page-toc-arrow" aria-hidden="true">↓</span></a></li>
         
         <li><a class="page-toc-link" href="#faqs"><span class="page-toc-text">FAQs</span><span class="page-toc-arrow" aria-hidden="true">↓</span></a></li>
       </ul>
       <div class="page-toc-foot">
         <p class="page-toc-read">
           <svg class="page-toc-read-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="4.75" stroke="currentColor" stroke-width="1"/><path d="M6 3.75V6.25L7.75 7.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span>7 min guide</span>
+          <span>8 min read</span>
         </p>
+        <p class="page-toc-progress" aria-live="polite"></p>
       </div>
     </nav>
   </div>
@@ -178,20 +186,42 @@
 
 
 
+
+<!-- ============ WHY IT WORKS ============ -->
+<section id="why-it-works" class="section">
+  <div class="wrap">
+    <h2>Why does billboard advertising work in Houston?</h2>
+    <div class="copy-pair" data-copy-slot="why_it_works_note">
+    <div class="why-it-works-body copy-fallback">
+    
+      <p class="why-it-works-callout">The typical Houston-area commute is about 28.5 minutes each way. A roadside screen is the one ad they can't skip, block, or scroll past.</p>
+      
+    
+    </div>
+    <div class="why-it-works-body copy-ai" data-copy-ai="why_it_works_note"></div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ============ LOCATIONS ============ -->
 <section id="find-billboards" class="section">
   <div class="wrap">
     <h2>Billboards in Houston: locations</h2>
-    <p class="section-lede">
+    <p class="section-lede plan-campaign-lede">
       
-      Browse <strong>144 billboards</strong> in and around Houston
+      Browse 144 billboards in and around Houston
       
-      (<strong>31 roadside</strong> and
-      <strong>113 place-based screens</strong>).
+      (31 roadside and
+      113 place-based screens).
       
-      <strong>71</strong> are in Houston;
+      71 are in Houston;
       explore the map or <a href="#surrounding-cities">open a nearby city</a> for more options.
       
+      
+      The 31 large-format roadside boards with a measured audience in and around Houston
+      reach a combined
+      ~1.3 million daily impressions among adults 18+.
       
     </p>
 
@@ -199,16 +229,14 @@
       id="map-container"
       class="map-shell"
       data-bounds="-95.7789,29.64384,-95.12143,30.05381"
-      data-max-bounds="-106.65,25.84,-93.51,36.5"
+      data-max-bounds="-106.92060029999999,25.583409999999997,-93.38465000000001,36.216590000000004"
       data-signs="./houston-signs.json"
       data-city-name="Houston"
+      data-sign-prefix="TX-"
     >
       <div class="map-placeholder">
-        
-        <p><strong>31 roadside · 113 place-based</strong>
-        in Houston and nearby cities</p>
-        
-        <p>Houston billboard map &mdash; <button class="linklike" id="load-map">load interactive map</button> to explore the area.</p>
+        <p>Loading map&hellip;</p>
+        <p><button class="linklike" id="load-map">Load interactive map</button></p>
       </div>
       <aside id="sign-detail" class="sign-detail" hidden aria-label="Selected billboard details"></aside>
     </div>
@@ -244,11 +272,11 @@
     <aside class="surrounding-discovery" id="surrounding-cities" aria-label="Nearby cities with Blip billboards">
       <h3 class="surrounding-discovery-title">Browse billboards in nearby cities</h3>
       <p class="surrounding-discovery-lede">
-        Looking beyond Houston? There are <strong>73 more billboards</strong> across
+        Looking beyond Houston? There are 73 more billboards across
         10 nearby cities,
-        including <strong>29 roadside billboards</strong>.
+        including 29 roadside billboards.
         Open a city to see its boards, or keep exploring the map.
-        The list below covers the <strong>71 billboards in Houston</strong>.
+        The list below covers the 71 billboards in Houston.
       </p>
       <div class="directory-top nearby-chips">
         
@@ -294,7 +322,7 @@
       </summary>
       <p class="board-index-lede">
         
-        Full list of <strong>71 billboards in Houston</strong> &mdash; photos,
+        Full list of 71 billboards in Houston &mdash; photos,
         specs, Street View, and campaign links. Highway billboards first, then place-based screens.
         For nearby options, use the map or city links above.
         
@@ -2749,151 +2777,222 @@
         
       </ol>
     </details>
+  </div>
+</section>
 
-    
-    <hr class="section-divider" aria-hidden="true">
-    <h3 class="cards-title">Featured Houston roadside boards</h3>
-    <div class="sign-cards">
-      
-      
+
+<section id="popular-boards" class="section">
+  <div class="wrap">
+    <div class="popular-boards-block">
+      <h2>Popular Houston boards</h2>
+      <div class="sign-cards popular-boards">
+        
+        
 <article class="sign-card">
   
   <div class="sign-card-body">
-    <p class="sign-card-class">Roadside billboard</p>
-    <h4>10960 East Freeway</h4>
-    <p class="sign-meta">TX-295656 · Houston, TX</p>
-    <ul class="sign-facts">
-      <li><strong>82,340</strong> daily impressions (adults 18+)</li>
-      
-      <li>Board 48 x 14 ft</li>
-      <li>Creative 1400 x 400 px (Landscape)</li>
-    </ul>
+    
+    <span class="sign-card-class sign-card-class--inline">ROADSIDE BILLBOARD</span>
+    
+    <h4 class="sign-card-title">10960 East Freeway</h4>
+    <p class="sign-card-meta">TX-295656 · Houston, TX</p>
+    
+    <div class="sign-card-stats">
+      <p><strong>82,340</strong> daily impressions (adults 18+)</p>
+      <p>Board 48 x 14 ft</p>
+    </div>
+    
     
     <div class="sign-card-chips">
       <span class="sign-card-chip">W facing</span>
       <span class="sign-card-chip">Right read</span>
-      
     </div>
+    
     
     <div class="sign-card-links">
       <a href="https://www.google.com/maps/@?api=1&amp;map_action=pano&amp;viewpoint=29.772921,-95.23423" target="_blank" rel="noopener noreferrer">Street View ↗</a>
       <a href="https://www.google.com/maps/search/?api=1&amp;query=29.772921,-95.23423" target="_blank" rel="noopener noreferrer">Google Maps ↗</a>
     </div>
+    
     <div class="sign-card-footer">
-      
       <a class="btn btn-sm btn-ghost sign-card-cta" href="https://marketplace.blipbillboards.com/register">Start a campaign</a>
     </div>
   </div>
 </article>
 
-      
-      
+        
+        
 <article class="sign-card">
   
   <div class="sign-card-body">
-    <p class="sign-card-class">Roadside billboard</p>
-    <h4>10960 East Freeway</h4>
-    <p class="sign-meta">TX-295657 · Houston, TX</p>
-    <ul class="sign-facts">
-      <li><strong>60,265</strong> daily impressions (adults 18+)</li>
-      
-      <li>Board 48 x 14 ft</li>
-      <li>Creative 1400 x 400 px (Landscape)</li>
-    </ul>
+    
+    <span class="sign-card-class sign-card-class--inline">ROADSIDE BILLBOARD</span>
+    
+    <h4 class="sign-card-title">10960 East Freeway</h4>
+    <p class="sign-card-meta">TX-295657 · Houston, TX</p>
+    
+    <div class="sign-card-stats">
+      <p><strong>60,265</strong> daily impressions (adults 18+)</p>
+      <p>Board 48 x 14 ft</p>
+    </div>
+    
     
     <div class="sign-card-chips">
       <span class="sign-card-chip">E facing</span>
       <span class="sign-card-chip">Left read</span>
-      
     </div>
+    
     
     <div class="sign-card-links">
       <a href="https://www.google.com/maps/@?api=1&amp;map_action=pano&amp;viewpoint=29.772921,-95.23423" target="_blank" rel="noopener noreferrer">Street View ↗</a>
       <a href="https://www.google.com/maps/search/?api=1&amp;query=29.772921,-95.23423" target="_blank" rel="noopener noreferrer">Google Maps ↗</a>
     </div>
+    
     <div class="sign-card-footer">
-      
       <a class="btn btn-sm btn-ghost sign-card-cta" href="https://marketplace.blipbillboards.com/register">Start a campaign</a>
     </div>
   </div>
 </article>
 
+        
+      </div>
+      
+      <button type="button" class="popular-boards-toggle disclosure-pill" aria-expanded="false" hidden>
+        <span class="popular-boards-toggle-label"></span>
+        <span class="disclosure-chev" aria-hidden="true"><svg viewBox="0 0 5 8" aria-hidden="true"><path fill="currentColor" d="M0 1.25L4 4L0 6.75L1.1 6.75L5 4L1.1 1.25Z"/></svg></span>
+      </button>
       
     </div>
-    
   </div>
 </section>
+
 
 <!-- ============ COST ============ -->
 <section id="cost" class="section">
   <div class="wrap">
     <h2>How much is a billboard in Houston?</h2>
-    
     <p class="section-lede">
-      With Blip there&rsquo;s no minimum spend in Houston: you set a daily budget and pay per <em>blip</em> &mdash; a 7.5&ndash;10 second
-      ad display on a rotating digital board. Here&rsquo;s what recent self-serve campaigns in Houston actually spent and delivered:
+      You set a daily budget, there&rsquo;s no minimum and no contract. What that budget buys depends on which screens you pick and what other advertisers are bidding.
     </p>
-    <p class="examples-label">Recent advertiser outcomes&mdash;not fixed packages</p>
-    <div class="price-cards price-cards-observed">
-      <div class="price-card price-card-featured">
-        <p class="price-eyebrow">Typical daily spend</p>
-        <p class="price-budget">$12.04<span>/day</span></p>
-        <p class="price-flips">what advertisers often spent per day</p>
-        <p class="price-note">Based on the last 90 days in Houston</p>
+    
+    
+<div class="cost-calculator-layout">
+  <section class="cost-calculator" aria-label="Daily budget calculator" data-cost-calculator='{"about_note": "Estimated daily views are from recent Texas roadside campaigns, held to the nearest measured spend band as you move the slider. Place-based screens are excluded. This is an estimate, not a quote. Lower-budget views without a stored impressions median are scaled from a neighboring measured band using realized play volume. This page does not yet have enough local campaign-days for its own view curve, so it uses Texas.", "axis_labels": [10, 50, 100, 150], "cohort_level": "parent", "cohort_name": "Texas", "default": 50, "default_spend_30": 1500, "default_tip_html": "At \u003cstrong\u003e$50 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound.", "default_views": 7276, "footer": "Modelled from recent Texas campaigns \u2014 an estimate, not a quote. You always set your own budget and choose your own screens.", "has_scaled_views": true, "local_typical_spend": 13, "max": 150, "min": 10, "step": 5, "ticks": {"10": {"budget": 10, "impressions_median": 2781, "spend_30": 300, "tip_html": "At \u003cstrong\u003e$10 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "100": {"budget": 100, "impressions_median": 11054, "spend_30": 3000, "tip_html": "At \u003cstrong\u003e$100 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "105": {"budget": 105, "impressions_median": 11054, "spend_30": 3150, "tip_html": "At \u003cstrong\u003e$105 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "110": {"budget": 110, "impressions_median": 11054, "spend_30": 3300, "tip_html": "At \u003cstrong\u003e$110 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "115": {"budget": 115, "impressions_median": 11054, "spend_30": 3450, "tip_html": "At \u003cstrong\u003e$115 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "120": {"budget": 120, "impressions_median": 11054, "spend_30": 3600, "tip_html": "At \u003cstrong\u003e$120 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "125": {"budget": 125, "impressions_median": 11054, "spend_30": 3750, "tip_html": "At \u003cstrong\u003e$125 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "130": {"budget": 130, "impressions_median": 11054, "spend_30": 3900, "tip_html": "At \u003cstrong\u003e$130 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "135": {"budget": 135, "impressions_median": 11054, "spend_30": 4050, "tip_html": "At \u003cstrong\u003e$135 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "140": {"budget": 140, "impressions_median": 11054, "spend_30": 4200, "tip_html": "At \u003cstrong\u003e$140 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "145": {"budget": 145, "impressions_median": 11054, "spend_30": 4350, "tip_html": "At \u003cstrong\u003e$145 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "15": {"budget": 15, "impressions_median": 2781, "spend_30": 450, "tip_html": "At \u003cstrong\u003e$15 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "150": {"budget": 150, "impressions_median": 16387, "spend_30": 4500, "tip_html": "At \u003cstrong\u003e$150 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "20": {"budget": 20, "impressions_median": 2781, "spend_30": 600, "tip_html": "At \u003cstrong\u003e$20 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "25": {"budget": 25, "impressions_median": 6393, "spend_30": 750, "tip_html": "At \u003cstrong\u003e$25 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "30": {"budget": 30, "impressions_median": 6393, "spend_30": 900, "tip_html": "At \u003cstrong\u003e$30 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "35": {"budget": 35, "impressions_median": 6393, "spend_30": 1050, "tip_html": "At \u003cstrong\u003e$35 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "40": {"budget": 40, "impressions_median": 6393, "spend_30": 1200, "tip_html": "At \u003cstrong\u003e$40 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "45": {"budget": 45, "impressions_median": 6393, "spend_30": 1350, "tip_html": "At \u003cstrong\u003e$45 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "50": {"budget": 50, "impressions_median": 7276, "spend_30": 1500, "tip_html": "At \u003cstrong\u003e$50 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "55": {"budget": 55, "impressions_median": 7276, "spend_30": 1650, "tip_html": "At \u003cstrong\u003e$55 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "60": {"budget": 60, "impressions_median": 7276, "spend_30": 1800, "tip_html": "At \u003cstrong\u003e$60 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "65": {"budget": 65, "impressions_median": 7276, "spend_30": 1950, "tip_html": "At \u003cstrong\u003e$65 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "70": {"budget": 70, "impressions_median": 7276, "spend_30": 2100, "tip_html": "At \u003cstrong\u003e$70 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "75": {"budget": 75, "impressions_median": 10068, "spend_30": 2250, "tip_html": "At \u003cstrong\u003e$75 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "80": {"budget": 80, "impressions_median": 10068, "spend_30": 2400, "tip_html": "At \u003cstrong\u003e$80 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "85": {"budget": 85, "impressions_median": 10068, "spend_30": 2550, "tip_html": "At \u003cstrong\u003e$85 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "90": {"budget": 90, "impressions_median": 10068, "spend_30": 2700, "tip_html": "At \u003cstrong\u003e$90 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "95": {"budget": 95, "impressions_median": 10068, "spend_30": 2850, "tip_html": "At \u003cstrong\u003e$95 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}}}'>
+    <p class="cost-calculator-budget" aria-live="polite">
+      <span class="cost-budget-amount">$<span data-cost-budget>50</span></span>
+      <span class="cost-budget-unit">per day</span>
+    </p>
+    <label class="visually-hidden" for="cost-budget-slider">Choose a daily budget</label>
+    <input class="cost-budget-slider" id="cost-budget-slider" type="range"
+      min="10" max="150"
+      step="5" value="50">
+    <div class="cost-slider-labels" aria-hidden="true">
+      <span>$10</span><span>$50</span><span>$100</span><span>$150</span>
+    </div>
+    <div class="cost-calculator-outputs">
+      <div class="cost-output">
+        <strong data-cost-views>7,276</strong>
+        <span>Estimated daily views</span>
       </div>
-      <div class="price-card">
-        <p class="price-eyebrow">Typical daily plays</p>
-        <p class="price-budget">~542</p>
-        <p class="price-flips">blips per day at that spend</p>
-        <p class="price-note">How many ad plays that spend usually bought</p>
-      </div>
-      <div class="price-card">
-        <p class="price-eyebrow">Plays per dollar</p>
-        <p class="price-budget">~47.4</p>
-        <p class="price-flips">blips for every dollar spent</p>
-        <p class="price-note">Average across recent campaigns in Houston</p>
+      <div class="cost-output">
+        <strong data-cost-spend>$1,500</strong>
+        <span>If you ran it for 30 days</span>
       </div>
     </div>
+    <p class="cost-calculator-tip" data-cost-tip>At <strong>$50 a day</strong> you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound.</p>
+    <p class="cost-calculator-foot">Modelled from recent Texas campaigns — an estimate, not a quote. You always set your own budget and choose your own screens.</p>
+  </section>
+  <aside class="blip-definition" aria-label="What a blip is">
+    <p class="blip-definition-eyebrow">One word to know</p>
+    <p>A blip is one play of your ad on a screen &mdash; about 7.5 to 10 seconds. You pay per blip, so you&rsquo;re never renting a whole board for a month.</p>
+  </aside>
+</div>
+
+<p class="cost-local-typical">Recent campaigns in Houston often spent about $13/day.</p>
+
+<script>
+(function () {
+  var calculator = document.querySelector('[data-cost-calculator]');
+  if (!calculator) return;
+  var slider = calculator.querySelector('.cost-budget-slider');
+  var budgetEl = calculator.querySelector('[data-cost-budget]');
+  var viewsEl = calculator.querySelector('[data-cost-views]');
+  var spendEl = calculator.querySelector('[data-cost-spend]');
+  var tipEl = calculator.querySelector('[data-cost-tip]');
+  var model;
+  try { model = JSON.parse(calculator.getAttribute('data-cost-calculator') || '{}'); } catch (e) { return; }
+  var ticks = model.ticks || {};
+  if (!slider) return;
+
+  function render() {
+    var budget = String(slider.value);
+    var tick = ticks[budget];
+    if (!tick) return;
+    budgetEl.textContent = tick.budget;
+    viewsEl.textContent = Number(tick.impressions_median).toLocaleString();
+    spendEl.textContent = '$' + Number(tick.spend_30).toLocaleString();
+    tipEl.innerHTML = tick.tip_html;
+    var span = Number(model.max) - Number(model.min);
+    var percent = span > 0 ? (Number(slider.value) - Number(model.min)) / span * 100 : 0;
+    slider.style.setProperty('--cost-slider-progress', percent + '%');
+  }
+  slider.addEventListener('input', render);
+  render();
+})();
+</script>
+    
     <details class="cost-data-notes">
-      <summary><span class="disclosure-chev" aria-hidden="true">›</span>About this data</summary>
+      <summary class="disclosure-pill">About this data<span class="disclosure-chev" aria-hidden="true"><svg viewBox="0 0 5 8" aria-hidden="true"><path fill="currentColor" d="M0 1.25L4 4L0 6.75L1.1 6.75L5 4L1.1 1.25Z"/></svg></span></summary>
       <div class="cost-data-notes-body">
-        <p class="efficiency-note">
-          Drawn from real Blip campaigns on boards in Houston
-          (2026-05-04 to 2026-07-29).
-          Includes both roadside billboards and place-based screens &mdash; whatever ran here.
-          Your results will vary by board, time of day, and demand.
-        </p>
+        
+        <p class="efficiency-note">Estimated daily views are from recent Texas roadside campaigns, held to the nearest measured spend band as you move the slider. Place-based screens are excluded. This is an estimate, not a quote. Lower-budget views without a stored impressions median are scaled from a neighboring measured band using realized play volume. This page does not yet have enough local campaign-days for its own view curve, so it uses Texas.</p>
+        
         <p class="efficiency-note">A lower price per blip does not always mean cheaper reach — cost per 1,000 views depends on how many people see each play (buyer-scoped CPM), not the play price alone.</p>
       </div>
     </details>
-    <p class="cost-ladder-link">
-      For $10 / $25 / $50 <strong>roadside billboard</strong> examples across Texas,
-      <a href="/geopages-preview/billboard-locations/texas/#cost">See Texas roadside billboard cost examples →</a>
-    </p>
-    
     <p class="body-copy">
       There&rsquo;s no single answer to <a href="https://www.blipbillboards.com/cost/">how much a billboard costs</a>
       in Houston &mdash; what a board costs depends on its traffic, the hours you run, and how many other
       advertisers want the same screen.
       <a href="https://marketplace.blipbillboards.com/register">Create a free account</a> to set a daily budget, then use Blip Optimized or choose your own signs.
     </p>
+  </div>
+</section>
 
-    <aside class="cta-mid" aria-label="Start advertising on Blip">
-      <div class="cta-mid-copy">
-        <h3>Ready to advertise on a Houston board?</h3>
-        <ol class="cta-mid-steps">
-          <li>Set any daily budget &mdash; use Blip Optimized or choose your own signs</li>
-          <li>Upload your artwork</li>
-          <li>Most campaigns are approved and live within a business day</li>
-        </ol>
-        
-        
+<section id="smarter-buys" class="section">
+  <div class="wrap">
+    
+<aside class="smarter-buys-cta" aria-label="Built for Smarter Buys">
+  <div class="smarter-buys-cta-copy">
+    <p class="smarter-buys-cta-badge">Built for Smarter Buys</p>
+    <p class="smarter-buys-cta-headline">Turn what you find here into a live campaign</p>
+    <p class="smarter-buys-cta-body">Save the ones that fit, set your own budget, and we&rsquo;ll handle the bidding, no minimums, no contracts.</p>
+    <a class="smarter-buys-cta-btn" href="https://marketplace.blipbillboards.com/register">Create Your Account</a>
+  </div>
+  <div class="smarter-buys-cta-steps">
+    <article class="smarter-buys-step">
+      <span class="smarter-buys-step-num" aria-hidden="true">1</span>
+      <div class="smarter-buys-step-text">
+        <p class="smarter-buys-step-title">Save boards to your shortlist</p>
+        <p class="smarter-buys-step-body">Tap the heart icon on any board as you browse. Your shortlist follows you across states and regions.</p>
       </div>
-      <div class="cta-mid-actions">
-        <a class="btn btn-primary btn-lg" href="https://marketplace.blipbillboards.com/register">Create a free account to start a campaign</a>
-        
+    </article>
+    <article class="smarter-buys-step">
+      <span class="smarter-buys-step-num" aria-hidden="true">2</span>
+      <div class="smarter-buys-step-text">
+        <p class="smarter-buys-step-title">Create a free account</p>
+        <p class="smarter-buys-step-body">No cost to sign up, it just saves your shortlist so you can pick up where you left off.</p>
       </div>
-    </aside>
+    </article>
+    <article class="smarter-buys-step">
+      <span class="smarter-buys-step-num" aria-hidden="true">3</span>
+      <div class="smarter-buys-step-text">
+        <p class="smarter-buys-step-title">Set a budget and launch</p>
+        <p class="smarter-buys-step-body">Every campaign is auction-based: name your daily budget and we place bids on your behalf.</p>
+      </div>
+    </article>
+  </div>
+</aside>
   </div>
 </section>
 
@@ -2904,8 +3003,8 @@
     <h2>Billboard rental in Houston</h2>
     <p class="section-lede">
       
-      All <strong>71 boards in Houston</strong> were open for campaigns as of
-      2026-08-03.
+      All 71 boards in Houston were open for campaigns as of
+      2026-08-13.
       
       Check live availability when you start.
     </p>
@@ -2913,19 +3012,19 @@
       <h3 class="rental-how-title">How Blip rental works</h3>
       <ul class="rental-how-list">
         <li>
-          <strong>Pay-per-play, not a lease.</strong>
+          Pay-per-play, not a lease.
           Traditional rental is usually a fixed multi-week contract on one face. On Blip you set any daily
-          budget, then either let <strong>Blip Optimized</strong> pick strong signs for you or
-          <strong>choose your own boards</strong>, and pay for the plays you buy &mdash; pause or stop anytime.
+          budget, then either let Blip Optimized pick strong signs for you or
+          choose your own boards, and pay for the plays you buy &mdash; pause or stop anytime.
           No long-term lease and no minimum spend.
         </li>
         <li>
-          <strong>Digital rotation.</strong>
+          Digital rotation.
           Each board runs a loop of short spots (typically about 7.5&ndash;10 seconds). Your ad shares the
           loop with other advertisers instead of owning the face full-time.
         </li>
         <li>
-          <strong>Availability can change.</strong>
+          Availability can change.
           Counts above are a snapshot, not a hold. You&rsquo;ll see what&rsquo;s open when you build a campaign.
         </li>
       </ul>
@@ -2951,11 +3050,16 @@
       <div class="market-context-main">
         <p class="market-context-name">Houston</p>
         <p class="market-context-stats">
-          <strong>183</strong> boards across
-          <strong>31</strong> cities
-          · <strong>2.1M</strong> daily impressions
+          183 boards across
+          31 cities
+          · 2.1M daily impressions
         </p>
-        <p class="market-note">Blip’s largest Texas market, spanning Houston and surrounding communities.</p>
+        
+        <div class="copy-pair" data-copy-slot="market_card_note__618">
+          <p class="market-note copy-fallback">Blip’s largest Texas market, spanning Houston and surrounding communities.</p>
+          <p class="market-note copy-ai" data-copy-ai="market_card_note__618"></p>
+        </div>
+        
         <p class="market-map-action">
           <a class="market-map-link" href="/geopages-preview/billboard-locations/texas/#markets">Compare all Texas media markets →</a>
         </p>
@@ -2998,258 +3102,211 @@
 <section id="plan-campaign" class="section">
   <div class="wrap">
     <h2>Plan your Houston billboard campaign</h2>
-    <p class="section-lede">
-      When to run, who you&rsquo;ll reach, and which categories are already advertising
-      
-      across Houston and nearby cities
-      .
-    </p>
+    <p class="section-lede plan-campaign-lede">Traffic peaks around 5pm and runs high from 3pm to 7pm, demand climbs from June through July, and the advertisers already buying here are mostly local.</p>
 
-    <div class="insight-cards">
+    <div class="campaign-insight" data-campaign-insight>
+      <div class="campaign-insight-top">
+        <span class="campaign-insight-badge" data-insight-badge>Timing</span>
+        <div class="campaign-insight-menu">
+          <button class="campaign-insight-trigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="campaign-insight-options">
+            <span data-insight-label>Time of day</span>
+            <svg viewBox="0 0 10 5" fill="none" aria-hidden="true"><path d="M1 1l4 3 4-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="campaign-insight-options" id="campaign-insight-options" role="listbox" aria-label="Campaign insight view" hidden>
+            <button type="button" role="option" aria-selected="true" data-insight-option="timing">Time of day<span aria-hidden="true">✓</span></button>
+            <button type="button" role="option" aria-selected="false" data-insight-option="seasonality">Time of year<span aria-hidden="true">✓</span></button>
+            <button type="button" role="option" aria-selected="false" data-insight-option="audience">Who sees it<span aria-hidden="true">✓</span></button>
+            <button type="button" role="option" aria-selected="false" data-insight-option="advertisers">Who advertises<span aria-hidden="true">✓</span></button>
+          </div>
+        </div>
+      </div>
       
-      <details class="insight-card" id="timing">
-        <summary class="insight-card-summary">
-          <span class="insight-card-label">Timing</span>
-          <p class="insight-card-fact"><span class="insight-key">5pm</span> is the peak hour</p>
-          <p class="insight-card-blurb">Peak visibility runs 3pm–7pm.</p>
-          <div class="insight-spark" aria-hidden="true">
+      <section class="campaign-insight-panel" data-insight-panel="timing">
+        <p class="campaign-insight-headline"><span class="insight-key">5pm</span> is the peak hour</p>
+        <p class="campaign-insight-subhead">Peak visibility runs 3pm–7pm.</p>
+        <p class="campaign-chart-label">Traffic by hour</p>
+        <div class="hour-chart-wrap campaign-hour-chart-wrap">
+          <div class="hour-chart hour-chart-desktop campaign-hour-chart" role="img" aria-label="Relative traffic and buyer cost per 1,000 views by hour on Houston roadside billboards">
             
-            <span class="insight-spark-bar" style="height: 4%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 4%;" title="12am: traffic index 3 (100 = busiest hour); ~$8 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x">12am</span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 4%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 4%;" title="1am: traffic index 1 (100 = busiest hour); ~$11 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 4%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 4%;" title="2am: traffic index 1 (100 = busiest hour); ~$13 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 4%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 4%;" title="3am: traffic index 2 (100 = busiest hour); ~$10 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 5%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 5%;" title="4am: traffic index 5 (100 = busiest hour); ~$6 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 17%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 17%;" title="5am: traffic index 17 (100 = busiest hour); ~$4 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 30%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 30%;" title="6am: traffic index 30 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x">6am</span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 55%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 55%;" title="7am: traffic index 55 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 42%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 42%;" title="8am: traffic index 42 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 29%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 29%;" title="9am: traffic index 29 (100 = busiest hour); ~$4 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 41%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 41%;" title="10am: traffic index 41 (100 = busiest hour); ~$4 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 47%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 47%;" title="11am: traffic index 47 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 55%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 55%;" title="12pm: traffic index 55 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x">12pm</span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 52%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 52%;" title="1pm: traffic index 52 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 58%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 58%;" title="2pm: traffic index 58 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 74%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 74%;" title="3pm: traffic index 74 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 95%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 95%;" title="4pm: traffic index 95 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 100%;"></span>
+            <div class="hour-col hour-col-peak">
+              <div class="hour-bar" style="height: 100%;" title="5pm: traffic index 100 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 66%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 66%;" title="6pm: traffic index 66 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x">6pm</span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 57%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 57%;" title="7pm: traffic index 57 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 32%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 32%;" title="8pm: traffic index 32 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 21%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 21%;" title="9pm: traffic index 21 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 12%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 12%;" title="10pm: traffic index 12 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
-            <span class="insight-spark-bar" style="height: 7%;"></span>
+            <div class="hour-col">
+              <div class="hour-bar" style="height: 7%;" title="11pm: traffic index 7 (100 = busiest hour); ~$4 per 1,000 views (buyer-scoped)"></div>
+              <span class="hour-x"></span>
+            </div>
             
           </div>
-          <span class="insight-card-toggle"><span class="insight-chev" aria-hidden="true">›</span> View hourly patterns</span>
-        </summary>
+          
+          <svg class="hour-cpm-svg hour-cpm-svg-desktop" viewBox="0 0 240 100" preserveAspectRatio="none" aria-hidden="true">
+            <polyline class="hour-cpm-line" points="5.0,46.5 15.0,25.4 25.0,8.0 35.0,28.2 45.0,58.1 55.0,71.8 65.0,75.7 75.0,76.9 85.0,76.2 95.0,74.7 105.0,74.8 115.0,75.5 125.0,75.9 135.0,75.6 145.0,76.6 155.0,77.6 165.0,78.1 175.0,78.7 185.0,78.3 195.0,78.8 205.0,78.8 215.0,78.3 225.0,77.4 235.0,71.2"></polyline>
+          </svg>
+          
+        </div>
+        <div class="hour-chart hour-chart-mobile campaign-hour-chart" role="img" aria-label="Relative traffic by 3-hour window on Houston roadside billboards">
+          
+          <div class="hour-col">
+            <div class="hour-bar" style="height: 4%;" title="12–3am: traffic index 2 (100 = busiest hour); ~$10 per 1,000 views (buyer-scoped)"></div>
+            <span class="hour-x">12–3am</span>
+          </div>
+          
+          <div class="hour-col">
+            <div class="hour-bar" style="height: 8%;" title="3–6am: traffic index 8 (100 = busiest hour); ~$7 per 1,000 views (buyer-scoped)"></div>
+            <span class="hour-x">3–6am</span>
+          </div>
+          
+          <div class="hour-col">
+            <div class="hour-bar" style="height: 42%;" title="6–9am: traffic index 42 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+            <span class="hour-x">6–9am</span>
+          </div>
+          
+          <div class="hour-col">
+            <div class="hour-bar" style="height: 39%;" title="9am–12pm: traffic index 39 (100 = busiest hour); ~$4 per 1,000 views (buyer-scoped)"></div>
+            <span class="hour-x">9am–12pm</span>
+          </div>
+          
+          <div class="hour-col">
+            <div class="hour-bar" style="height: 55%;" title="12–3pm: traffic index 55 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+            <span class="hour-x">12–3pm</span>
+          </div>
+          
+          <div class="hour-col">
+            <div class="hour-bar" style="height: 90%;" title="3–6pm: traffic index 90 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+            <span class="hour-x">3–6pm</span>
+          </div>
+          
+          <div class="hour-col">
+            <div class="hour-bar" style="height: 52%;" title="6–9pm: traffic index 52 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+            <span class="hour-x">6–9pm</span>
+          </div>
+          
+          <div class="hour-col">
+            <div class="hour-bar" style="height: 13%;" title="9pm–12am: traffic index 13 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
+            <span class="hour-x">9pm–12am</span>
+          </div>
+          
+        </div>
         <div class="insight-card-body">
-          <p class="module-lede">
+          <div class="copy-pair" data-copy-slot="timing_note">
+          <p class="module-lede copy-fallback">
             Reach and cost both change by the hour
             across Houston and nearby cities.
-            Bars show relative traffic on roadside boards; the line is cost per 1,000 views
-            (about $3&ndash;$13 across the day)
-            &mdash; lower means cheaper reach.
+            Pill bars show relative traffic on roadside boards; the navy line is buyer cost per 1,000 views.
           </p>
-          <div class="hour-chart-wrap">
-            <div class="hour-chart hour-chart-desktop" role="img" aria-label="Relative traffic (bars) and buyer cost per 1,000 views (line) by hour on Houston-area roadside billboards">
-              
-              <div class="hour-col">
-                <div class="hour-bar" style="height: 4%;" title="12am: traffic index 3 (100 = busiest hour); ~$8 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x">12am</span>
-              </div>
-              
-              <div class="hour-col">
-                <div class="hour-bar" style="height: 4%;" title="1am: traffic index 1 (100 = busiest hour); ~$11 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col">
-                <div class="hour-bar" style="height: 4%;" title="2am: traffic index 1 (100 = busiest hour); ~$13 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col">
-                <div class="hour-bar" style="height: 4%;" title="3am: traffic index 2 (100 = busiest hour); ~$10 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col">
-                <div class="hour-bar" style="height: 5%;" title="4am: traffic index 5 (100 = busiest hour); ~$6 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col">
-                <div class="hour-bar" style="height: 17%;" title="5am: traffic index 17 (100 = busiest hour); ~$4 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col hour-col-best">
-                <div class="hour-bar" style="height: 30%;" title="6am: traffic index 30 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x">6am</span>
-              </div>
-              
-              <div class="hour-col hour-col-best">
-                <div class="hour-bar" style="height: 55%;" title="7am: traffic index 55 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col hour-col-best">
-                <div class="hour-bar" style="height: 42%;" title="8am: traffic index 42 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col hour-col-best">
-                <div class="hour-bar" style="height: 29%;" title="9am: traffic index 29 (100 = busiest hour); ~$4 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col hour-col-best">
-                <div class="hour-bar" style="height: 41%;" title="10am: traffic index 41 (100 = busiest hour); ~$4 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col hour-col-best">
-                <div class="hour-bar" style="height: 47%;" title="11am: traffic index 47 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col hour-col-best">
-                <div class="hour-bar" style="height: 55%;" title="12pm: traffic index 55 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x">12pm</span>
-              </div>
-              
-              <div class="hour-col hour-col-best">
-                <div class="hour-bar" style="height: 52%;" title="1pm: traffic index 52 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col hour-col-best">
-                <div class="hour-bar" style="height: 58%;" title="2pm: traffic index 58 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col hour-col-best">
-                <div class="hour-bar" style="height: 74%;" title="3pm: traffic index 74 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col hour-col-best">
-                <div class="hour-bar" style="height: 95%;" title="4pm: traffic index 95 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col hour-col-best">
-                <div class="hour-bar" style="height: 100%;" title="5pm: traffic index 100 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col hour-col-best">
-                <div class="hour-bar" style="height: 66%;" title="6pm: traffic index 66 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x">6pm</span>
-              </div>
-              
-              <div class="hour-col hour-col-best">
-                <div class="hour-bar" style="height: 57%;" title="7pm: traffic index 57 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col hour-col-best">
-                <div class="hour-bar" style="height: 32%;" title="8pm: traffic index 32 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col hour-col-best">
-                <div class="hour-bar" style="height: 21%;" title="9pm: traffic index 21 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col hour-col-best">
-                <div class="hour-bar" style="height: 12%;" title="10pm: traffic index 12 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-              <div class="hour-col">
-                <div class="hour-bar" style="height: 7%;" title="11pm: traffic index 7 (100 = busiest hour); ~$4 per 1,000 views (buyer-scoped)"></div>
-                <span class="hour-x"></span>
-              </div>
-              
-            </div>
-            
-            <svg class="hour-cpm-svg hour-cpm-svg-desktop" viewBox="0 0 240 100" preserveAspectRatio="none" aria-hidden="true">
-              <polyline class="hour-cpm-line" points="5.0,46.5 15.0,25.4 25.0,8.0 35.0,28.2 45.0,58.1 55.0,71.8 65.0,75.7 75.0,76.9 85.0,76.2 95.0,74.7 105.0,74.8 115.0,75.5 125.0,75.9 135.0,75.6 145.0,76.6 155.0,77.6 165.0,78.1 175.0,78.7 185.0,78.3 195.0,78.8 205.0,78.8 215.0,78.3 225.0,77.4 235.0,71.2"></polyline>
-            </svg>
-            
+          <div class="copy-ai" data-copy-ai="timing_note"></div>
           </div>
-          <div class="hour-chart hour-chart-mobile" role="img" aria-label="Relative traffic by 3-hour window on Houston-area roadside billboards">
-            
-            <div class="hour-col">
-              <div class="hour-bar" style="height: 4%;" title="12–3am: traffic index 2 (100 = busiest hour); ~$10 per 1,000 views (buyer-scoped)"></div>
-              <span class="hour-x">12–3am</span>
-            </div>
-            
-            <div class="hour-col">
-              <div class="hour-bar" style="height: 8%;" title="3–6am: traffic index 8 (100 = busiest hour); ~$7 per 1,000 views (buyer-scoped)"></div>
-              <span class="hour-x">3–6am</span>
-            </div>
-            
-            <div class="hour-col">
-              <div class="hour-bar" style="height: 42%;" title="6–9am: traffic index 42 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-              <span class="hour-x">6–9am</span>
-            </div>
-            
-            <div class="hour-col">
-              <div class="hour-bar" style="height: 39%;" title="9am–12pm: traffic index 39 (100 = busiest hour); ~$4 per 1,000 views (buyer-scoped)"></div>
-              <span class="hour-x">9am–12pm</span>
-            </div>
-            
-            <div class="hour-col">
-              <div class="hour-bar" style="height: 55%;" title="12–3pm: traffic index 55 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-              <span class="hour-x">12–3pm</span>
-            </div>
-            
-            <div class="hour-col">
-              <div class="hour-bar" style="height: 90%;" title="3–6pm: traffic index 90 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-              <span class="hour-x">3–6pm</span>
-            </div>
-            
-            <div class="hour-col">
-              <div class="hour-bar" style="height: 52%;" title="6–9pm: traffic index 52 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-              <span class="hour-x">6–9pm</span>
-            </div>
-            
-            <div class="hour-col">
-              <div class="hour-bar" style="height: 13%;" title="9pm–12am: traffic index 13 (100 = busiest hour); ~$3 per 1,000 views (buyer-scoped)"></div>
-              <span class="hour-x">9pm–12am</span>
-            </div>
-            
-          </div>
-          <ul class="hour-legend" aria-hidden="true">
-            <li><span class="hour-legend-bar"></span> Traffic (busiest hour = 100)</li>
-            <li><span class="hour-legend-line"></span> Cost per 1,000 views</li>
-          </ul>
           <div class="insight-callouts">
             <div class="insight-callout">
               <p class="insight-num">3pm–7pm</p>
@@ -3269,126 +3326,87 @@
           <p class="efficiency-note">Overnight blips can cost less per play but more per 1,000 views when fewer drivers pass the board.</p>
           <p class="body-copy">With Blip you schedule by hour and day &mdash; run only the windows that fit your goal.</p>
         </div>
-      </details>
+      </section>
       
 
       
-      <details class="insight-card" id="seasonality">
-        <summary class="insight-card-summary">
-          <span class="insight-card-label">Seasonality</span>
-          <p class="insight-card-fact"><span class="insight-key">June–July</span> is busiest</p>
-          <p class="insight-card-blurb">Quietest in October; ~103% above the trough.</p>
-          <div class="insight-spark insight-spark-season" aria-hidden="true">
-            
-            <span class="insight-spark-bar is-quiet" style="height: 51%;"></span>
-            
-            <span class="insight-spark-bar is-quiet" style="height: 53%;"></span>
-            
-            <span class="insight-spark-bar" style="height: 65%;"></span>
-            
-            <span class="insight-spark-bar" style="height: 72%;"></span>
-            
-            <span class="insight-spark-bar" style="height: 79%;"></span>
-            
-            <span class="insight-spark-bar is-peak" style="height: 96%;"></span>
-            
-            <span class="insight-spark-bar is-peak" style="height: 100%;"></span>
-            
-            <span class="insight-spark-bar" style="height: 83%;"></span>
-            
-            <span class="insight-spark-bar" style="height: 57%;"></span>
-            
-            <span class="insight-spark-bar is-quiet" style="height: 49%;"></span>
-            
-            <span class="insight-spark-bar" style="height: 77%;"></span>
-            
-            <span class="insight-spark-bar is-peak" style="height: 99%;"></span>
-            
+      <section class="campaign-insight-panel" data-insight-panel="seasonality" hidden>
+        <p class="campaign-insight-headline"><span class="insight-key">June–July</span> is busiest</p>
+        <p class="campaign-insight-subhead">Quietest in October; ~103% above the trough.</p>
+        <p class="campaign-chart-label">Demand by month</p>
+        <div class="season-chart campaign-season-chart" role="img" aria-label="Relative advertiser demand by month on Houston-area billboards">
+          
+          <div class="season-col">
+            <div class="season-bar" style="height: 51%;" title="January: 0.69× average"></div>
+            <span class="season-x">J</span>
           </div>
-          <span class="insight-card-toggle"><span class="insight-chev" aria-hidden="true">›</span> View monthly patterns</span>
-        </summary>
+          
+          <div class="season-col">
+            <div class="season-bar" style="height: 53%;" title="February: 0.72× average"></div>
+            <span class="season-x">F</span>
+          </div>
+          
+          <div class="season-col">
+            <div class="season-bar" style="height: 65%;" title="March: 0.88× average"></div>
+            <span class="season-x">M</span>
+          </div>
+          
+          <div class="season-col">
+            <div class="season-bar" style="height: 72%;" title="April: 0.98× average"></div>
+            <span class="season-x">A</span>
+          </div>
+          
+          <div class="season-col">
+            <div class="season-bar" style="height: 79%;" title="May: 1.07× average"></div>
+            <span class="season-x">M</span>
+          </div>
+          
+          <div class="season-col season-col-peak">
+            <div class="season-bar" style="height: 96%;" title="June: 1.3× average"></div>
+            <span class="season-x">J</span>
+          </div>
+          
+          <div class="season-col season-col-peak">
+            <div class="season-bar" style="height: 100%;" title="July: 1.36× average"></div>
+            <span class="season-x">J</span>
+          </div>
+          
+          <div class="season-col">
+            <div class="season-bar" style="height: 83%;" title="August: 1.13× average"></div>
+            <span class="season-x">A</span>
+          </div>
+          
+          <div class="season-col">
+            <div class="season-bar" style="height: 57%;" title="September: 0.78× average"></div>
+            <span class="season-x">S</span>
+          </div>
+          
+          <div class="season-col">
+            <div class="season-bar" style="height: 49%;" title="October: 0.67× average"></div>
+            <span class="season-x">O</span>
+          </div>
+          
+          <div class="season-col">
+            <div class="season-bar" style="height: 77%;" title="November: 1.05× average"></div>
+            <span class="season-x">N</span>
+          </div>
+          
+          <div class="season-col season-col-peak">
+            <div class="season-bar" style="height: 99%;" title="December: 1.35× average"></div>
+            <span class="season-x">D</span>
+          </div>
+          
+        </div>
         <div class="insight-card-body">
-          <p class="module-lede">
+          <div class="copy-pair" data-copy-slot="seasonality_note">
+          <p class="module-lede copy-fallback">
             Advertiser demand
             across Houston and nearby cities
             rises and falls through the year. Relative to an average month
             (=&nbsp;1.0), it&rsquo;s quietest in October and strongest
             June–July &mdash; about 103% above the quietest month.
           </p>
-          <div class="season-chart" role="img" aria-label="Relative advertiser demand by month on Houston-area billboards">
-            
-            <div class="season-col">
-              <span class="season-idx">0.69</span>
-              <div class="season-bar season-quiet" style="height: 51%;" title="January: 0.69× average"></div>
-              <span class="season-x">Jan</span>
-            </div>
-            
-            <div class="season-col">
-              <span class="season-idx">0.72</span>
-              <div class="season-bar season-quiet" style="height: 53%;" title="February: 0.72× average"></div>
-              <span class="season-x">Feb</span>
-            </div>
-            
-            <div class="season-col">
-              <span class="season-idx">0.88</span>
-              <div class="season-bar" style="height: 65%;" title="March: 0.88× average"></div>
-              <span class="season-x">Mar</span>
-            </div>
-            
-            <div class="season-col">
-              <span class="season-idx">0.98</span>
-              <div class="season-bar" style="height: 72%;" title="April: 0.98× average"></div>
-              <span class="season-x">Apr</span>
-            </div>
-            
-            <div class="season-col">
-              <span class="season-idx">1.07</span>
-              <div class="season-bar" style="height: 79%;" title="May: 1.07× average"></div>
-              <span class="season-x">May</span>
-            </div>
-            
-            <div class="season-col">
-              <span class="season-idx">1.30</span>
-              <div class="season-bar season-peak" style="height: 96%;" title="June: 1.3× average"></div>
-              <span class="season-x">Jun</span>
-            </div>
-            
-            <div class="season-col">
-              <span class="season-idx">1.36</span>
-              <div class="season-bar season-peak" style="height: 100%;" title="July: 1.36× average"></div>
-              <span class="season-x">Jul</span>
-            </div>
-            
-            <div class="season-col">
-              <span class="season-idx">1.13</span>
-              <div class="season-bar" style="height: 83%;" title="August: 1.13× average"></div>
-              <span class="season-x">Aug</span>
-            </div>
-            
-            <div class="season-col">
-              <span class="season-idx">0.78</span>
-              <div class="season-bar" style="height: 57%;" title="September: 0.78× average"></div>
-              <span class="season-x">Sep</span>
-            </div>
-            
-            <div class="season-col">
-              <span class="season-idx">0.67</span>
-              <div class="season-bar season-quiet" style="height: 49%;" title="October: 0.67× average"></div>
-              <span class="season-x">Oct</span>
-            </div>
-            
-            <div class="season-col">
-              <span class="season-idx">1.05</span>
-              <div class="season-bar" style="height: 77%;" title="November: 1.05× average"></div>
-              <span class="season-x">Nov</span>
-            </div>
-            
-            <div class="season-col">
-              <span class="season-idx">1.35</span>
-              <div class="season-bar season-peak" style="height: 99%;" title="December: 1.35× average"></div>
-              <span class="season-x">Dec</span>
-            </div>
-            
+          <div class="copy-ai" data-copy-ai="seasonality_note"></div>
           </div>
           <div class="insight-callouts">
             <div class="insight-callout">
@@ -3402,201 +3420,206 @@
           </div>
           <p class="body-copy">Hour-of-day still matters more for day-to-day buying. Seasonality is the backdrop.</p>
         </div>
-      </details>
+      </section>
       
 
       
-      <details class="insight-card" id="audience">
-        <summary class="insight-card-summary">
-          <span class="insight-card-label">Audience</span>
-          <p class="insight-card-fact"><span class="insight-key">51.4% female / 48.6% male</span></p>
-          <p class="insight-card-blurb">Adult 18+ impressions from recent Blip campaigns
-            across Houston and nearby cities.</p>
-          <div class="insight-mini-gender" role="presentation" aria-hidden="true">
-            <span class="insight-mini-f" style="width: 51.4%;"></span>
-            <span class="insight-mini-m" style="width: 48.6%;"></span>
+      <section class="campaign-insight-panel" data-insight-panel="audience" hidden>
+        <p class="campaign-insight-headline"><span class="insight-key">51.4% female / 48.6% male</span> of adult impressions</p>
+        <p class="campaign-insight-subhead">Adults 18+ reached by recent Blip campaigns across Houston and nearby cities.</p>
+        <p class="campaign-chart-label">Age</p>
+        <div class="age-chart campaign-age-chart" role="img" aria-label="Age distribution of adult impressions from recent Blip campaigns across Houston and nearby cities">
+          
+          <div class="age-col">
+            <div class="age-bar" style="height: 32%;" title="18-24: 10.7%"></div>
+            <span class="age-x">18-24</span>
           </div>
-          <span class="insight-card-toggle"><span class="insight-chev" aria-hidden="true">›</span> View audience breakdown</span>
-        </summary>
+          
+          <div class="age-col">
+            <div class="age-bar" style="height: 55%;" title="25-34: 18.3%"></div>
+            <span class="age-x">25-34</span>
+          </div>
+          
+          <div class="age-col">
+            <div class="age-bar" style="height: 61%;" title="35-44: 20.0%"></div>
+            <span class="age-x">35-44</span>
+          </div>
+          
+          <div class="age-col">
+            <div class="age-bar" style="height: 55%;" title="45-54: 18.1%"></div>
+            <span class="age-x">45-54</span>
+          </div>
+          
+          <div class="age-col age-col-peak">
+            <div class="age-bar" style="height: 100%;" title="55+: 33.0%"></div>
+            <span class="age-x">55+</span>
+          </div>
+          
+        </div>
         <div class="insight-card-body">
-          <p class="module-lede">
+          <div class="copy-pair" data-copy-slot="audience_note">
+          <p class="module-lede copy-fallback">
             Here&rsquo;s the age and gender mix from recent Blip campaigns
             across Houston and nearby cities.
           </p>
-          <div class="audience-grid">
-            <div class="audience-block">
-              <h4>Gender</h4>
-              <div class="gender-bar" role="img" aria-label="51.4% female, 48.6% male">
-                <div class="gender-f" style="width: 51.4%;"><span>51.4% female</span></div>
-                <div class="gender-m" style="width: 48.6%;"><span>48.6% male</span></div>
-              </div>
-            </div>
-            <div class="audience-block">
-              <h4>Age (18+ impressions)</h4>
-              <div class="age-bars">
-                
-                <div class="age-row">
-                  <span class="age-label">18-24</span>
-                  <div class="age-track"><div class="age-fill" style="width: 32%;"></div></div>
-                  <span class="age-pct">10.7%</span>
-                </div>
-                
-                <div class="age-row">
-                  <span class="age-label">25-34</span>
-                  <div class="age-track"><div class="age-fill" style="width: 55%;"></div></div>
-                  <span class="age-pct">18.3%</span>
-                </div>
-                
-                <div class="age-row">
-                  <span class="age-label">35-44</span>
-                  <div class="age-track"><div class="age-fill" style="width: 61%;"></div></div>
-                  <span class="age-pct">20.0%</span>
-                </div>
-                
-                <div class="age-row">
-                  <span class="age-label">45-54</span>
-                  <div class="age-track"><div class="age-fill" style="width: 55%;"></div></div>
-                  <span class="age-pct">18.1%</span>
-                </div>
-                
-                <div class="age-row">
-                  <span class="age-label">55+</span>
-                  <div class="age-track"><div class="age-fill" style="width: 100%;"></div></div>
-                  <span class="age-pct">33.0%</span>
-                </div>
-                
-              </div>
-            </div>
+          <div class="copy-ai" data-copy-ai="audience_note"></div>
           </div>
         </div>
-      </details>
+      </section>
       
 
       
-      <details class="insight-card" id="advertisers">
-        <summary class="insight-card-summary">
-          <span class="insight-card-label">Advertisers</span>
-          <p class="insight-card-fact"><span class="insight-key">Entertainment &amp; events</span> leads spend</p>
-          <p class="insight-card-blurb">Share of recent Blip campaign spend
-            across Houston and nearby cities
-            (last 12 months).</p>
-          <div class="insight-mini-cats" aria-hidden="true">
-            
-            <span class="insight-mini-cat">Entertainment &amp; events</span>
-            
-            <span class="insight-mini-cat">Home &amp; local services</span>
-            
-            <span class="insight-mini-cat">Real estate</span>
-            
-            <span class="insight-mini-cat">Telecom &amp; utilities</span>
-            
+      <section class="campaign-insight-panel" data-insight-panel="advertisers" hidden>
+        <p class="campaign-insight-headline"><span class="insight-key">73</span> advertisers ran campaigns across Houston and nearby cities</p>
+        <p class="campaign-insight-subhead">In the last 12 months &mdash; mostly local businesses.</p>
+        <p class="campaign-chart-label">Share of spend</p>
+        <div class="industry-bars campaign-industry-bars" role="img" aria-label="Advertiser category mix by share of spend across Houston and nearby cities">
+          
+          <div class="industry-row">
+            <div class="industry-row-body">
+              <div class="industry-row-head">
+                <span class="industry-label">Entertainment &amp; events</span>
+                <span class="industry-pct">22.1%</span>
+              </div>
+              <p class="industry-desc">Concerts, festivals, venues, theatres</p>
+              <div class="industry-track">
+                <div class="industry-fill" style="width: 100%; background-color: #ff0c68;"></div>
+              </div>
+            </div>
           </div>
-          <span class="insight-card-toggle"><span class="insight-chev" aria-hidden="true">›</span> View industry mix</span>
-        </summary>
+          
+          <div class="industry-row">
+            <div class="industry-row-body">
+              <div class="industry-row-head">
+                <span class="industry-label">Home &amp; local services</span>
+                <span class="industry-pct">21.1%</span>
+              </div>
+              <p class="industry-desc">Plumbers, HVAC, roofing, landscaping</p>
+              <div class="industry-track">
+                <div class="industry-fill" style="width: 95%; background-color: #ff2477;"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="industry-row">
+            <div class="industry-row-body">
+              <div class="industry-row-head">
+                <span class="industry-label">Real estate</span>
+                <span class="industry-pct">13.6%</span>
+              </div>
+              <p class="industry-desc">Developers, brokerages, property managers</p>
+              <div class="industry-track">
+                <div class="industry-fill" style="width: 62%; background-color: #ff3d87;"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="industry-row">
+            <div class="industry-row-body">
+              <div class="industry-row-head">
+                <span class="industry-label">Telecom &amp; utilities</span>
+                <span class="industry-pct">13.6%</span>
+              </div>
+              <p class="industry-desc">Internet and mobile providers, energy</p>
+              <div class="industry-track">
+                <div class="industry-fill" style="width: 62%; background-color: #ff5596;"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="industry-row">
+            <div class="industry-row-body">
+              <div class="industry-row-head">
+                <span class="industry-label">Professional services</span>
+                <span class="industry-pct">11.3%</span>
+              </div>
+              <p class="industry-desc">Law firms, accountants, insurance, real estate</p>
+              <div class="industry-track">
+                <div class="industry-fill" style="width: 51%; background-color: #ff6ea5;"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="industry-row">
+            <div class="industry-row-body">
+              <div class="industry-row-head">
+                <span class="industry-label">Retail &amp; e-commerce</span>
+                <span class="industry-pct">9.4%</span>
+              </div>
+              <p class="industry-desc">Shops, boutiques, home goods, online sellers</p>
+              <div class="industry-track">
+                <div class="industry-fill" style="width: 43%; background-color: #ff86b5;"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="industry-row">
+            <div class="industry-row-body">
+              <div class="industry-row-head">
+                <span class="industry-label">Media &amp; publishing</span>
+                <span class="industry-pct">2.2%</span>
+              </div>
+              <p class="industry-desc">Publishers, broadcasters, local media</p>
+              <div class="industry-track">
+                <div class="industry-fill" style="width: 10%; background-color: #ff9fc4;"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="industry-row">
+            <div class="industry-row-body">
+              <div class="industry-row-head">
+                <span class="industry-label">Automotive</span>
+                <span class="industry-pct">2.2%</span>
+              </div>
+              <p class="industry-desc">Dealerships, repair shops, tyre and body</p>
+              <div class="industry-track">
+                <div class="industry-fill" style="width: 10%; background-color: #ffb7d3;"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="industry-row">
+            <div class="industry-row-body">
+              <div class="industry-row-head">
+                <span class="industry-label">Manufacturing &amp; industrial</span>
+                <span class="industry-pct">2.2%</span>
+              </div>
+              <p class="industry-desc">Factories, suppliers, industrial services</p>
+              <div class="industry-track">
+                <div class="industry-fill" style="width: 10%; background-color: #ffd0e3;"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="industry-row">
+            <div class="industry-row-body">
+              <div class="industry-row-head">
+                <span class="industry-label">Health &amp; wellness</span>
+                <span class="industry-pct">2.2%</span>
+              </div>
+              <p class="industry-desc">Clinics, gyms, wellness brands</p>
+              <div class="industry-track">
+                <div class="industry-fill" style="width: 10%; background-color: #ffe8f2;"></div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
         <div class="insight-card-body">
-          <p class="module-lede">
+          <div class="copy-pair" data-copy-slot="industry_note">
+          <p class="module-lede copy-fallback">
             Recent Blip campaigns
             across Houston and nearby cities
             skew toward these categories (share of spend, last 12 months).
             Entertainment &amp; events leads at about 22.1%.
           </p>
-          <div class="industry-bars">
-            
-            <div class="industry-row">
-              <span class="industry-label">Entertainment &amp; events</span>
-              <div class="industry-track">
-                <div class="industry-fill" style="width: 100%;"></div>
-              </div>
-              <span class="industry-pct">22.1%</span>
-              
-            </div>
-            
-            <div class="industry-row">
-              <span class="industry-label">Home &amp; local services</span>
-              <div class="industry-track">
-                <div class="industry-fill" style="width: 95%;"></div>
-              </div>
-              <span class="industry-pct">21.1%</span>
-              
-            </div>
-            
-            <div class="industry-row">
-              <span class="industry-label">Real estate</span>
-              <div class="industry-track">
-                <div class="industry-fill" style="width: 62%;"></div>
-              </div>
-              <span class="industry-pct">13.6%</span>
-              
-            </div>
-            
-            <div class="industry-row">
-              <span class="industry-label">Telecom &amp; utilities</span>
-              <div class="industry-track">
-                <div class="industry-fill" style="width: 62%;"></div>
-              </div>
-              <span class="industry-pct">13.6%</span>
-              
-            </div>
-            
-            <div class="industry-row">
-              <span class="industry-label">Professional services</span>
-              <div class="industry-track">
-                <div class="industry-fill" style="width: 51%;"></div>
-              </div>
-              <span class="industry-pct">11.3%</span>
-              
-            </div>
-            
-            <div class="industry-row">
-              <span class="industry-label">Retail &amp; e-commerce</span>
-              <div class="industry-track">
-                <div class="industry-fill" style="width: 43%;"></div>
-              </div>
-              <span class="industry-pct">9.4%</span>
-              
-            </div>
-            
-            <div class="industry-row">
-              <span class="industry-label">Media &amp; publishing</span>
-              <div class="industry-track">
-                <div class="industry-fill" style="width: 10%;"></div>
-              </div>
-              <span class="industry-pct">2.2%</span>
-              
-            </div>
-            
-            <div class="industry-row">
-              <span class="industry-label">Automotive</span>
-              <div class="industry-track">
-                <div class="industry-fill" style="width: 10%;"></div>
-              </div>
-              <span class="industry-pct">2.2%</span>
-              
-            </div>
-            
-            <div class="industry-row">
-              <span class="industry-label">Manufacturing &amp; industrial</span>
-              <div class="industry-track">
-                <div class="industry-fill" style="width: 10%;"></div>
-              </div>
-              <span class="industry-pct">2.2%</span>
-              
-            </div>
-            
-            <div class="industry-row">
-              <span class="industry-label">Health &amp; wellness</span>
-              <div class="industry-track">
-                <div class="industry-fill" style="width: 10%;"></div>
-              </div>
-              <span class="industry-pct">2.2%</span>
-              
-            </div>
-            
+          <div class="copy-ai" data-copy-ai="industry_note"></div>
           </div>
           <p class="body-copy">Use the mix as planning context: categories already spending here are active buyers;
             thinner categories may be an opening.</p>
         </div>
-      </details>
+      </section>
       
     </div>
   </div>
@@ -3606,22 +3629,31 @@
 <!-- ============ FAQ ============ -->
 <section id="faqs" class="section">
   <div class="wrap">
-    <h2>Houston billboard advertising FAQs</h2>
+    <h2>Houston Billboard Advertising FAQs</h2>
     <div class="faq-list">
       
       <details class="faq-item" open>
-        <summary><span class="disclosure-chev" aria-hidden="true">›</span>Do I need a contract or minimum spend to advertise in Houston?</summary>
-        <p>No. Blip is self-serve with no minimum spend and no long-term contract. You set a daily budget, then either let Blip Optimized pick signs for that budget or choose your own boards. You can pause or stop your campaign at any time.</p>
+        <summary>
+          <span class="faq-question">Do I need a contract or minimum spend to advertise in Houston?</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer"><p>No. Blip is self-serve with no minimum spend and no long-term contract. You set a daily budget, then either let Blip Optimized pick signs for that budget or choose your own boards. You can pause or stop your campaign at any time.</p></div>
       </details>
       
       <details class="faq-item" >
-        <summary><span class="disclosure-chev" aria-hidden="true">›</span>Can I pick exactly which Houston boards my ad runs on?</summary>
-        <p>Yes — choose I’ll Choose My Own Signs when you set up, and pick specific boards from the Houston map and board list on this page (street address, size, and estimated daily impressions among adults 18 and over, adjusted for share of voice). Or use Blip Optimized and we’ll select strong signs in your target area for your budget.</p>
+        <summary>
+          <span class="faq-question">Can I pick exactly which Houston boards my ad runs on?</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer"><p>Yes — choose I’ll Choose My Own Signs when you set up, and pick specific boards from the Houston map and board list on this page (street address, size, and estimated daily impressions among adults 18 and over, adjusted for share of voice). Or use Blip Optimized and we’ll select strong signs in your target area for your budget.</p></div>
       </details>
       
       <details class="faq-item" >
-        <summary><span class="disclosure-chev" aria-hidden="true">›</span>Why do two billboards on the same road cost different amounts?</summary>
-        <p>Blip charges per play, and every face has its own audience and its own demand. Two boards that look similar can differ by facing, direction of traffic, and advertiser competition. Confirm live play prices when you build a campaign — see the Texas page for statewide measured dispersion examples.</p>
+        <summary>
+          <span class="faq-question">Why do two billboards on the same road cost different amounts?</span>
+          <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer"><p>Blip charges per play, and every face has its own audience and its own demand. Two boards that look similar can differ by facing, direction of traffic, and advertiser competition. Confirm live play prices when you build a campaign — see the Texas page for statewide measured dispersion examples.</p></div>
       </details>
       
     </div>
@@ -3633,21 +3665,93 @@
   </div><!-- /.page-main -->
 </div><!-- /.page-shell -->
 
-<section class="section cta-final">
-  <div class="wrap">
-    <h2>Create your free account today</h2>
-    <p>Set any budget, then use Blip Optimized or choose your own signs in Houston &mdash; launch in minutes. No contracts, no minimums, no sales calls.</p>
-    <a class="btn btn-primary btn-lg" href="https://marketplace.blipbillboards.com/register">Start a self-serve campaign</a>
-    
-    
-  </div>
+<section class="banner-cta-section">
+  
+  
+<aside class="banner-cta" aria-label="Create your free account">
+  <h2 class="banner-cta-headline">Create your free account today</h2>
+  <p class="banner-cta-subtext">Pick Texas boards, set any budget, and launch in minutes. No contracts, no minimums, no sales calls.</p>
+  <a class="banner-cta-btn" href="https://marketplace.blipbillboards.com/register">Start advertising</a>
+</aside>
+  
+  
 </section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <p>© 2026 Blip® — Internal preview rendered 2026-08-06 from live inventory data. Not production. <code>noindex</code>.</p>
+
+<footer class="blip-native-footer blip-v2-footer" data-blip-native-footer>
+  <div class="blip-native-footer__container blip-v2-footer-body">
+    <div class="blip-native-footer__brand blip-v2-footer-brand">
+      <a class="blip-native-footer__logo-link blip-v2-footer-logo" href="https://www.blipbillboards.com/" aria-label="Blip Billboards">
+        <img class="blip-native-footer__logo" src="https://www.blipbillboards.com/wp-content/themes/blip/img/shared/blip-vector-logo.svg" alt="Blip Billboards" width="160" height="76" loading="lazy" decoding="async">
+      </a>
+      <div class="blip-native-footer__brand-social blip-v2-footer-social" aria-label="Social links">
+        <a class="blip-native-footer__social-link blip-v2-social-icon" href="https://www.instagram.com/blipbillboards/" target="_blank" rel="noopener noreferrer" aria-label="Visit Blip on Instagram">
+          <img class="blip-native-footer__social-icon" src="https://www.blipbillboards.com/wp-content/uploads/2023/01/instagram.svg" alt="" width="18" height="18" loading="lazy" decoding="async">
+        </a>
+        <a class="blip-native-footer__social-link blip-v2-social-icon" href="https://www.facebook.com/blipbillboards/" target="_blank" rel="noopener noreferrer" aria-label="Visit Blip on Facebook">
+          <img class="blip-native-footer__social-icon" src="https://www.blipbillboards.com/wp-content/uploads/2023/01/facebook-f.svg" alt="" width="18" height="18" loading="lazy" decoding="async">
+        </a>
+        <a class="blip-native-footer__social-link blip-v2-social-icon" href="https://www.linkedin.com/company/blip-billboards" target="_blank" rel="noopener noreferrer" aria-label="Visit Blip on LinkedIn">
+          <img class="blip-native-footer__social-icon" src="https://www.blipbillboards.com/wp-content/uploads/2023/01/linkedin-in.svg" alt="" width="18" height="18" loading="lazy" decoding="async">
+        </a>
+        <a class="blip-native-footer__social-link blip-v2-social-icon" href="https://x.com/blipbillboards" target="_blank" rel="noopener noreferrer" aria-label="Visit Blip on X">
+          <img class="blip-native-footer__social-icon" src="https://www.blipbillboards.com/wp-content/uploads/2023/01/twitter.svg" alt="" width="18" height="18" loading="lazy" decoding="async">
+        </a>
+      </div>
+    </div>
+
+    <div class="blip-native-footer__layout blip-v2-footer-cols">
+      <nav aria-label="Company footer links" class="blip-native-footer__nav-column blip-v2-footer-col">
+        <h2 class="blip-native-footer__nav-heading blip-v2-footer-col-head">Company</h2>
+        <ul class="blip-v2-footer-col-links">
+          <li class="blip-native-footer__link-item"><a class="blip-v2-footer-link" href="https://www.blipbillboards.com/about/">About</a></li>
+          <li class="blip-native-footer__link-item"><a class="blip-v2-footer-link" href="https://www.linkedin.com/company/blip-billboards/jobs/">Careers</a></li>
+          <li class="blip-native-footer__link-item"><a class="blip-v2-footer-link" href="https://www.blipbillboards.com/privacy-policy/">Privacy Policy</a></li>
+          <li class="blip-native-footer__link-item"><a class="blip-v2-footer-link" href="https://www.blipbillboards.com/terms-and-conditions/">Terms</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Product footer links" class="blip-native-footer__nav-column blip-v2-footer-col">
+        <h2 class="blip-native-footer__nav-heading blip-v2-footer-col-head">Product</h2>
+        <ul class="blip-v2-footer-col-links">
+          <li class="blip-native-footer__link-item"><a class="blip-v2-footer-link" href="https://www.blipbillboards.com/pricing/">Pricing</a></li>
+          <li class="blip-native-footer__link-item"><a class="blip-v2-footer-link" href="https://www.blipbillboards.com/billboard-locations/">Locations</a></li>
+          <li class="blip-native-footer__link-item"><a class="blip-v2-footer-link" href="https://marketplace.blipbillboards.com/register">Create Account</a></li>
+          <li class="blip-native-footer__link-item"><a class="blip-v2-footer-link" href="https://www.blipbillboards.com/billboard-design-service/">Billboard Design Services</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Partners footer links" class="blip-native-footer__nav-column blip-v2-footer-col">
+        <h2 class="blip-native-footer__nav-heading blip-v2-footer-col-head">Partners</h2>
+        <ul class="blip-v2-footer-col-links">
+          <li class="blip-native-footer__link-item"><a class="blip-v2-footer-link" href="https://www.blipbillboards.com/for-sign-operators/">For Media Owners</a></li>
+          <li class="blip-native-footer__link-item"><a class="blip-v2-footer-link" href="https://www.blipbillboards.com/blip-gives-back/">For Non-Profits</a></li>
+          <li class="blip-native-footer__link-item"><a class="blip-v2-footer-link" href="https://www.blipbillboards.com/agencies/">For Agencies</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Resources footer links" class="blip-native-footer__nav-column blip-v2-footer-col">
+        <h2 class="blip-native-footer__nav-heading blip-v2-footer-col-head">Resources</h2>
+        <ul class="blip-v2-footer-col-links">
+          <li class="blip-native-footer__link-item"><a class="blip-v2-footer-link" href="https://www.blipbillboards.com/blog/">Blog</a></li>
+          <li class="blip-native-footer__link-item"><a class="blip-v2-footer-link" href="https://www.blipbillboards.com/success-stories/">Success Stories</a></li>
+          <li class="blip-native-footer__link-item"><a class="blip-v2-footer-link" href="https://help.blipbillboards.com/">Help Center</a></li>
+          <li class="blip-native-footer__link-item"><a class="blip-v2-footer-link" href="https://www.blipbillboards.com/billboard-design-guidelines/">Billboard Design Guidelines</a></li>
+          <li class="blip-native-footer__link-item"><a class="blip-v2-footer-link" href="https://www.blipbillboards.com/newsletter/">Subscribe to our Newsletter</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="blip-native-footer__bottom-bar blip-v2-footer-bottom-bar">
+    <div class="blip-v2-footer-bottom-inner">
+      <p class="blip-native-footer__copyright blip-v2-footer-legal">
+        &copy; 2026 Blip&reg; &mdash; Pay Per Flip&reg;, Pay Per Blip&reg;, Blip&reg;, and Blip Billboards&reg; are registered trademarks of ACME Intergalactic Inc.
+      </p>
+      <nav class="blip-native-footer__legal-links blip-v2-footer-legal-links" aria-label="Legal links">
+        <a href="https://www.blipbillboards.com/cookie-policy/">Cookie Policy</a>
+        <a href="https://www.blipbillboards.com/privacy-policy/">Privacy</a>
+        <a href="https://www.blipbillboards.com/terms-and-conditions/">Terms</a>
+      </nav>
+    </div>
   </div>
 </footer>
 
@@ -3739,12 +3843,8 @@
   function refreshMapSites() {
     var map = window.__protoMap;
     var geo = window.__protoGeo;
-    if (!map || !geo || !map.getSource) return;
-    var built = buildSitesFromGeo(geo);
-    var sitesSrc = map.getSource('sites');
-    var heatSrc = map.getSource('signs-heat');
-    if (sitesSrc) sitesSrc.setData(built.sites);
-    if (heatSrc) heatSrc.setData(built.heat);
+    if (!map || !geo) return;
+    addSignMarkers(map, buildSitesFromGeo(geo).sites);
   }
 
   function applyBoardIndexClassFilter() {
@@ -3819,34 +3919,58 @@
     return '<svg xmlns="http://www.w3.org/2000/svg" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '">' +
       '<rect x="1" y="1" width="' + (w - 2) + '" height="' + bubbleH + '" rx="5" fill="#FF0C68" stroke="#fff" stroke-width="2"/>' +
       '<path d="M' + (w / 2 - 5) + ' ' + bubbleH + ' L' + (w / 2) + ' ' + (h - 1) + ' L' + (w / 2 + 5) + ' ' + bubbleH + ' Z" fill="#FF0C68"/>' +
-      '<text x="' + (w / 2) + '" y="19" text-anchor="middle" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="500">' + label + '</text>' +
+      '<text x="' + (w / 2) + '" y="19" text-anchor="middle" fill="#fff" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="500">' + label + '</text>' +
       '</svg>';
   }
 
-  function addStackImages(map, done) {
-    var maxN = 8;
-    var remaining = maxN - 1;
-    for (var n = 2; n <= maxN; n++) {
-      (function (n) {
-        var id = 'blip-stack-' + n;
-        if (map.hasImage(id)) {
-          remaining -= 1;
-          if (remaining <= 0) done();
-          return;
-        }
-        var img = new Image();
-        img.onload = function () {
-          if (!map.hasImage(id)) map.addImage(id, img);
-          remaining -= 1;
-          if (remaining <= 0) done();
-        };
-        img.onerror = function () {
-          remaining -= 1;
-          if (remaining <= 0) done();
-        };
-        img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(stackBubbleSvg(n));
-      })(n);
-    }
+  var PIN_ROADSIDE_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="0 0 30 40">' +
+    '<path d="M15 1C7.3 1 1 7.3 1 15c0 10.5 14 24 14 24s14-13.5 14-24C29 7.3 22.7 1 15 1z" fill="#FF0C68" stroke="#fff" stroke-width="2"/>' +
+    '<rect x="8" y="9" width="14" height="8" rx="1" fill="#fff"/>' +
+    '<path d="M15 17v5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>';
+  var PIN_PLACE_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="0 0 30 40">' +
+    '<path d="M15 1C7.3 1 1 7.3 1 15c0 10.5 14 24 14 24s14-13.5 14-24C29 7.3 22.7 1 15 1z" fill="#C21972" stroke="#fff" stroke-width="2"/>' +
+    '<path d="M9 20V11h12v9" fill="none" stroke="#fff" stroke-width="1.6"/>' +
+    '<path d="M11 20v-4h3v4M16 20v-6h4v6" fill="#fff"/></svg>';
+
+  function clearSignMarkers() {
+    (window.__protoMarkers || []).forEach(function (m) { m.remove(); });
+    window.__protoMarkers = [];
+  }
+
+  function addSignMarkers(map, sites) {
+    clearSignMarkers();
+    var gl = maplibregl;
+    (sites.features || []).forEach(function (f) {
+      if (!f.geometry || !f.geometry.coordinates) return;
+      var props = f.properties || {};
+      var el = document.createElement('button');
+      el.type = 'button';
+      el.className = 'map-sign-pin';
+      if (props.show_stack) {
+        el.className += ' map-sign-pin--stack';
+        var n = Math.min(Number(props.sign_count) || 2, 8);
+        el.innerHTML = stackBubbleSvg(n);
+        el.setAttribute('aria-label', (props.sign_count || n) + ' signs');
+      } else if (props.inventory_class === 'roadside') {
+        el.className += ' map-sign-pin--roadside';
+        el.innerHTML = PIN_ROADSIDE_SVG;
+        el.setAttribute('aria-label', props.name || 'Roadside billboard');
+      } else {
+        el.className += ' map-sign-pin--place';
+        el.innerHTML = PIN_PLACE_SVG;
+        el.setAttribute('aria-label', props.name || 'Place-based screen');
+      }
+      el.addEventListener('click', function (evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+        openSiteFromFeature(f);
+      });
+      var marker = new gl.Marker({ element: el, anchor: 'bottom' })
+        .setLngLat(f.geometry.coordinates)
+        .addTo(map);
+      el.style.zIndex = String(10 + (Number(props.sign_count) || 1));
+      window.__protoMarkers.push(marker);
+    });
   }
 
   function loadMap() {
@@ -3873,7 +3997,22 @@
     var fitBoundsOptions = { padding: 40 };
     var map = new mapboxgl.Map({
       container: 'map',
-      style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+      style: {
+        version: 8,
+        sources: {
+          carto: {
+            type: 'raster',
+            tiles: [
+              'https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
+              'https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
+              'https://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png'
+            ],
+            tileSize: 256,
+            attribution: '\u00a9 CARTO \u00a9 OpenStreetMap'
+          }
+        },
+        layers: [{ id: 'carto', type: 'raster', source: 'carto' }]
+      },
       bounds: initialBounds,
       fitBoundsOptions: fitBoundsOptions,
       cooperativeGestures: true
@@ -3883,78 +4022,17 @@
     map.setMaxBounds([[mb[0] - 4, mb[1] - 4], [mb[2] + 4, mb[3] + 4]]);
     map.addControl(new mapboxgl.NavigationControl());
     map.addControl(createResetViewControl(initialBounds, fitBoundsOptions), 'top-left');
-    map.on('load', function () {
-      var pinRoadside = '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="0 0 30 40">' +
-        '<path d="M15 1C7.3 1 1 7.3 1 15c0 10.5 14 24 14 24s14-13.5 14-24C29 7.3 22.7 1 15 1z" fill="#FF0C68" stroke="#fff" stroke-width="2"/>' +
-        '<rect x="8" y="9" width="14" height="8" rx="1" fill="#fff"/>' +
-        '<path d="M15 17v5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>';
-      var pinPlace = '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="0 0 30 40">' +
-        '<path d="M15 1C7.3 1 1 7.3 1 15c0 10.5 14 24 14 24s14-13.5 14-24C29 7.3 22.7 1 15 1z" fill="#C21972" stroke="#fff" stroke-width="2"/>' +
-        '<path d="M9 20V11h12v9" fill="none" stroke="#fff" stroke-width="1.6"/>' +
-        '<path d="M11 20v-4h3v4M16 20v-6h4v6" fill="#fff"/></svg>';
-      var pinsReady = 0;
-      function onPinsReady() {
-        pinsReady += 1;
-        if (pinsReady < 2) return;
-        addStackImages(map, function () {
-          fetch(shell.dataset.signs).then(function (r) { return r.json(); }).then(function (geo) {
-            window.__protoMap = map;
-            window.__protoGeo = geo;
-            window.__protoOpenDetail = openSiteFromFeature;
-            var built = buildSitesFromGeo(geo);
-            map.addSource('signs-heat', { type: 'geojson', data: built.heat });
-            map.addSource('sites', { type: 'geojson', data: built.sites });
-            map.addLayer({ id: 'sign-heat', type: 'heatmap', source: 'signs-heat',
-              paint: {
-                'heatmap-radius': ['interpolate', ['linear'], ['zoom'], 8, 28, 12, 50],
-                'heatmap-intensity': 0.55,
-                'heatmap-opacity': ['interpolate', ['linear'], ['zoom'], 9, 0.5, 13, 0],
-                'heatmap-color': ['interpolate', ['linear'], ['heatmap-density'],
-                  0, 'rgba(255,12,104,0)', 0.4, 'rgba(255,12,104,0.12)', 1, 'rgba(194,25,114,0.35)']
-              } });
-            map.addLayer({ id: 'sign-pt', type: 'symbol', source: 'sites',
-              filter: ['==', ['get', 'show_stack'], 0],
-              layout: {
-                'icon-image': [
-                  'match', ['get', 'inventory_class'],
-                  'roadside', 'blip-pin-roadside',
-                  'blip-pin-place'
-                ],
-                'icon-size': ['interpolate', ['linear'], ['zoom'], 8, 0.65, 12, 0.95, 15, 1.1],
-                'icon-anchor': 'bottom',
-                'icon-allow-overlap': true
-              } });
-            map.addLayer({ id: 'sign-stack', type: 'symbol', source: 'sites',
-              filter: ['==', ['get', 'show_stack'], 1],
-              layout: {
-                'icon-image': [
-                  'concat', 'blip-stack-',
-                  ['to-string', ['min', ['get', 'sign_count'], 8]]
-                ],
-                'icon-size': ['interpolate', ['linear'], ['zoom'], 8, 0.65, 12, 0.95, 15, 1.1],
-                'icon-anchor': 'bottom',
-                'icon-allow-overlap': true
-              } });
-            function onSiteClick(e) {
-              if (!e.features || !e.features.length) return;
-              openSiteFromFeature(e.features[0]);
-            }
-            map.on('click', 'sign-pt', onSiteClick);
-            map.on('click', 'sign-stack', onSiteClick);
-            ['sign-pt', 'sign-stack'].forEach(function (layerId) {
-              map.on('mouseenter', layerId, function () { map.getCanvas().style.cursor = 'pointer'; });
-              map.on('mouseleave', layerId, function () { map.getCanvas().style.cursor = ''; });
-            });
-          });
-        });
-      }
-      var imgR = new Image(30, 40);
-      var imgP = new Image(30, 40);
-      imgR.onload = function () { map.addImage('blip-pin-roadside', imgR); onPinsReady(); };
-      imgP.onload = function () { map.addImage('blip-pin-place', imgP); onPinsReady(); };
-      imgR.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(pinRoadside);
-      imgP.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(pinPlace);
-    });
+    function addSignLayers() {
+      map.resize();
+      fetch(shell.dataset.signs).then(function (r) { return r.json(); }).then(function (geo) {
+        window.__protoMap = map;
+        window.__protoGeo = geo;
+        window.__protoOpenDetail = openSiteFromFeature;
+        addSignMarkers(map, buildSitesFromGeo(geo).sites);
+      });
+    }
+    if (map.isStyleLoaded()) addSignLayers();
+    else map.once('style.load', addSignLayers);
   }
 
   function closeDetail() {
@@ -3979,7 +4057,11 @@
     if (pr.facing) parts.push(pr.facing);
     if (pr.read) parts.push(pr.read === 'R' ? 'Right' : pr.read === 'L' ? 'Left' : pr.read);
     if (parts.length) return parts.join(' · ');
-    if (pr.id) return String(pr.id).replace(/^TX-/, '');
+    if (pr.id) {
+      var prefix = (shell && shell.dataset.signPrefix) || '';
+      var id = String(pr.id);
+      return prefix && id.indexOf(prefix) === 0 ? id.slice(prefix.length) : id;
+    }
     return 'Sign ' + (index + 1);
   }
 
@@ -4207,6 +4289,155 @@
 
   initInventoryClassFilter();
 
+  function initPopularBoardsDisclosure() {
+    document.querySelectorAll('.popular-boards').forEach(function (grid) {
+      var cards = grid.querySelectorAll('.sign-card');
+      var total = cards.length;
+      if (!total) return;
+      var toggle = grid.nextElementSibling;
+      if (!toggle || !toggle.classList.contains('popular-boards-toggle')) return;
+      var label = toggle.querySelector('.popular-boards-toggle-label');
+      if (!label) return;
+
+      var visibleCount = total;
+
+      function pageSize() {
+        if (window.matchMedia('(min-width: 1200px)').matches) return 3;
+        if (window.matchMedia('(min-width: 600px)').matches) return 2;
+        return 1;
+      }
+
+      function collapseTarget() {
+        return Math.min(pageSize(), total);
+      }
+
+      function applyVisibility() {
+        for (var i = 0; i < cards.length; i++) {
+          cards[i].classList.toggle('is-collapsed-hidden', i >= visibleCount);
+        }
+      }
+
+      function updateToggle() {
+        var initial = collapseTarget();
+        if (total <= initial) {
+          toggle.hidden = true;
+          visibleCount = total;
+          applyVisibility();
+          return;
+        }
+        toggle.hidden = false;
+        if (visibleCount >= total) {
+          label.textContent = 'Show less';
+          toggle.setAttribute('aria-expanded', 'true');
+        } else {
+          var remaining = total - visibleCount;
+          var next = Math.min(pageSize(), remaining);
+          label.textContent = 'Show ' + next + ' more';
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+        applyVisibility();
+      }
+
+      toggle.addEventListener('click', function () {
+        if (visibleCount >= total) {
+          visibleCount = collapseTarget();
+        } else {
+          visibleCount = Math.min(visibleCount + pageSize(), total);
+        }
+        updateToggle();
+      });
+
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+          if (visibleCount >= total) {
+            updateToggle();
+            return;
+          }
+          var target = collapseTarget();
+          if (visibleCount < target) visibleCount = target;
+          updateToggle();
+        }, 150);
+      });
+
+      visibleCount = collapseTarget();
+      updateToggle();
+    });
+  }
+
+  function bootPopularBoardsDisclosure() {
+    initPopularBoardsDisclosure();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootPopularBoardsDisclosure);
+  } else {
+    bootPopularBoardsDisclosure();
+  }
+
+  function initCampaignInsightSwitcher() {
+    document.querySelectorAll('[data-campaign-insight]').forEach(function (root) {
+      var trigger = root.querySelector('.campaign-insight-trigger');
+      var options = root.querySelector('.campaign-insight-options');
+      var label = root.querySelector('[data-insight-label]');
+      var badge = root.querySelector('[data-insight-badge]');
+      var buttons = Array.prototype.slice.call(root.querySelectorAll('[data-insight-option]'));
+      var panels = Array.prototype.slice.call(root.querySelectorAll('[data-insight-panel]'));
+      var metadata = {
+        timing: { badge: 'Timing' },
+        seasonality: { badge: 'Seasonality' },
+        audience: { badge: 'Audience' },
+        advertisers: { badge: 'Advertisers' }
+      };
+      if (!trigger || !options || !buttons.length) return;
+
+      function close() {
+        options.hidden = true;
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+      function select(key, focusTrigger) {
+        var option = buttons.filter(function (button) { return button.getAttribute('data-insight-option') === key; })[0];
+        if (!option) return;
+        buttons.forEach(function (button) {
+          button.setAttribute('aria-selected', button === option ? 'true' : 'false');
+        });
+        panels.forEach(function (panel) {
+          panel.hidden = panel.getAttribute('data-insight-panel') !== key;
+        });
+        label.textContent = option.childNodes[0].textContent.trim();
+        badge.textContent = (metadata[key] || {}).badge || '';
+        close();
+        if (focusTrigger) trigger.focus();
+      }
+      function open() {
+        options.hidden = false;
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+      var initial = buttons.filter(function (button) { return button.getAttribute('aria-selected') === 'true'; })[0] || buttons[0];
+      select(initial.getAttribute('data-insight-option'));
+      trigger.addEventListener('click', function () {
+        if (options.hidden) open(); else close();
+      });
+      buttons.forEach(function (button) {
+        button.addEventListener('click', function () { select(button.getAttribute('data-insight-option'), true); });
+      });
+      root.addEventListener('keydown', function (event) {
+        var index = buttons.indexOf(document.activeElement);
+        if (event.key === 'Escape') { close(); trigger.focus(); return; }
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+          event.preventDefault();
+          if (options.hidden) { open(); buttons[0].focus(); return; }
+          var next = index < 0 ? 0 : (index + (event.key === 'ArrowDown' ? 1 : -1) + buttons.length) % buttons.length;
+          buttons[next].focus();
+        }
+      });
+      document.addEventListener('click', function (event) {
+        if (!root.contains(event.target)) close();
+      });
+    });
+  }
+  initCampaignInsightSwitcher();
+
   (function initTocSpy() {
     var toc = document.getElementById('page-toc');
     if (!toc || !('IntersectionObserver' in window)) return;
@@ -4223,10 +4454,12 @@
     });
     if (!sections.length) return;
     var visible = Object.create(null);
+    var progressEl = toc.querySelector('.page-toc-progress');
     function syncActive() {
       var active = null;
+      var activeIdx = 0;
       for (var i = 0; i < sections.length; i++) {
-        if (visible[sections[i].id]) { active = sections[i].id; break; }
+        if (visible[sections[i].id]) { active = sections[i].id; activeIdx = i + 1; break; }
       }
       links.forEach(function (a) {
         var on = active && a === linkById[active];
@@ -4234,6 +4467,9 @@
         if (on) a.setAttribute('aria-current', 'location');
         else a.removeAttribute('aria-current');
       });
+      if (progressEl) {
+        progressEl.textContent = (activeIdx || 1) + ' / ' + sections.length;
+      }
     }
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
@@ -4243,6 +4479,36 @@
       syncActive();
     }, { rootMargin: '-25% 0px -55% 0px', threshold: [0, 0.1, 0.25] });
     sections.forEach(function (el) { io.observe(el); });
+    syncActive();
+  })();
+
+  (function initCopyModeToggle() {
+    var bar = document.getElementById('copy-mode-toggle');
+    if (!bar) return;
+    var filled = document.querySelectorAll('.copy-ai');
+    var hasAi = false;
+    for (var i = 0; i < filled.length; i++) {
+      if ((filled[i].textContent || '').trim()) { hasAi = true; break; }
+    }
+    if (!hasAi) return;
+    bar.hidden = false;
+    document.documentElement.classList.add('has-ai-copy');
+    function setMode(mode) {
+      document.documentElement.setAttribute('data-copy-mode', mode);
+      bar.querySelectorAll('[data-copy-mode-btn]').forEach(function (btn) {
+        var on = btn.getAttribute('data-copy-mode-btn') === mode;
+        btn.classList.toggle('is-active', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      try { sessionStorage.setItem('geopages-copy-mode', mode); } catch (err) {}
+    }
+    var saved = null;
+    try { saved = sessionStorage.getItem('geopages-copy-mode'); } catch (err) {}
+    setMode(saved === 'fallback' ? 'fallback' : 'ai');
+    bar.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-copy-mode-btn]');
+      if (btn) setMode(btn.getAttribute('data-copy-mode-btn'));
+    });
   })();
 })();
 </script>

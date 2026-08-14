@@ -33,6 +33,7 @@
   --paper: #ffffff;
   --paper-alt: var(--slate);
   --stat-band: color-mix(in srgb, #EFF9F9 50%, transparent); /* Figma Stat Band wash */
+  --stat-band-solid: color-mix(in srgb, #EFF9F9 50%, var(--paper)); /* opaque match for overlay chip */
   --stat-band-border: color-mix(in srgb, var(--blip-teal) 33%, transparent);
   --toc-container-border: color-mix(in srgb, var(--blip-teal) 23%, transparent);
   --stat-cell-border: color-mix(in srgb, var(--navy) 12%, transparent); /* Figma cell divider */
@@ -437,12 +438,10 @@ a.breadcrumb-pill:focus-visible {
 
 /* Stat Band — Figma lock (horizontal hug band below hero; cell type unchanged)
    Layout: fill width, content-hug height, 10px radius, 0 24px pad (L/R only), 14px gap,
-   #EFF9F9 @ 50%, 1px border #2FBEBF @ 33% (all sides). */
-.stat-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 14px;
-  align-items: stretch;
+   #EFF9F9 @ 50%, 1px border #2FBEBF @ 33% (all sides). Scope caption lives on the
+   wrapper so cell nth-child divider math stays on .stat-row. */
+.stat-band {
+  position: relative;
   max-width: var(--page-max);
   margin: 0 auto;
   padding: 0 24px;
@@ -451,10 +450,41 @@ a.breadcrumb-pill:focus-visible {
   background: var(--stat-band);
   border: 1px solid var(--stat-band-border);
 }
+.stat-band-scope {
+  position: absolute;
+  top: 0;
+  left: 24px;
+  z-index: 1;
+  margin: 0;
+  padding: 8px 12px 2px 4px;
+  max-width: calc(100% - 36px);
+  font-family: var(--font-body);
+  font-size: 11.2px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--ink-soft);
+  background: var(--stat-band-solid);
+  pointer-events: none;
+}
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
 .stat {
   display: flex; flex-direction: column; gap: 6px;
   background: transparent; border: 0; border-radius: 0;
-  padding: 26px 12px 26px 4px;
+  padding: 32px 12px 26px 4px;
   min-width: 0;
   box-sizing: border-box;
   border-right: 1px solid var(--stat-cell-border);
@@ -474,9 +504,13 @@ a.breadcrumb-pill:focus-visible {
   .hero-ctas { margin-bottom: 18px; gap: 14px 18px; }
   .hero-intro { margin-bottom: 14px; }
   /* Wrapped 2-col stat band: square outer corners, crosshair dividers (no grid gap). */
+  .stat-band {
+    padding: 0 24px;
+    border-radius: 0;
+  }
   .stat-row {
     grid-template-columns: repeat(2, 1fr);
-    padding: 0 24px;
+    padding: 0;
     border-radius: 0;
     gap: 0;
   }
@@ -708,8 +742,12 @@ a.breadcrumb-pill:focus-visible {
     margin: 0 auto;
     padding: 0 var(--page-pad-x);
   }
-  .stat-row {
+  .stat-band {
     grid-column: 1 / -1;
+    max-width: none;
+    margin-inline: 0;
+  }
+  .stat-row {
     /* Track count = however many stats the hero actually renders (3 boards+cities+budget,
        4 with the optional impressions stat, 5 when board mix also splits roadside/place-based)
        so the band fills evenly with no dead trailing track. Set inline via --stat-count. */
@@ -718,7 +756,7 @@ a.breadcrumb-pill:focus-visible {
     row-gap: 14px;
     max-width: none;
     margin-inline: 0;
-    padding: 0 24px;
+    padding: 0;
   }
   .stat { position: relative; }
   .page-toc-rail {

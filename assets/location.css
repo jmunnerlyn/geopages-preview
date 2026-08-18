@@ -33,7 +33,7 @@
   --paper: #ffffff;
   --paper-alt: var(--slate);
   --stat-band: color-mix(in srgb, #EFF9F9 50%, transparent); /* Figma Stat Band wash */
-  --stat-band-solid: color-mix(in srgb, #EFF9F9 50%, var(--paper)); /* opaque match for overlay chip */
+  --stat-band-solid: color-mix(in srgb, #EFF9F9 50%, var(--paper)); /* opaque match for tab + strip */
   --stat-band-border: color-mix(in srgb, var(--blip-teal) 33%, transparent);
   --toc-container-border: color-mix(in srgb, var(--blip-teal) 23%, transparent);
   --stat-cell-border: color-mix(in srgb, var(--navy) 12%, transparent); /* Figma cell divider */
@@ -438,26 +438,20 @@ a.breadcrumb-pill:focus-visible {
 
 /* Stat Band — Figma lock (horizontal hug band below hero; cell type unchanged)
    Layout: fill width, content-hug height, 10px radius, 0 24px pad (L/R only), 14px gap,
-   #EFF9F9 @ 50%, 1px border #2FBEBF @ 33% (all sides). Scope caption lives on the
-   wrapper so cell nth-child divider math stays on .stat-row. */
+   #EFF9F9 @ 50%, 1px border #2FBEBF @ 33% (all sides). Location caption is a tab
+   on the strip’s top edge — same wash/border, not inside the cell grid. */
 .stat-band {
-  position: relative;
   max-width: var(--page-max);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0;
   box-sizing: border-box;
-  border-radius: 10px;
-  background: var(--stat-band);
-  border: 1px solid var(--stat-band-border);
 }
 .stat-band-scope {
-  position: absolute;
-  top: 0;
-  left: 24px;
+  display: inline-block;
+  position: relative;
   z-index: 1;
-  margin: 0;
-  padding: 8px 12px 2px 4px;
-  max-width: calc(100% - 36px);
+  margin: 0 0 -1px 24px;
+  padding: 5px 12px 6px;
   font-family: var(--font-body);
   font-size: 11.2px;
   font-weight: 700;
@@ -467,7 +461,9 @@ a.breadcrumb-pill:focus-visible {
   white-space: nowrap;
   color: var(--ink-soft);
   background: var(--stat-band-solid);
-  pointer-events: none;
+  border: 1px solid var(--stat-band-border);
+  border-bottom-color: var(--stat-band-solid);
+  border-radius: 8px 8px 0 0;
 }
 .stat-row {
   display: grid;
@@ -475,16 +471,16 @@ a.breadcrumb-pill:focus-visible {
   gap: 14px;
   align-items: stretch;
   margin: 0;
-  padding: 0;
+  padding: 0 24px;
   box-sizing: border-box;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
+  border-radius: 10px;
+  background: var(--stat-band);
+  border: 1px solid var(--stat-band-border);
 }
 .stat {
   display: flex; flex-direction: column; gap: 6px;
   background: transparent; border: 0; border-radius: 0;
-  padding: 32px 12px 26px 4px;
+  padding: 26px 12px 26px 4px;
   min-width: 0;
   box-sizing: border-box;
   border-right: 1px solid var(--stat-cell-border);
@@ -504,13 +500,9 @@ a.breadcrumb-pill:focus-visible {
   .hero-ctas { margin-bottom: 18px; gap: 14px 18px; }
   .hero-intro { margin-bottom: 14px; }
   /* Wrapped 2-col stat band: square outer corners, crosshair dividers (no grid gap). */
-  .stat-band {
-    padding: 0 24px;
-    border-radius: 0;
-  }
   .stat-row {
     grid-template-columns: repeat(2, 1fr);
-    padding: 0;
+    padding: 0 24px;
     border-radius: 0;
     gap: 0;
   }
@@ -756,7 +748,7 @@ a.breadcrumb-pill:focus-visible {
     row-gap: 14px;
     max-width: none;
     margin-inline: 0;
-    padding: 0;
+    padding: 0 24px;
   }
   .stat { position: relative; }
   .page-toc-rail {
@@ -908,6 +900,11 @@ a.breadcrumb-pill:focus-visible {
   margin-left: 0;
 }
 .city-finder .dir-chip:hover { border-color: var(--pink); }
+.city-finder .dir-chip.is-map-focus,
+.surrounding-discovery .dir-chip.is-map-focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 1px var(--pink);
+}
 /* Shared chip row — city finder AND nearby states/cities (not only under .city-finder) */
 .directory-top,
 .nearby-chips {
@@ -1754,6 +1751,9 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.go-deeper-city-chip.is-near-city strong {
+  font-weight: 650;
 }
 .go-deeper-city-chip strong {
   flex-shrink: 0;
@@ -3117,9 +3117,10 @@ details[open].faq-item > summary .faq-question { color: var(--blip-navy-deep); }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 12px;
+  width: 24px;
+  height: 24px;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 22px;
   font-weight: 400;
   line-height: 1;
   color: #000;

@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600;700;800&family=Lexend:wght@400;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/geopages-preview/assets/location.css?v=stat-scope-2">
+<link rel="stylesheet" href="/geopages-preview/assets/location.css?v=nearby-map-zoom-1">
 
 </head>
 <body class="is-preview"><div style="background:#111;color:#fff;padding:10px 16px;font:14px system-ui;position:sticky;top:0;z-index:9999">AI interpretation overlay (Terra) — use the Fallback / AI control (bottom left) to compare. <a href="/compare/" style="color:#9cf">Section comparison</a> · <a href="http://127.0.0.1:8321/billboard-locations/texas/" style="color:#9cf">Original Texas</a></div>
@@ -154,7 +154,7 @@
       <div class="page-toc-foot">
         <p class="page-toc-read">
           <svg class="page-toc-read-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="4.75" stroke="currentColor" stroke-width="1"/><path d="M6 3.75V6.25L7.75 7.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span>11 min read</span>
+          <span>12 min read</span>
         </p>
         <p class="page-toc-progress" aria-live="polite"></p>
       </div>
@@ -247,29 +247,29 @@
   <div class="wrap">
     <div class="city-finder">
       <h3>Find boards by city</h3>
-      <p class="city-finder-note">Each city count is boards in that city. For a wider area view, see <a href="#markets">regional coverage</a> by media market.</p>
+      <p class="city-finder-note">Select a city to show its boards on the map. Each count is boards in that city. For a wider area view, see <a href="#markets">regional coverage</a> by media market.</p>
       <div class="directory-top">
         
-        <a class="dir-chip dir-chip-major" href="https://www.blipbillboards.com/billboard-locations/texas/houston-tx/">Houston <span>71</span></a>
+        <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="Houston" aria-label="Show Houston boards on the map">Houston <span>71</span></a>
         
-        <a class="dir-chip dir-chip-major" href="https://www.blipbillboards.com/billboard-locations/texas/dallas-tx/">Dallas <span>50</span></a>
+        <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="Dallas" aria-label="Show Dallas boards on the map">Dallas <span>50</span></a>
         
-        <a class="dir-chip dir-chip-major" href="https://www.blipbillboards.com/billboard-locations/texas/san-antonio-tx/">San Antonio <span>28</span></a>
+        <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="San Antonio" aria-label="Show San Antonio boards on the map">San Antonio <span>28</span></a>
         
-        <a class="dir-chip dir-chip-major" href="https://www.blipbillboards.com/billboard-locations/texas/el-paso-tx/">El Paso <span>20</span></a>
+        <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="El Paso" aria-label="Show El Paso boards on the map">El Paso <span>20</span></a>
         
-        <a class="dir-chip dir-chip-major" href="https://www.blipbillboards.com/billboard-locations/texas/carrollton-tx/">Carrollton <span>15</span></a>
+        <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="Carrollton" aria-label="Show Carrollton boards on the map">Carrollton <span>15</span></a>
         
-        <a class="dir-chip dir-chip-major" href="https://www.blipbillboards.com/billboard-locations/texas/pasadena-tx/">Pasadena <span>15</span></a>
+        <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="Pasadena" aria-label="Show Pasadena boards on the map">Pasadena <span>15</span></a>
         
-        <a class="dir-chip dir-chip-major" href="https://www.blipbillboards.com/billboard-locations/texas/grand-prairie-tx/">Grand Prairie <span>14</span></a>
+        <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="Grand Prairie" aria-label="Show Grand Prairie boards on the map">Grand Prairie <span>14</span></a>
         
-        <a class="dir-chip dir-chip-major" href="https://www.blipbillboards.com/billboard-locations/texas/spring-tx/">Spring <span>9</span></a>
+        <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="Spring" aria-label="Show Spring boards on the map">Spring <span>9</span></a>
         
       </div>
       <div class="city-finder-browse-row">
         <p class="city-finder-browse-label">Looking for a specific town?</p>
-        <a class="city-finder-browse-btn" href="#go-deeper">See all 133 Texas cities ↓</a>
+        <a class="city-finder-browse-btn" href="#go-deeper">See all 213 Texas cities ↓</a>
       </div>
     </div>
   </div>
@@ -1462,14 +1462,18 @@
   <div class="wrap">
     <p class="go-deeper-eyebrow">Go Deeper</p>
     <h2>Every Texas city with a billboard</h2>
-    <p class="section-lede go-deeper-lede">133 Texas cities have at least one active screen. Open any city to see its screens, local pricing, and traffic &mdash; grouped here by media market so you can see what&rsquo;s nearby.</p>
+    <p class="section-lede go-deeper-lede">
+      
+      213 Texas cities and nearby areas. Open a city for boards labeled there, or a nearby-area page when we cover the towns around it &mdash; grouped by media market.
+      
+    </p>
     <div class="go-deeper-directory">
       <div class="go-deeper-toolbar">
         <div class="go-deeper-search">
           <label for="go-deeper-search">Search Texas cities</label>
-          <input id="go-deeper-search" type="search" placeholder="Start typing a city name" data-mobile-placeholder="Search 133 Texas cities" autocomplete="off">
+          <input id="go-deeper-search" type="search" placeholder="Start typing a city name" data-mobile-placeholder="Search 213 Texas cities" autocomplete="off">
         </div>
-        <p class="go-deeper-summary">133 cities across 17 media markets.</p>
+        <p class="go-deeper-summary">213 cities and nearby areas across 17 media markets.</p>
       </div>
       <p class="go-deeper-mobile-helper">Fastest way in &mdash; or browse by market below.</p>
       <div class="go-deeper-markets">
@@ -1479,13 +1483,17 @@
           <header class="go-deeper-market-head">
             <div class="go-deeper-market-info">
               <h3>Houston</h3>
-              <p>31 cities · 183 screens</p>
+              <p>53 cities · 183 screens</p>
             </div>
             <button class="go-deeper-market-chevron" type="button" data-go-deeper-mobile-toggle aria-expanded="false" aria-label="Show cities in Houston">
               <svg viewBox="0 0 5 8" aria-hidden="true"><path fill="currentColor" d="M0 1.25L4 4L0 6.75L1.1 6.75L5 4L1.1 1.25Z"/></svg>
             </button>
           </header>
           <div class="go-deeper-city-grid">
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/aldine-tx/" data-go-deeper-city="aldine" aria-label="Aldine, boards nearby">
+              <span>Aldine</span><strong>19 nearby</strong>
+            </a>
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/alvin-tx/" data-go-deeper-city="alvin">
               <span>Alvin</span><strong>2</strong>
@@ -1503,8 +1511,24 @@
               <span>Baytown</span><strong>6</strong>
             </a>
             
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/bellaire-tx/" data-go-deeper-city="bellaire" aria-label="Bellaire, boards nearby">
+              <span>Bellaire</span><strong>33 nearby</strong>
+            </a>
+            
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/brookshire-tx/" data-go-deeper-city="brookshire">
               <span>Brookshire</span><strong>4</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/channelview-tx/" data-go-deeper-city="channelview" aria-label="Channelview, boards nearby">
+              <span>Channelview</span><strong>39 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/cinco-ranch-tx/" data-go-deeper-city="cinco ranch" aria-label="Cinco Ranch, boards nearby">
+              <span>Cinco Ranch</span><strong>18 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/cloverleaf-tx/" data-go-deeper-city="cloverleaf" aria-label="Cloverleaf, boards nearby">
+              <span>Cloverleaf</span><strong>38 nearby</strong>
             </a>
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/conroe-tx/" data-go-deeper-city="conroe">
@@ -1515,47 +1539,87 @@
               <span>Dayton</span><strong>1</strong>
             </a>
             
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/deer-park-tx/" data-go-deeper-city="deer park" aria-label="Deer Park, boards nearby">
+              <span>Deer Park</span><strong>39 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/dickinson-tx/" data-go-deeper-city="dickinson" aria-label="Dickinson, boards nearby">
+              <span>Dickinson</span><strong>16 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/four-corners-tx/" data-go-deeper-city="four corners" aria-label="Four Corners, boards nearby">
+              <span>Four Corners</span><strong>52 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/fresno-tx/" data-go-deeper-city="fresno" aria-label="Fresno, boards nearby">
+              <span>Fresno</span><strong>29 nearby</strong>
+            </a>
+            
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/friendswood-tx/" data-go-deeper-city="friendswood">
               <span>Friendswood</span><strong>1</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/houston-tx/" data-go-deeper-city="houston">
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/fulshear-tx/" data-go-deeper-city="fulshear" aria-label="Fulshear, boards nearby">
+              <span>Fulshear</span><strong>6 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/galena-park-tx/" data-go-deeper-city="galena park" aria-label="Galena Park, boards nearby">
+              <span>Galena Park</span><strong>37 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/galveston-tx/" data-go-deeper-city="galveston" aria-label="Galveston, boards nearby">
+              <span>Galveston</span><strong>5 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/houston-tx/" data-go-deeper-city="houston">
               <span>Houston</span><strong>71</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/humble-tx/" data-go-deeper-city="humble">
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/humble-tx/" data-go-deeper-city="humble">
               <span>Humble</span><strong>7</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/jacinto-city-tx/" data-go-deeper-city="jacinto city">
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/iowa-colony-tx/" data-go-deeper-city="iowa colony" aria-label="Iowa Colony, boards nearby">
+              <span>Iowa Colony</span><strong>11 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/jacinto-city-tx/" data-go-deeper-city="jacinto city">
               <span>Jacinto City</span><strong>4</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/katy-tx/" data-go-deeper-city="katy">
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/katy-tx/" data-go-deeper-city="katy">
               <span>Katy</span><strong>4</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/la-marque-tx/" data-go-deeper-city="la marque">
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/la-marque-tx/" data-go-deeper-city="la marque">
               <span>La Marque</span><strong>5</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/la-porte-tx/" data-go-deeper-city="la porte">
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/la-porte-tx/" data-go-deeper-city="la porte">
               <span>La Porte</span><strong>2</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/league-city-tx/" data-go-deeper-city="league city">
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/league-city-tx/" data-go-deeper-city="league city">
               <span>League City</span><strong>5</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/meadows-place-tx/" data-go-deeper-city="meadows place">
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/manvel-tx/" data-go-deeper-city="manvel" aria-label="Manvel, boards nearby">
+              <span>Manvel</span><strong>13 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/meadows-place-tx/" data-go-deeper-city="meadows place">
               <span>Meadows Place</span><strong>2</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/missouri-city-tx/" data-go-deeper-city="missouri city">
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/mission-bend-tx/" data-go-deeper-city="mission bend" aria-label="Mission Bend, boards nearby">
+              <span>Mission Bend</span><strong>52 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/missouri-city-tx/" data-go-deeper-city="missouri city">
               <span>Missouri City</span><strong>8</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/panorama-village-tx/" data-go-deeper-city="panorama village">
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/panorama-village-tx/" data-go-deeper-city="panorama village">
               <span>Panorama Village</span><strong>1</strong>
             </a>
             
@@ -1565,6 +1629,10 @@
             
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/pearland-tx/" data-go-deeper-city="pearland">
               <span>Pearland</span><strong>7</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/pecan-grove-tx/" data-go-deeper-city="pecan grove" aria-label="Pecan Grove, boards nearby">
+              <span>Pecan Grove</span><strong>35 nearby</strong>
             </a>
             
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/richmond-tx/" data-go-deeper-city="richmond">
@@ -1583,8 +1651,16 @@
               <span>Santa Fe</span><strong>2</strong>
             </a>
             
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/seabrook-tx/" data-go-deeper-city="seabrook" aria-label="Seabrook, boards nearby">
+              <span>Seabrook</span><strong>9 nearby</strong>
+            </a>
+            
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/sealy-tx/" data-go-deeper-city="sealy">
               <span>Sealy</span><strong>1</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/south-houston-tx/" data-go-deeper-city="south houston" aria-label="South Houston, boards nearby">
+              <span>South Houston</span><strong>36 nearby</strong>
             </a>
             
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/spring-tx/" data-go-deeper-city="spring">
@@ -1599,8 +1675,24 @@
               <span>Sugar Land</span><strong>6</strong>
             </a>
             
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/texas-city-tx/" data-go-deeper-city="texas city" aria-label="Texas City, boards nearby">
+              <span>Texas City</span><strong>14 nearby</strong>
+            </a>
+            
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/the-woodlands-tx/" data-go-deeper-city="the woodlands">
               <span>The Woodlands</span><strong>2</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/tomball-tx/" data-go-deeper-city="tomball" aria-label="Tomball, boards nearby">
+              <span>Tomball</span><strong>13 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/webster-tx/" data-go-deeper-city="webster" aria-label="Webster, boards nearby">
+              <span>Webster</span><strong>10 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/west-university-place-tx/" data-go-deeper-city="west university place" aria-label="West University Place, boards nearby">
+              <span>West University Place</span><strong>26 nearby</strong>
             </a>
             
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/wharton-tx/" data-go-deeper-city="wharton">
@@ -1614,7 +1706,7 @@
           </div>
           
           <button class="go-deeper-toggle" type="button" data-go-deeper-toggle aria-expanded="false">
-            <span>+ 13 remaining cities in this market</span>
+            <span>+ 35 remaining cities in this market</span>
           </button>
           
         </article>
@@ -1624,13 +1716,21 @@
           <header class="go-deeper-market-head">
             <div class="go-deeper-market-info">
               <h3>Dallas–Fort Worth</h3>
-              <p>43 cities · 169 screens</p>
+              <p>80 cities · 169 screens</p>
             </div>
             <button class="go-deeper-market-chevron" type="button" data-go-deeper-mobile-toggle aria-expanded="false" aria-label="Show cities in Dallas–Fort Worth">
               <svg viewBox="0 0 5 8" aria-hidden="true"><path fill="currentColor" d="M0 1.25L4 4L0 6.75L1.1 6.75L5 4L1.1 1.25Z"/></svg>
             </button>
           </header>
           <div class="go-deeper-city-grid">
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/addison-tx/" data-go-deeper-city="addison" aria-label="Addison, boards nearby">
+              <span>Addison</span><strong>45 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/allen-tx/" data-go-deeper-city="allen" aria-label="Allen, boards nearby">
+              <span>Allen</span><strong>10 nearby</strong>
+            </a>
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/alvarado-tx/" data-go-deeper-city="alvarado">
               <span>Alvarado</span><strong>1</strong>
@@ -1648,6 +1748,14 @@
               <span>Balch Springs</span><strong>2</strong>
             </a>
             
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/bedford-tx/" data-go-deeper-city="bedford" aria-label="Bedford, boards nearby">
+              <span>Bedford</span><strong>26 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/benbrook-tx/" data-go-deeper-city="benbrook" aria-label="Benbrook, boards nearby">
+              <span>Benbrook</span><strong>8 nearby</strong>
+            </a>
+            
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/burleson-tx/" data-go-deeper-city="burleson">
               <span>Burleson</span><strong>3</strong>
             </a>
@@ -1656,51 +1764,107 @@
               <span>Carrollton</span><strong>15</strong>
             </a>
             
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/cedar-hill-tx/" data-go-deeper-city="cedar hill" aria-label="Cedar Hill, boards nearby">
+              <span>Cedar Hill</span><strong>9 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/celina-tx/" data-go-deeper-city="celina" aria-label="Celina, boards nearby">
+              <span>Celina</span><strong>6 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/colleyville-tx/" data-go-deeper-city="colleyville" aria-label="Colleyville, boards nearby">
+              <span>Colleyville</span><strong>17 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/coppell-tx/" data-go-deeper-city="coppell" aria-label="Coppell, boards nearby">
+              <span>Coppell</span><strong>52 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/corinth-tx/" data-go-deeper-city="corinth" aria-label="Corinth, boards nearby">
+              <span>Corinth</span><strong>6 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/crowley-tx/" data-go-deeper-city="crowley" aria-label="Crowley, boards nearby">
+              <span>Crowley</span><strong>11 nearby</strong>
+            </a>
+            
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/dallas-tx/" data-go-deeper-city="dallas">
               <span>Dallas</span><strong>48</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/duncanville-tx/" data-go-deeper-city="duncanville">
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/denton-tx/" data-go-deeper-city="denton" aria-label="Denton, boards nearby">
+              <span>Denton</span><strong>4 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/desoto-tx/" data-go-deeper-city="desoto" aria-label="DeSoto, boards nearby">
+              <span>DeSoto</span><strong>5 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/duncanville-tx/" data-go-deeper-city="duncanville">
               <span>Duncanville</span><strong>2</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/farmers-branch-tx/" data-go-deeper-city="farmers branch">
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/euless-tx/" data-go-deeper-city="euless" aria-label="Euless, boards nearby">
+              <span>Euless</span><strong>29 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/fairview-tx/" data-go-deeper-city="fairview" aria-label="Fairview, boards nearby">
+              <span>Fairview</span><strong>7 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/farmers-branch-tx/" data-go-deeper-city="farmers branch">
               <span>Farmers Branch</span><strong>1</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/forest-hill-tx/" data-go-deeper-city="forest hill">
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/fate-tx/" data-go-deeper-city="fate" aria-label="Fate, boards nearby">
+              <span>Fate</span><strong>4 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/flower-mound-tx/" data-go-deeper-city="flower mound" aria-label="Flower Mound, boards nearby">
+              <span>Flower Mound</span><strong>11 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/forest-hill-tx/" data-go-deeper-city="forest hill">
               <span>Forest Hill</span><strong>2</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/fort-worth-tx/" data-go-deeper-city="fort worth">
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/forney-tx/" data-go-deeper-city="forney" aria-label="Forney, boards nearby">
+              <span>Forney</span><strong>5 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/fort-worth-tx/" data-go-deeper-city="fort worth">
               <span>Fort Worth</span><strong>5</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/frisco-tx/" data-go-deeper-city="frisco">
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/frisco-tx/" data-go-deeper-city="frisco">
               <span>Frisco</span><strong>2</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/gainesville-tx/" data-go-deeper-city="gainesville">
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/gainesville-tx/" data-go-deeper-city="gainesville">
               <span>Gainesville</span><strong>1</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/garland-tx/" data-go-deeper-city="garland">
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/garland-tx/" data-go-deeper-city="garland">
               <span>Garland</span><strong>5</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/godley-tx/" data-go-deeper-city="godley">
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/glenn-heights-tx/" data-go-deeper-city="glenn heights" aria-label="Glenn Heights, boards nearby">
+              <span>Glenn Heights</span><strong>4 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/godley-tx/" data-go-deeper-city="godley">
               <span>Godley</span><strong>1</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/grand-prairie-tx/" data-go-deeper-city="grand prairie">
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/grand-prairie-tx/" data-go-deeper-city="grand prairie">
               <span>Grand Prairie</span><strong>14</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/grapevine-tx/" data-go-deeper-city="grapevine">
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/grapevine-tx/" data-go-deeper-city="grapevine">
               <span>Grapevine</span><strong>2</strong>
             </a>
             
-            <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/greenville-tx/" data-go-deeper-city="greenville">
+            <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/greenville-tx/" data-go-deeper-city="greenville">
               <span>Greenville</span><strong>1</strong>
             </a>
             
@@ -1708,8 +1872,20 @@
               <span>Haltom City</span><strong>2</strong>
             </a>
             
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/heath-tx/" data-go-deeper-city="heath" aria-label="Heath, boards nearby">
+              <span>Heath</span><strong>8 nearby</strong>
+            </a>
+            
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/hickory-creek-tx/" data-go-deeper-city="hickory creek">
               <span>Hickory Creek</span><strong>1</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/highland-village-tx/" data-go-deeper-city="highland village" aria-label="Highland Village, boards nearby">
+              <span>Highland Village</span><strong>15 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/hurst-tx/" data-go-deeper-city="hurst" aria-label="Hurst, boards nearby">
+              <span>Hurst</span><strong>20 nearby</strong>
             </a>
             
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/hutchins-tx/" data-go-deeper-city="hutchins">
@@ -1718,6 +1894,10 @@
             
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/irving-tx/" data-go-deeper-city="irving">
               <span>Irving</span><strong>5</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/keller-tx/" data-go-deeper-city="keller" aria-label="Keller, boards nearby">
+              <span>Keller</span><strong>6 nearby</strong>
             </a>
             
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/lake-dallas-tx/" data-go-deeper-city="lake dallas">
@@ -1730,6 +1910,10 @@
             
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/lancaster-tx/" data-go-deeper-city="lancaster">
               <span>Lancaster</span><strong>1</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/lantana-tx/" data-go-deeper-city="lantana" aria-label="Lantana, boards nearby">
+              <span>Lantana</span><strong>6 nearby</strong>
             </a>
             
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/lewisville-tx/" data-go-deeper-city="lewisville">
@@ -1752,12 +1936,24 @@
               <span>McKinney</span><strong>3</strong>
             </a>
             
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/melissa-tx/" data-go-deeper-city="melissa" aria-label="Melissa, boards nearby">
+              <span>Melissa</span><strong>2 nearby</strong>
+            </a>
+            
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/mesquite-tx/" data-go-deeper-city="mesquite">
               <span>Mesquite</span><strong>3</strong>
             </a>
             
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/midlothian-tx/" data-go-deeper-city="midlothian">
               <span>Midlothian</span><strong>1</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/murphy-tx/" data-go-deeper-city="murphy" aria-label="Murphy, boards nearby">
+              <span>Murphy</span><strong>6 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/north-richland-hills-tx/" data-go-deeper-city="north richland hills" aria-label="North Richland Hills, boards nearby">
+              <span>North Richland Hills</span><strong>8 nearby</strong>
             </a>
             
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/northlake-tx/" data-go-deeper-city="northlake">
@@ -1772,6 +1968,26 @@
               <span>Plano</span><strong>5</strong>
             </a>
             
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/prosper-tx/" data-go-deeper-city="prosper" aria-label="Prosper, boards nearby">
+              <span>Prosper</span><strong>11 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/red-oak-tx/" data-go-deeper-city="red oak" aria-label="Red Oak, boards nearby">
+              <span>Red Oak</span><strong>2 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/rendon-tx/" data-go-deeper-city="rendon" aria-label="Rendon, boards nearby">
+              <span>Rendon</span><strong>12 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/richardson-tx/" data-go-deeper-city="richardson" aria-label="Richardson, boards nearby">
+              <span>Richardson</span><strong>23 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/rockwall-tx/" data-go-deeper-city="rockwall" aria-label="Rockwall, boards nearby">
+              <span>Rockwall</span><strong>8 nearby</strong>
+            </a>
+            
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/rowlett-tx/" data-go-deeper-city="rowlett">
               <span>Rowlett</span><strong>1</strong>
             </a>
@@ -1780,12 +1996,36 @@
               <span>Royse City</span><strong>3</strong>
             </a>
             
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/sachse-tx/" data-go-deeper-city="sachse" aria-label="Sachse, boards nearby">
+              <span>Sachse</span><strong>15 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/saginaw-tx/" data-go-deeper-city="saginaw" aria-label="Saginaw, boards nearby">
+              <span>Saginaw</span><strong>11 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/seagoville-tx/" data-go-deeper-city="seagoville" aria-label="Seagoville, boards nearby">
+              <span>Seagoville</span><strong>7 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/southlake-tx/" data-go-deeper-city="southlake" aria-label="Southlake, boards nearby">
+              <span>Southlake</span><strong>9 nearby</strong>
+            </a>
+            
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/sulphur-springs-tx/" data-go-deeper-city="sulphur springs">
               <span>Sulphur Springs</span><strong>3</strong>
             </a>
             
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/the-colony-tx/" data-go-deeper-city="the colony">
               <span>The Colony</span><strong>4</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/trophy-club-tx/" data-go-deeper-city="trophy club" aria-label="Trophy Club, boards nearby">
+              <span>Trophy Club</span><strong>4 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/university-park-tx/" data-go-deeper-city="university park" aria-label="University Park, boards nearby">
+              <span>University Park</span><strong>66 nearby</strong>
             </a>
             
             <a class="go-deeper-city-chip is-go-deeper-hidden" href="https://www.blipbillboards.com/billboard-locations/texas/valley-mills-tx/" data-go-deeper-city="valley mills">
@@ -1807,7 +2047,7 @@
           </div>
           
           <button class="go-deeper-toggle" type="button" data-go-deeper-toggle aria-expanded="false">
-            <span>+ 25 remaining cities in this market</span>
+            <span>+ 62 remaining cities in this market</span>
           </button>
           
         </article>
@@ -1817,7 +2057,7 @@
           <header class="go-deeper-market-head">
             <div class="go-deeper-market-info">
               <h3>San Antonio</h3>
-              <p>10 cities · 46 screens</p>
+              <p>13 cities · 46 screens</p>
             </div>
             <button class="go-deeper-market-chevron" type="button" data-go-deeper-mobile-toggle aria-expanded="false" aria-label="Show cities in San Antonio">
               <svg viewBox="0 0 5 8" aria-hidden="true"><path fill="currentColor" d="M0 1.25L4 4L0 6.75L1.1 6.75L5 4L1.1 1.25Z"/></svg>
@@ -1827,6 +2067,10 @@
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/castle-hills-tx/" data-go-deeper-city="castle hills">
               <span>Castle Hills</span><strong>1</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/cibolo-tx/" data-go-deeper-city="cibolo" aria-label="Cibolo, boards nearby">
+              <span>Cibolo</span><strong>14 nearby</strong>
             </a>
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/converse-tx/" data-go-deeper-city="converse">
@@ -1861,8 +2105,16 @@
               <span>San Antonio</span><strong>28</strong>
             </a>
             
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/schertz-tx/" data-go-deeper-city="schertz" aria-label="Schertz, boards nearby">
+              <span>Schertz</span><strong>16 nearby</strong>
+            </a>
+            
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/selma-tx/" data-go-deeper-city="selma">
               <span>Selma</span><strong>2</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/universal-city-tx/" data-go-deeper-city="universal city" aria-label="Universal City, boards nearby">
+              <span>Universal City</span><strong>22 nearby</strong>
             </a>
             
           </div>
@@ -1874,7 +2126,7 @@
           <header class="go-deeper-market-head">
             <div class="go-deeper-market-info">
               <h3>El Paso</h3>
-              <p>2 cities · 21 screens</p>
+              <p>5 cities · 21 screens</p>
             </div>
             <button class="go-deeper-market-chevron" type="button" data-go-deeper-mobile-toggle aria-expanded="false" aria-label="Show cities in El Paso">
               <svg viewBox="0 0 5 8" aria-hidden="true"><path fill="currentColor" d="M0 1.25L4 4L0 6.75L1.1 6.75L5 4L1.1 1.25Z"/></svg>
@@ -1884,6 +2136,18 @@
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/el-paso-tx/" data-go-deeper-city="el paso">
               <span>El Paso</span><strong>20</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/fort-bliss-tx/" data-go-deeper-city="fort bliss" aria-label="Fort Bliss, boards nearby">
+              <span>Fort Bliss</span><strong>24 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/horizon-city-tx/" data-go-deeper-city="horizon city" aria-label="Horizon City, boards nearby">
+              <span>Horizon City</span><strong>11 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/san-elizario-tx/" data-go-deeper-city="san elizario" aria-label="San Elizario, boards nearby">
+              <span>San Elizario</span><strong>2 nearby</strong>
             </a>
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/socorro-tx/" data-go-deeper-city="socorro">
@@ -1899,13 +2163,17 @@
           <header class="go-deeper-market-head">
             <div class="go-deeper-market-info">
               <h3>Rio Grande Valley</h3>
-              <p>13 cities · 21 screens</p>
+              <p>18 cities · 21 screens</p>
             </div>
             <button class="go-deeper-market-chevron" type="button" data-go-deeper-mobile-toggle aria-expanded="false" aria-label="Show cities in Rio Grande Valley">
               <svg viewBox="0 0 5 8" aria-hidden="true"><path fill="currentColor" d="M0 1.25L4 4L0 6.75L1.1 6.75L5 4L1.1 1.25Z"/></svg>
             </button>
           </header>
           <div class="go-deeper-city-grid">
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/alamo-tx/" data-go-deeper-city="alamo" aria-label="Alamo, boards nearby">
+              <span>Alamo</span><strong>11 nearby</strong>
+            </a>
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/alton-tx/" data-go-deeper-city="alton">
               <span>Alton</span><strong>1</strong>
@@ -1931,8 +2199,20 @@
               <span>Harlingen</span><strong>2</strong>
             </a>
             
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/hidalgo-tx/" data-go-deeper-city="hidalgo" aria-label="Hidalgo, boards nearby">
+              <span>Hidalgo</span><strong>6 nearby</strong>
+            </a>
+            
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/la-feria-tx/" data-go-deeper-city="la feria">
               <span>La Feria</span><strong>2</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/la-homa-tx/" data-go-deeper-city="la homa" aria-label="La Homa, boards nearby">
+              <span>La Homa</span><strong>4 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/mcallen-tx/" data-go-deeper-city="mcallen" aria-label="McAllen, boards nearby">
+              <span>McAllen</span><strong>13 nearby</strong>
             </a>
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/mission-tx/" data-go-deeper-city="mission">
@@ -1955,6 +2235,10 @@
               <span>San Benito</span><strong>1</strong>
             </a>
             
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/san-juan-tx/" data-go-deeper-city="san juan" aria-label="San Juan, boards nearby">
+              <span>San Juan</span><strong>11 nearby</strong>
+            </a>
+            
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/weslaco-tx/" data-go-deeper-city="weslaco">
               <span>Weslaco</span><strong>1</strong>
             </a>
@@ -1968,7 +2252,7 @@
           <header class="go-deeper-market-head">
             <div class="go-deeper-market-info">
               <h3>Austin</h3>
-              <p>5 cities · 13 screens</p>
+              <p>6 cities · 13 screens</p>
             </div>
             <button class="go-deeper-market-chevron" type="button" data-go-deeper-mobile-toggle aria-expanded="false" aria-label="Show cities in Austin">
               <svg viewBox="0 0 5 8" aria-hidden="true"><path fill="currentColor" d="M0 1.25L4 4L0 6.75L1.1 6.75L5 4L1.1 1.25Z"/></svg>
@@ -1978,6 +2262,10 @@
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/austin-tx/" data-go-deeper-city="austin">
               <span>Austin</span><strong>3</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/buda-tx/" data-go-deeper-city="buda" aria-label="Buda, boards nearby">
+              <span>Buda</span><strong>8 nearby</strong>
             </a>
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/jarrell-tx/" data-go-deeper-city="jarrell">
@@ -2005,7 +2293,7 @@
           <header class="go-deeper-market-head">
             <div class="go-deeper-market-info">
               <h3>Beaumont–Port Arthur</h3>
-              <p>6 cities · 11 screens</p>
+              <p>8 cities · 11 screens</p>
             </div>
             <button class="go-deeper-market-chevron" type="button" data-go-deeper-mobile-toggle aria-expanded="false" aria-label="Show cities in Beaumont–Port Arthur">
               <svg viewBox="0 0 5 8" aria-hidden="true"><path fill="currentColor" d="M0 1.25L4 4L0 6.75L1.1 6.75L5 4L1.1 1.25Z"/></svg>
@@ -2021,6 +2309,10 @@
               <span>Bridge City</span><strong>1</strong>
             </a>
             
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/groves-tx/" data-go-deeper-city="groves" aria-label="Groves, boards nearby">
+              <span>Groves</span><strong>2 nearby</strong>
+            </a>
+            
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/lumberton-tx/" data-go-deeper-city="lumberton">
               <span>Lumberton</span><strong>2</strong>
             </a>
@@ -2031,6 +2323,10 @@
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/orange-tx/" data-go-deeper-city="orange">
               <span>Orange</span><strong>2</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/port-neches-tx/" data-go-deeper-city="port neches" aria-label="Port Neches, boards nearby">
+              <span>Port Neches</span><strong>2 nearby</strong>
             </a>
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/vidor-tx/" data-go-deeper-city="vidor">
@@ -2046,13 +2342,17 @@
           <header class="go-deeper-market-head">
             <div class="go-deeper-market-info">
               <h3>Waco–Temple–Bryan</h3>
-              <p>5 cities · 10 screens</p>
+              <p>9 cities · 10 screens</p>
             </div>
             <button class="go-deeper-market-chevron" type="button" data-go-deeper-mobile-toggle aria-expanded="false" aria-label="Show cities in Waco–Temple–Bryan">
               <svg viewBox="0 0 5 8" aria-hidden="true"><path fill="currentColor" d="M0 1.25L4 4L0 6.75L1.1 6.75L5 4L1.1 1.25Z"/></svg>
             </button>
           </header>
           <div class="go-deeper-city-grid">
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/bellmead-tx/" data-go-deeper-city="bellmead" aria-label="Bellmead, boards nearby">
+              <span>Bellmead</span><strong>2 nearby</strong>
+            </a>
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/belton-tx/" data-go-deeper-city="belton">
               <span>Belton</span><strong>3</strong>
@@ -2064,6 +2364,18 @@
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/college-station-tx/" data-go-deeper-city="college station">
               <span>College Station</span><strong>1</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/copperas-cove-tx/" data-go-deeper-city="copperas cove" aria-label="Copperas Cove, boards nearby">
+              <span>Copperas Cove</span><strong>2 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/fort-hood-tx/" data-go-deeper-city="fort hood" aria-label="Fort Hood, boards nearby">
+              <span>Fort Hood</span><strong>2 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/harker-heights-tx/" data-go-deeper-city="harker heights" aria-label="Harker Heights, boards nearby">
+              <span>Harker Heights</span><strong>2 nearby</strong>
             </a>
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/killeen-tx/" data-go-deeper-city="killeen">
@@ -2083,7 +2395,7 @@
           <header class="go-deeper-market-head">
             <div class="go-deeper-market-info">
               <h3>Odessa–Midland</h3>
-              <p>3 cities · 7 screens</p>
+              <p>4 cities · 7 screens</p>
             </div>
             <button class="go-deeper-market-chevron" type="button" data-go-deeper-mobile-toggle aria-expanded="false" aria-label="Show cities in Odessa–Midland">
               <svg viewBox="0 0 5 8" aria-hidden="true"><path fill="currentColor" d="M0 1.25L4 4L0 6.75L1.1 6.75L5 4L1.1 1.25Z"/></svg>
@@ -2101,6 +2413,10 @@
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/odessa-tx/" data-go-deeper-city="odessa">
               <span>Odessa</span><strong>3</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/west-odessa-tx/" data-go-deeper-city="west odessa" aria-label="West Odessa, boards nearby">
+              <span>West Odessa</span><strong>3 nearby</strong>
             </a>
             
           </div>
@@ -2270,7 +2586,7 @@
           <header class="go-deeper-market-head">
             <div class="go-deeper-market-info">
               <h3>Elsewhere in Texas</h3>
-              <p>1 cities · 2 screens</p>
+              <p>3 cities · 2 screens</p>
             </div>
             <button class="go-deeper-market-chevron" type="button" data-go-deeper-mobile-toggle aria-expanded="false" aria-label="Show cities in Elsewhere in Texas">
               <svg viewBox="0 0 5 8" aria-hidden="true"><path fill="currentColor" d="M0 1.25L4 4L0 6.75L1.1 6.75L5 4L1.1 1.25Z"/></svg>
@@ -2280,6 +2596,14 @@
             
             <a class="go-deeper-city-chip" href="https://www.blipbillboards.com/billboard-locations/texas/dallas-tx/" data-go-deeper-city="dallas">
               <span>Dallas</span><strong>2</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/scenic-oaks-tx/" data-go-deeper-city="scenic oaks" aria-label="Scenic Oaks, boards nearby">
+              <span>Scenic Oaks</span><strong>2 nearby</strong>
+            </a>
+            
+            <a class="go-deeper-city-chip is-near-city" href="https://www.blipbillboards.com/billboard-locations/texas/timberwood-park-tx/" data-go-deeper-city="timberwood park" aria-label="Timberwood Park, boards nearby">
+              <span>Timberwood Park</span><strong>12 nearby</strong>
             </a>
             
           </div>
@@ -2511,6 +2835,7 @@
   var classFilter = { roadside: true, place_based: true };
   var detailStackMembers = null;
   var detailStackIndex = 0;
+  var pendingCityZoom = null;
 
   function featurePassesClass(f) {
     var cls = (f.properties && f.properties.inventory_class) || 'place_based';
@@ -2686,6 +3011,56 @@
     });
   }
 
+  function setCityFinderFocus(cityName) {
+    var chips = document.querySelectorAll('#city-finder [data-map-city]');
+    var want = (cityName || '').trim().toLowerCase();
+    chips.forEach(function (chip) {
+      var on = want && (chip.getAttribute('data-map-city') || '').trim().toLowerCase() === want;
+      chip.classList.toggle('is-map-focus', on);
+      if (on) chip.setAttribute('aria-current', 'true');
+      else chip.removeAttribute('aria-current');
+    });
+  }
+
+  function boundsForCity(geo, cityName) {
+    var want = (cityName || '').trim().toLowerCase();
+    if (!want || !geo) return null;
+    var minLng = Infinity, minLat = Infinity, maxLng = -Infinity, maxLat = -Infinity, n = 0;
+    (geo.features || []).forEach(function (f) {
+      var city = ((f.properties && f.properties.city) || '').trim().toLowerCase();
+      if (city !== want) return;
+      var c = f.geometry && f.geometry.coordinates;
+      if (!c || c.length < 2) return;
+      n += 1;
+      minLng = Math.min(minLng, c[0]);
+      minLat = Math.min(minLat, c[1]);
+      maxLng = Math.max(maxLng, c[0]);
+      maxLat = Math.max(maxLat, c[1]);
+    });
+    if (!n) return null;
+    return { minLng: minLng, minLat: minLat, maxLng: maxLng, maxLat: maxLat, n: n };
+  }
+
+  function zoomMapToCity(cityName) {
+    var map = window.__protoMap;
+    var geo = window.__protoGeo;
+    var box = boundsForCity(geo, cityName);
+    if (!map || !box) return false;
+    var opts = { padding: 56, maxZoom: 12, duration: 900 };
+    if (box.minLng === box.maxLng && box.minLat === box.maxLat) {
+      map.flyTo({ center: [box.minLng, box.minLat], zoom: 12, duration: 900 });
+    } else {
+      map.fitBounds([[box.minLng, box.minLat], [box.maxLng, box.maxLat]], opts);
+    }
+    return true;
+  }
+
+  function requestCityZoom(cityName) {
+    pendingCityZoom = cityName;
+    setCityFinderFocus(cityName);
+    if (!zoomMapToCity(cityName)) loadMap();
+  }
+
   // Prototype uses MapLibre + Carto raster PNGs (token-free). Vector styles
   // (Carto GL / OpenFreeMap) hang in MapLibre's Worker fetch on localhost.
   function loadMap() {
@@ -2746,6 +3121,7 @@
         window.__protoGeo = geo;
         window.__protoOpenDetail = openSiteFromFeature;
         addSignMarkers(map, buildSitesFromGeo(geo).sites);
+        if (pendingCityZoom) zoomMapToCity(pendingCityZoom);
       });
     }
     if (map.isStyleLoaded()) addSignLayers();
@@ -2796,6 +3172,8 @@
         btn.addEventListener('click', function () {
           map.fitBounds(bounds, fitOpts);
           closeDetail();
+          pendingCityZoom = null;
+          setCityFinderFocus(null);
           if (typeof window.__protoClearOobBanner === 'function') window.__protoClearOobBanner();
         });
         this._container.appendChild(btn);
@@ -3046,6 +3424,15 @@
       entries.forEach(function (en) { if (en.isIntersecting) { loadMap(); obs.disconnect(); } });
     }, { rootMargin: '400px' }).observe(shell);
   } else { loadMap(); }
+
+  var cityFinder = document.getElementById('city-finder');
+  if (cityFinder) {
+    cityFinder.addEventListener('click', function (e) {
+      var chip = e.target.closest('[data-map-city]');
+      if (!chip || !cityFinder.contains(chip)) return;
+      requestCityZoom(chip.getAttribute('data-map-city'));
+    });
+  }
 
   // Mobile nav (mirrors live blip-v2-nav behavior enough for the prototype)
   var menu = document.getElementById('blipV2Menu');

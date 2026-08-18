@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600;700;800&family=Lexend:wght@400;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/geopages-preview/assets/location.css?v=stat-scope-2">
+<link rel="stylesheet" href="/geopages-preview/assets/location.css?v=nearby-map-zoom-1">
 
 </head>
 <body class="is-preview page-city"><div style="background:#111;color:#fff;padding:10px 16px;font:14px system-ui;position:sticky;top:0;z-index:9999">AI interpretation overlay (Terra) — use the Fallback / AI control (bottom left) to compare. <a href="/compare/" style="color:#9cf">Section comparison</a> · <a href="http://127.0.0.1:8321/billboard-locations/texas/" style="color:#9cf">Original Texas</a></div>
@@ -282,30 +282,30 @@
         Looking beyond Houston? There are 73 more billboards across
         10 nearby cities,
         including 29 roadside billboards.
-        Open a city to see its boards, or keep exploring the map.
+        Select a city to show its boards on the map, or keep exploring.
         The list below covers the 71 billboards in Houston.
       </p>
       <div class="directory-top nearby-chips">
         
-        <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/texas/pasadena-tx/">Pasadena <span>15</span></a>
+        <a class="dir-chip" href="#find-billboards" data-map-city="Pasadena" aria-label="Show Pasadena boards on the map">Pasadena <span>15</span></a>
         
-        <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/texas/spring-tx/">Spring <span>9</span></a>
+        <a class="dir-chip" href="#find-billboards" data-map-city="Spring" aria-label="Show Spring boards on the map">Spring <span>9</span></a>
         
-        <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/texas/missouri-city-tx/">Missouri City <span>8</span></a>
+        <a class="dir-chip" href="#find-billboards" data-map-city="Missouri City" aria-label="Show Missouri City boards on the map">Missouri City <span>8</span></a>
         
-        <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/texas/humble-tx/">Humble <span>7</span></a>
+        <a class="dir-chip" href="#find-billboards" data-map-city="Humble" aria-label="Show Humble boards on the map">Humble <span>7</span></a>
         
-        <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/texas/pearland-tx/">Pearland <span>7</span></a>
+        <a class="dir-chip" href="#find-billboards" data-map-city="Pearland" aria-label="Show Pearland boards on the map">Pearland <span>7</span></a>
         
-        <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/texas/baytown-tx/">Baytown <span>6</span></a>
+        <a class="dir-chip" href="#find-billboards" data-map-city="Baytown" aria-label="Show Baytown boards on the map">Baytown <span>6</span></a>
         
-        <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/texas/sugar-land-tx/">Sugar Land <span>6</span></a>
+        <a class="dir-chip" href="#find-billboards" data-map-city="Sugar Land" aria-label="Show Sugar Land boards on the map">Sugar Land <span>6</span></a>
         
-        <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/texas/la-marque-tx/">La Marque <span>5</span></a>
+        <a class="dir-chip" href="#find-billboards" data-map-city="La Marque" aria-label="Show La Marque boards on the map">La Marque <span>5</span></a>
         
-        <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/texas/league-city-tx/">League City <span>5</span></a>
+        <a class="dir-chip" href="#find-billboards" data-map-city="League City" aria-label="Show League City boards on the map">League City <span>5</span></a>
         
-        <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/texas/stafford-tx/">Stafford <span>5</span></a>
+        <a class="dir-chip" href="#find-billboards" data-map-city="Stafford" aria-label="Show Stafford boards on the map">Stafford <span>5</span></a>
         
       </div>
       <p class="surrounding-discovery-foot">
@@ -3775,6 +3775,7 @@
   var classFilter = { roadside: true, place_based: true };
   var detailStackMembers = null;
   var detailStackIndex = 0;
+  var pendingCityZoom = null;
 
   function featurePassesClass(f) {
     var cls = (f.properties && f.properties.inventory_class) || 'place_based';
@@ -3981,6 +3982,56 @@
     });
   }
 
+  function setNearbyCityFocus(cityName) {
+    var chips = document.querySelectorAll('#surrounding-cities [data-map-city]');
+    var want = (cityName || '').trim().toLowerCase();
+    chips.forEach(function (chip) {
+      var on = want && (chip.getAttribute('data-map-city') || '').trim().toLowerCase() === want;
+      chip.classList.toggle('is-map-focus', on);
+      if (on) chip.setAttribute('aria-current', 'true');
+      else chip.removeAttribute('aria-current');
+    });
+  }
+
+  function boundsForCity(geo, cityName) {
+    var want = (cityName || '').trim().toLowerCase();
+    if (!want || !geo) return null;
+    var minLng = Infinity, minLat = Infinity, maxLng = -Infinity, maxLat = -Infinity, n = 0;
+    (geo.features || []).forEach(function (f) {
+      var city = ((f.properties && f.properties.city) || '').trim().toLowerCase();
+      if (city !== want) return;
+      var c = f.geometry && f.geometry.coordinates;
+      if (!c || c.length < 2) return;
+      n += 1;
+      minLng = Math.min(minLng, c[0]);
+      minLat = Math.min(minLat, c[1]);
+      maxLng = Math.max(maxLng, c[0]);
+      maxLat = Math.max(maxLat, c[1]);
+    });
+    if (!n) return null;
+    return { minLng: minLng, minLat: minLat, maxLng: maxLng, maxLat: maxLat, n: n };
+  }
+
+  function zoomMapToCity(cityName) {
+    var map = window.__protoMap;
+    var geo = window.__protoGeo;
+    var box = boundsForCity(geo, cityName);
+    if (!map || !box) return false;
+    var opts = { padding: 56, maxZoom: 12, duration: 900 };
+    if (box.minLng === box.maxLng && box.minLat === box.maxLat) {
+      map.flyTo({ center: [box.minLng, box.minLat], zoom: 12, duration: 900 });
+    } else {
+      map.fitBounds([[box.minLng, box.minLat], [box.maxLng, box.maxLat]], opts);
+    }
+    return true;
+  }
+
+  function requestCityZoom(cityName) {
+    pendingCityZoom = cityName;
+    setNearbyCityFocus(cityName);
+    if (!zoomMapToCity(cityName)) loadMap();
+  }
+
   function loadMap() {
     if (loaded) return; loaded = true;
     var css = document.createElement('link');
@@ -4037,6 +4088,7 @@
         window.__protoGeo = geo;
         window.__protoOpenDetail = openSiteFromFeature;
         addSignMarkers(map, buildSitesFromGeo(geo).sites);
+        if (pendingCityZoom) zoomMapToCity(pendingCityZoom);
       });
     }
     if (map.isStyleLoaded()) addSignLayers();
@@ -4087,6 +4139,8 @@
         btn.addEventListener('click', function () {
           map.fitBounds(bounds, fitOpts);
           closeDetail();
+          pendingCityZoom = null;
+          setNearbyCityFocus(null);
         });
         this._container.appendChild(btn);
         return this._container;
@@ -4276,6 +4330,15 @@
       entries.forEach(function (en) { if (en.isIntersecting) { loadMap(); obs.disconnect(); } });
     }, { rootMargin: '400px' }).observe(shell);
   } else { loadMap(); }
+
+  var nearbyCities = document.getElementById('surrounding-cities');
+  if (nearbyCities) {
+    nearbyCities.addEventListener('click', function (e) {
+      var chip = e.target.closest('[data-map-city]');
+      if (!chip || !nearbyCities.contains(chip)) return;
+      requestCityZoom(chip.getAttribute('data-map-city'));
+    });
+  }
 
   var menu = document.getElementById('blipV2Menu');
   var toggle = document.querySelector('.blip-v2-mobile-toggle');

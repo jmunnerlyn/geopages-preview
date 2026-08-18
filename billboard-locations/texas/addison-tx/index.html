@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600;700;800&family=Lexend:wght@400;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/geopages-preview/assets/location.css?v=stat-scope-2">
+<link rel="stylesheet" href="/geopages-preview/assets/location.css?v=nearby-map-zoom-1">
 
 </head>
 <body class="is-preview page-city"><div style="background:#111;color:#fff;padding:10px 16px;font:14px system-ui;position:sticky;top:0;z-index:9999">AI interpretation overlay (Terra) — use the Fallback / AI control (bottom left) to compare. <a href="/compare/" style="color:#9cf">Section comparison</a> · <a href="http://127.0.0.1:8321/billboard-locations/texas/" style="color:#9cf">Original Texas</a></div>
@@ -278,22 +278,23 @@
       <h3 class="surrounding-discovery-title">Cities with boards near Addison</h3>
       <p class="surrounding-discovery-lede">
         Boards within about 10 miles of Addison, grouped by city.
+        Select a city to show its boards on the map.
       </p>
       <div class="directory-top nearby-chips">
         
-        <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/texas/carrollton-tx/">Carrollton <span>15</span></a>
+        <a class="dir-chip" href="#find-billboards" data-map-city="Carrollton" aria-label="Show Carrollton boards on the map">Carrollton <span>15</span></a>
         
-        <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/texas/dallas-tx/">Dallas <span>15</span></a>
+        <a class="dir-chip" href="#find-billboards" data-map-city="Dallas" aria-label="Show Dallas boards on the map">Dallas <span>15</span></a>
         
-        <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/texas/lewisville-tx/">Lewisville <span>5</span></a>
+        <a class="dir-chip" href="#find-billboards" data-map-city="Lewisville" aria-label="Show Lewisville boards on the map">Lewisville <span>5</span></a>
         
-        <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/texas/plano-tx/">Plano <span>4</span></a>
+        <a class="dir-chip" href="#find-billboards" data-map-city="Plano" aria-label="Show Plano boards on the map">Plano <span>4</span></a>
         
-        <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/texas/the-colony-tx/">The Colony <span>4</span></a>
+        <a class="dir-chip" href="#find-billboards" data-map-city="The Colony" aria-label="Show The Colony boards on the map">The Colony <span>4</span></a>
         
-        <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/texas/farmers-branch-tx/">Farmers Branch <span>1</span></a>
+        <a class="dir-chip" href="#find-billboards" data-map-city="Farmers Branch" aria-label="Show Farmers Branch boards on the map">Farmers Branch <span>1</span></a>
         
-        <a class="dir-chip" href="https://www.blipbillboards.com/billboard-locations/texas/irving-tx/">Irving <span>1</span></a>
+        <a class="dir-chip" href="#find-billboards" data-map-city="Irving" aria-label="Show Irving boards on the map">Irving <span>1</span></a>
         
       </div>
       <p class="surrounding-discovery-foot">
@@ -3209,6 +3210,7 @@
   var classFilter = { roadside: true, place_based: true };
   var detailStackMembers = null;
   var detailStackIndex = 0;
+  var pendingCityZoom = null;
 
   function featurePassesClass(f) {
     var cls = (f.properties && f.properties.inventory_class) || 'place_based';
@@ -3415,6 +3417,56 @@
     });
   }
 
+  function setNearbyCityFocus(cityName) {
+    var chips = document.querySelectorAll('#surrounding-cities [data-map-city]');
+    var want = (cityName || '').trim().toLowerCase();
+    chips.forEach(function (chip) {
+      var on = want && (chip.getAttribute('data-map-city') || '').trim().toLowerCase() === want;
+      chip.classList.toggle('is-map-focus', on);
+      if (on) chip.setAttribute('aria-current', 'true');
+      else chip.removeAttribute('aria-current');
+    });
+  }
+
+  function boundsForCity(geo, cityName) {
+    var want = (cityName || '').trim().toLowerCase();
+    if (!want || !geo) return null;
+    var minLng = Infinity, minLat = Infinity, maxLng = -Infinity, maxLat = -Infinity, n = 0;
+    (geo.features || []).forEach(function (f) {
+      var city = ((f.properties && f.properties.city) || '').trim().toLowerCase();
+      if (city !== want) return;
+      var c = f.geometry && f.geometry.coordinates;
+      if (!c || c.length < 2) return;
+      n += 1;
+      minLng = Math.min(minLng, c[0]);
+      minLat = Math.min(minLat, c[1]);
+      maxLng = Math.max(maxLng, c[0]);
+      maxLat = Math.max(maxLat, c[1]);
+    });
+    if (!n) return null;
+    return { minLng: minLng, minLat: minLat, maxLng: maxLng, maxLat: maxLat, n: n };
+  }
+
+  function zoomMapToCity(cityName) {
+    var map = window.__protoMap;
+    var geo = window.__protoGeo;
+    var box = boundsForCity(geo, cityName);
+    if (!map || !box) return false;
+    var opts = { padding: 56, maxZoom: 12, duration: 900 };
+    if (box.minLng === box.maxLng && box.minLat === box.maxLat) {
+      map.flyTo({ center: [box.minLng, box.minLat], zoom: 12, duration: 900 });
+    } else {
+      map.fitBounds([[box.minLng, box.minLat], [box.maxLng, box.maxLat]], opts);
+    }
+    return true;
+  }
+
+  function requestCityZoom(cityName) {
+    pendingCityZoom = cityName;
+    setNearbyCityFocus(cityName);
+    if (!zoomMapToCity(cityName)) loadMap();
+  }
+
   function loadMap() {
     if (loaded) return; loaded = true;
     var css = document.createElement('link');
@@ -3471,6 +3523,7 @@
         window.__protoGeo = geo;
         window.__protoOpenDetail = openSiteFromFeature;
         addSignMarkers(map, buildSitesFromGeo(geo).sites);
+        if (pendingCityZoom) zoomMapToCity(pendingCityZoom);
       });
     }
     if (map.isStyleLoaded()) addSignLayers();
@@ -3521,6 +3574,8 @@
         btn.addEventListener('click', function () {
           map.fitBounds(bounds, fitOpts);
           closeDetail();
+          pendingCityZoom = null;
+          setNearbyCityFocus(null);
         });
         this._container.appendChild(btn);
         return this._container;
@@ -3710,6 +3765,15 @@
       entries.forEach(function (en) { if (en.isIntersecting) { loadMap(); obs.disconnect(); } });
     }, { rootMargin: '400px' }).observe(shell);
   } else { loadMap(); }
+
+  var nearbyCities = document.getElementById('surrounding-cities');
+  if (nearbyCities) {
+    nearbyCities.addEventListener('click', function (e) {
+      var chip = e.target.closest('[data-map-city]');
+      if (!chip || !nearbyCities.contains(chip)) return;
+      requestCityZoom(chip.getAttribute('data-map-city'));
+    });
+  }
 
   var menu = document.getElementById('blipV2Menu');
   var toggle = document.querySelector('.blip-v2-mobile-toggle');

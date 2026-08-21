@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600;700;800&family=Lexend:wght@400;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/geopages-preview/assets/location.css?v=cpm-key-2">
+<link rel="stylesheet" href="/geopages-preview/assets/location.css?v=mobile-wrap-2">
 
 </head>
 <body class="is-preview page-city"><div style="background:#111;color:#fff;padding:10px 16px;font:14px system-ui;position:sticky;top:0;z-index:9999">AI interpretation overlay (Terra) — use the Fallback / AI control (bottom left) to compare. <a href="/compare/" style="color:#9cf">Section comparison</a> · <a href="http://127.0.0.1:8321/billboard-locations/texas/" style="color:#9cf">Original Texas</a></div>
@@ -151,7 +151,11 @@
     <div class="stat" role="listitem"><span class="stat-num">$13/day</span><span class="stat-label">Typical recent daily spend</span></div>
     
     
-    <div class="stat" role="listitem"><span class="stat-num">1.3M</span><span class="stat-label">Daily impressions (adults 18+)</span></div>
+    <div class="stat" role="listitem">
+      <span class="stat-num">1.3M</span>
+      <span class="stat-label">Daily impressions</span>
+      <span class="stat-split">adults 18+</span>
+    </div>
     
   </div>
   </div>
@@ -276,42 +280,47 @@
     
 
     
-    <aside class="surrounding-discovery" id="surrounding-cities" aria-label="Nearby cities with Blip billboards">
-      <h3 class="surrounding-discovery-title">Browse billboards in nearby cities</h3>
-      <p class="surrounding-discovery-lede">
-        Looking beyond Houston? There are 73 more billboards across
-        10 nearby cities,
-        including 29 roadside billboards.
-        Select a city to show its boards on the map, or keep exploring.
-        The list below covers the 71 billboards in Houston.
-      </p>
-      <div class="directory-top nearby-chips">
-        
-        <a class="dir-chip" href="#find-billboards" data-map-city="Pasadena" aria-label="Show Pasadena boards on the map">Pasadena <span>15</span></a>
-        
-        <a class="dir-chip" href="#find-billboards" data-map-city="Spring" aria-label="Show Spring boards on the map">Spring <span>9</span></a>
-        
-        <a class="dir-chip" href="#find-billboards" data-map-city="Missouri City" aria-label="Show Missouri City boards on the map">Missouri City <span>8</span></a>
-        
-        <a class="dir-chip" href="#find-billboards" data-map-city="Humble" aria-label="Show Humble boards on the map">Humble <span>7</span></a>
-        
-        <a class="dir-chip" href="#find-billboards" data-map-city="Pearland" aria-label="Show Pearland boards on the map">Pearland <span>7</span></a>
-        
-        <a class="dir-chip" href="#find-billboards" data-map-city="Baytown" aria-label="Show Baytown boards on the map">Baytown <span>6</span></a>
-        
-        <a class="dir-chip" href="#find-billboards" data-map-city="Sugar Land" aria-label="Show Sugar Land boards on the map">Sugar Land <span>6</span></a>
-        
-        <a class="dir-chip" href="#find-billboards" data-map-city="La Marque" aria-label="Show La Marque boards on the map">La Marque <span>5</span></a>
-        
-        <a class="dir-chip" href="#find-billboards" data-map-city="League City" aria-label="Show League City boards on the map">League City <span>5</span></a>
-        
-        <a class="dir-chip" href="#find-billboards" data-map-city="Stafford" aria-label="Show Stafford boards on the map">Stafford <span>5</span></a>
-        
-      </div>
-      <p class="surrounding-discovery-foot">
-        <a href="/geopages-preview/billboard-locations/texas/">Browse all Texas billboards →</a>
-      </p>
-    </aside>
+    
+    
+    
+    
+    
+    
+    
+    
+<div class="city-finder" id="surrounding-cities" aria-label="Find boards by city">
+  <h3>Find boards by&nbsp;city</h3>
+  <p class="city-finder-note">Select a city to show its boards on the map. Each count is boards in that city. For a wider area view, see <a href="#market-context">regional coverage</a> by media market.</p>
+  <div class="directory-top">
+    
+    <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="Pasadena" aria-label="Show Pasadena boards on the map">Pasadena <span>15</span></a>
+    
+    <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="Spring" aria-label="Show Spring boards on the map">Spring <span>9</span></a>
+    
+    <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="Missouri City" aria-label="Show Missouri City boards on the map">Missouri City <span>8</span></a>
+    
+    <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="Humble" aria-label="Show Humble boards on the map">Humble <span>7</span></a>
+    
+    <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="Pearland" aria-label="Show Pearland boards on the map">Pearland <span>7</span></a>
+    
+    <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="Baytown" aria-label="Show Baytown boards on the map">Baytown <span>6</span></a>
+    
+    <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="Sugar Land" aria-label="Show Sugar Land boards on the map">Sugar Land <span>6</span></a>
+    
+    <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="La Marque" aria-label="Show La Marque boards on the map">La Marque <span>5</span></a>
+    
+    <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="League City" aria-label="Show League City boards on the map">League City <span>5</span></a>
+    
+    <a class="dir-chip dir-chip-major" href="#find-billboards" data-map-city="Stafford" aria-label="Show Stafford boards on the map">Stafford <span>5</span></a>
+    
+  </div>
+  
+  <div class="city-finder-browse-row">
+    <p class="city-finder-browse-label">Looking for a specific town?</p>
+    <a class="city-finder-browse-btn" href="/geopages-preview/billboard-locations/texas/#go-deeper">See all 213 Texas cities ↓</a>
+  </div>
+  
+</div>
     
 
     <hr class="section-divider" aria-hidden="true">
@@ -2884,7 +2893,7 @@
     
     
 <div class="cost-calculator-layout">
-  <section class="cost-calculator" aria-label="Daily budget calculator" data-cost-calculator='{"about_note": "The audience figure is estimated daily impressions (adults 18+), adjusted for share of voice, from recent Texas roadside campaigns, held to the nearest measured spend band as you move the slider. Place-based screens are excluded. This is an estimate, not a quote. Lower-budget bands without a stored impressions median are scaled from a neighboring measured band using realized play volume. This page does not yet have enough local campaign-days for its own impression curve, so it uses Texas.", "axis_labels": [10, 50, 100, 150], "cohort_level": "parent", "cohort_name": "Texas", "default": 50, "default_spend_30": 1500, "default_tip_html": "At \u003cstrong\u003e$50 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound.", "default_views": 7276, "has_scaled_views": true, "local_typical_spend": 13, "max": 150, "min": 10, "step": 5, "ticks": {"10": {"budget": 10, "impressions_median": 2781, "spend_30": 300, "tip_html": "At \u003cstrong\u003e$10 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "100": {"budget": 100, "impressions_median": 11054, "spend_30": 3000, "tip_html": "At \u003cstrong\u003e$100 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "105": {"budget": 105, "impressions_median": 11054, "spend_30": 3150, "tip_html": "At \u003cstrong\u003e$105 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "110": {"budget": 110, "impressions_median": 11054, "spend_30": 3300, "tip_html": "At \u003cstrong\u003e$110 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "115": {"budget": 115, "impressions_median": 11054, "spend_30": 3450, "tip_html": "At \u003cstrong\u003e$115 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "120": {"budget": 120, "impressions_median": 11054, "spend_30": 3600, "tip_html": "At \u003cstrong\u003e$120 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "125": {"budget": 125, "impressions_median": 11054, "spend_30": 3750, "tip_html": "At \u003cstrong\u003e$125 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "130": {"budget": 130, "impressions_median": 11054, "spend_30": 3900, "tip_html": "At \u003cstrong\u003e$130 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "135": {"budget": 135, "impressions_median": 11054, "spend_30": 4050, "tip_html": "At \u003cstrong\u003e$135 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "140": {"budget": 140, "impressions_median": 11054, "spend_30": 4200, "tip_html": "At \u003cstrong\u003e$140 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "145": {"budget": 145, "impressions_median": 11054, "spend_30": 4350, "tip_html": "At \u003cstrong\u003e$145 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "15": {"budget": 15, "impressions_median": 2781, "spend_30": 450, "tip_html": "At \u003cstrong\u003e$15 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "150": {"budget": 150, "impressions_median": 16387, "spend_30": 4500, "tip_html": "At \u003cstrong\u003e$150 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "20": {"budget": 20, "impressions_median": 2781, "spend_30": 600, "tip_html": "At \u003cstrong\u003e$20 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "25": {"budget": 25, "impressions_median": 6393, "spend_30": 750, "tip_html": "At \u003cstrong\u003e$25 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "30": {"budget": 30, "impressions_median": 6393, "spend_30": 900, "tip_html": "At \u003cstrong\u003e$30 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "35": {"budget": 35, "impressions_median": 6393, "spend_30": 1050, "tip_html": "At \u003cstrong\u003e$35 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "40": {"budget": 40, "impressions_median": 6393, "spend_30": 1200, "tip_html": "At \u003cstrong\u003e$40 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "45": {"budget": 45, "impressions_median": 6393, "spend_30": 1350, "tip_html": "At \u003cstrong\u003e$45 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "50": {"budget": 50, "impressions_median": 7276, "spend_30": 1500, "tip_html": "At \u003cstrong\u003e$50 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "55": {"budget": 55, "impressions_median": 7276, "spend_30": 1650, "tip_html": "At \u003cstrong\u003e$55 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "60": {"budget": 60, "impressions_median": 7276, "spend_30": 1800, "tip_html": "At \u003cstrong\u003e$60 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "65": {"budget": 65, "impressions_median": 7276, "spend_30": 1950, "tip_html": "At \u003cstrong\u003e$65 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "70": {"budget": 70, "impressions_median": 7276, "spend_30": 2100, "tip_html": "At \u003cstrong\u003e$70 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "75": {"budget": 75, "impressions_median": 10068, "spend_30": 2250, "tip_html": "At \u003cstrong\u003e$75 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "80": {"budget": 80, "impressions_median": 10068, "spend_30": 2400, "tip_html": "At \u003cstrong\u003e$80 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "85": {"budget": 85, "impressions_median": 10068, "spend_30": 2550, "tip_html": "At \u003cstrong\u003e$85 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "90": {"budget": 90, "impressions_median": 10068, "spend_30": 2700, "tip_html": "At \u003cstrong\u003e$90 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "95": {"budget": 95, "impressions_median": 10068, "spend_30": 2850, "tip_html": "At \u003cstrong\u003e$95 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}}}'>
+  <section class="cost-calculator" aria-label="Daily budget calculator" data-cost-calculator='{"about_note": "The audience figure is estimated daily impressions (adults 18+), adjusted for share of voice, from recent Texas roadside campaigns, held to the nearest measured spend band as you move the slider. Place-based screens are excluded. This is an estimate, not a quote. Lower-budget bands without a stored impressions median are scaled from a neighboring measured band using realized play volume. This page does not yet have enough local campaign-days for its own impression curve, so it uses Texas.", "axis_labels": [10, 50, 100, 150], "cohort_level": "parent", "cohort_name": "Texas", "default": 50, "default_spend_30": 1500, "default_tip_html": "At \u003cstrong\u003e$50 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound.", "default_views": 7276, "footer": "Modeled from recent Texas campaigns \u2014 an estimate, not a quote. You always set your own budget and choose your own screens.", "has_scaled_views": true, "local_typical_spend": 13, "max": 150, "min": 10, "step": 5, "ticks": {"10": {"budget": 10, "impressions_median": 2781, "spend_30": 300, "tip_html": "At \u003cstrong\u003e$10 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "100": {"budget": 100, "impressions_median": 11054, "spend_30": 3000, "tip_html": "At \u003cstrong\u003e$100 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "105": {"budget": 105, "impressions_median": 11054, "spend_30": 3150, "tip_html": "At \u003cstrong\u003e$105 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "110": {"budget": 110, "impressions_median": 11054, "spend_30": 3300, "tip_html": "At \u003cstrong\u003e$110 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "115": {"budget": 115, "impressions_median": 11054, "spend_30": 3450, "tip_html": "At \u003cstrong\u003e$115 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "120": {"budget": 120, "impressions_median": 11054, "spend_30": 3600, "tip_html": "At \u003cstrong\u003e$120 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "125": {"budget": 125, "impressions_median": 11054, "spend_30": 3750, "tip_html": "At \u003cstrong\u003e$125 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "130": {"budget": 130, "impressions_median": 11054, "spend_30": 3900, "tip_html": "At \u003cstrong\u003e$130 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "135": {"budget": 135, "impressions_median": 11054, "spend_30": 4050, "tip_html": "At \u003cstrong\u003e$135 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "140": {"budget": 140, "impressions_median": 11054, "spend_30": 4200, "tip_html": "At \u003cstrong\u003e$140 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "145": {"budget": 145, "impressions_median": 11054, "spend_30": 4350, "tip_html": "At \u003cstrong\u003e$145 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "15": {"budget": 15, "impressions_median": 2781, "spend_30": 450, "tip_html": "At \u003cstrong\u003e$15 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "150": {"budget": 150, "impressions_median": 16387, "spend_30": 4500, "tip_html": "At \u003cstrong\u003e$150 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "20": {"budget": 20, "impressions_median": 2781, "spend_30": 600, "tip_html": "At \u003cstrong\u003e$20 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "25": {"budget": 25, "impressions_median": 6393, "spend_30": 750, "tip_html": "At \u003cstrong\u003e$25 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "30": {"budget": 30, "impressions_median": 6393, "spend_30": 900, "tip_html": "At \u003cstrong\u003e$30 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "35": {"budget": 35, "impressions_median": 6393, "spend_30": 1050, "tip_html": "At \u003cstrong\u003e$35 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "40": {"budget": 40, "impressions_median": 6393, "spend_30": 1200, "tip_html": "At \u003cstrong\u003e$40 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "45": {"budget": 45, "impressions_median": 6393, "spend_30": 1350, "tip_html": "At \u003cstrong\u003e$45 a day\u003c/strong\u003e you can concentrate on a single corridor and find out which screens work for you before spending more."}, "50": {"budget": 50, "impressions_median": 7276, "spend_30": 1500, "tip_html": "At \u003cstrong\u003e$50 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "55": {"budget": 55, "impressions_median": 7276, "spend_30": 1650, "tip_html": "At \u003cstrong\u003e$55 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "60": {"budget": 60, "impressions_median": 7276, "spend_30": 1800, "tip_html": "At \u003cstrong\u003e$60 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "65": {"budget": 65, "impressions_median": 7276, "spend_30": 1950, "tip_html": "At \u003cstrong\u003e$65 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "70": {"budget": 70, "impressions_median": 7276, "spend_30": 2100, "tip_html": "At \u003cstrong\u003e$70 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "75": {"budget": 75, "impressions_median": 10068, "spend_30": 2250, "tip_html": "At \u003cstrong\u003e$75 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "80": {"budget": 80, "impressions_median": 10068, "spend_30": 2400, "tip_html": "At \u003cstrong\u003e$80 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "85": {"budget": 85, "impressions_median": 10068, "spend_30": 2550, "tip_html": "At \u003cstrong\u003e$85 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "90": {"budget": 90, "impressions_median": 10068, "spend_30": 2700, "tip_html": "At \u003cstrong\u003e$90 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}, "95": {"budget": 95, "impressions_median": 10068, "spend_30": 2850, "tip_html": "At \u003cstrong\u003e$95 a day\u003c/strong\u003e you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound."}}}'>
     <p class="cost-calculator-budget" aria-live="polite">
       <span class="cost-budget-amount">$<span data-cost-budget>50</span></span>
       <span class="cost-budget-unit">per day</span>
@@ -2907,15 +2916,13 @@
       </div>
     </div>
     <p class="cost-calculator-tip" data-cost-tip>At <strong>$50 a day</strong> you have enough volume for regular drivers on your chosen route to see the ad several times a week, which is where outdoor advertising starts to compound.</p>
+    <p class="cost-calculator-foot">Modeled from recent Texas campaigns — an estimate, not a quote. You always set your own budget and choose your own screens. Recent campaigns in Houston often spent about $13/day.</p>
   </section>
   <aside class="blip-definition" aria-label="What a blip is">
     <p class="blip-definition-eyebrow">One word to know</p>
     <p>A blip is one play of your ad on a screen &mdash; about 7.5 to 10 seconds. You pay per blip, so you&rsquo;re never renting a whole board for a month.</p>
   </aside>
 </div>
-
-<p class="cost-local-typical">Recent campaigns in Houston often spent about $13/day.</p>
-
 <script>
 (function () {
   var calculator = document.querySelector('[data-cost-calculator]');
@@ -3006,8 +3013,8 @@
 
 <section id="rental" class="section">
   <div class="wrap">
-    <h2>Billboard rental in Houston</h2>
-    <p class="section-lede">
+    <h2>Billboard rentals in Houston</h2>
+    <p class="rental-status">
       
       All 71 boards in Houston were open for campaigns as of
       2026-08-21.
@@ -3015,90 +3022,128 @@
       Check live availability when you start.
     </p>
     <div class="rental-how">
-      <h3 class="rental-how-title">How Blip rental works</h3>
+      <h3 class="rental-how-title">How Blip Rental Works</h3>
       <ul class="rental-how-list">
-        <li>
-          Pay-per-play, not a lease.
-          Traditional rental is usually a fixed multi-week contract on one face. On Blip you set any daily
-          budget, then either let Blip Optimized pick strong signs for you or
-          choose your own boards, and pay for the plays you buy &mdash; pause or stop anytime.
-          No long-term lease and no minimum spend.
+        <li class="rental-how-card">
+          <span class="rental-how-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" focusable="false">
+              <path d="M12 4v16M16.4 8c0-1.7-2-3-4.4-3S7.6 6.3 7.6 8c0 4.4 8.8 2.1 8.8 6.8 0 1.8-2 3.2-4.4 3.2S7.6 16.6 7.6 14.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <p class="rental-how-body">
+            Pay-per-play, not a lease.
+            Traditional rental is usually a fixed multi-week contract on one face. On Blip you set any daily
+            budget, then either let Blip Optimized pick strong signs for you or
+            choose your own boards, and pay for the plays you buy &mdash; pause or stop anytime.
+            No long-term lease and no minimum spend.
+          </p>
         </li>
-        <li>
-          Digital rotation.
-          Each board runs a loop of short spots (typically about 7.5&ndash;10 seconds). Your ad shares the
-          loop with other advertisers instead of owning the face full-time.
+        <li class="rental-how-card">
+          <span class="rental-how-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" focusable="false">
+              <path d="M4.6 12A7.4 7.4 0 0 1 17.2 6.8L19.4 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M19.4 4.6V9H14.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M19.4 12A7.4 7.4 0 0 1 6.8 17.2L4.6 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4.6 19.4V15H9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <p class="rental-how-body">
+            Digital rotation.
+            Each board runs a loop of short spots (typically about 7.5&ndash;10 seconds). Your ad shares the
+            loop with other advertisers instead of owning the face full-time.
+          </p>
         </li>
-        <li>
-          Availability can change.
-          Counts above are a snapshot, not a hold. You&rsquo;ll see what&rsquo;s open when you build a campaign.
+        <li class="rental-how-card">
+          <span class="rental-how-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" focusable="false">
+              <rect x="3.6" y="5" width="16.8" height="15.4" rx="2" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M3.6 9.2h16.8M8 3.4V6.6M16 3.4V6.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="15.2" cy="15.4" r="3.1" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M15.2 14v1.5l1.1.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <p class="rental-how-body">
+            Availability can change.
+            Counts above are a snapshot, not a hold. You&rsquo;ll see what&rsquo;s open when you build a campaign.
+          </p>
         </li>
       </ul>
+      <p class="rental-actions">
+        Browse the <a href="#board-index">Houston board list</a>,
+        see <a href="#cost">recent spend examples</a>,
+        or <a href="https://marketplace.blipbillboards.com/register">start a campaign</a>.
+      </p>
     </div>
-    <p class="body-copy rental-actions">
-      Browse the <a href="#board-index">Houston board list</a>,
-      see <a href="#cost">recent spend examples</a>,
-      or <a href="https://marketplace.blipbillboards.com/register">start a campaign</a>.
-    </p>
   </div>
 </section>
 
 
-<!-- ============ MEDIA MARKET CONTEXT (thin band; not state 3-col market grid) ============ -->
+<!-- ============ MEDIA MARKET CONTEXT (mint card; not state DMA bar list) ============ -->
 <section id="market-context" class="section">
   <div class="wrap">
-    <h2>Houston in the Texas media market</h2>
-    <p class="section-lede">
+    <h2>Houston media market in Texas</h2>
+    <p class="market-context-lede">
       Planning a wider Houston-area buy? Here&rsquo;s the full media market around the city.
+    </p>
+    <p class="section-lede">
       When you launch, use Blip Optimized or choose your own signs.
     </p>
 <p class="section-lede ai-interpretation" style="padding-left:1rem;border-left:3px solid #111">This page focuses on 71 boards in Houston, while the Houston and nearby cities cohort spans 144 boards. The broader Houston media market includes 183 boards across 31 cities, so use the cohort for area-level insight and this page for in-city planning.</p>
-    <div class="market-context-panel">
-      <div class="market-context-main">
-        <p class="market-context-name">Houston</p>
-        <p class="market-context-stats">
-          183 boards across
-          31 cities
-          · 2.1M daily impressions
-        </p>
+    <div class="market-context-card">
+      <p class="market-context-name">Houston</p>
+      <div class="market-context-top">
+        <div class="market-context-figures" role="list">
+          <div class="market-context-stat" role="listitem">
+            <span class="stat-num">183</span>
+            
+            <span class="market-cities-label">Boards across 31 cities</span>
+            
+          </div>
+          
+          <div class="market-context-stat" role="listitem">
+            <span class="stat-num">2.1M</span>
+            <span class="market-cities-label">Daily impressions</span>
+          </div>
+          
+        </div>
         
-        <div class="copy-pair" data-copy-slot="market_card_note__618">
+        <div class="market-context-desc copy-pair" data-copy-slot="market_card_note__618">
           <p class="market-note copy-fallback">Blip’s largest Texas market, spanning Houston and surrounding communities.</p>
           <p class="market-note copy-ai" data-copy-ai="market_card_note__618"></p>
         </div>
         
-        <p class="market-map-action">
-          <a class="market-map-link" href="/geopages-preview/billboard-locations/texas/#markets">Compare all Texas media markets →</a>
-        </p>
       </div>
       
       <div class="market-context-cities">
         <span class="market-cities-label">Cities with the most boards</span>
-        <div class="market-city-chips">
+        <div class="directory-top">
           
           
-          <a class="market-city-chip" href="/geopages-preview/billboard-locations/texas/houston-tx/">Houston <span class="market-chip-count">71</span></a>
-          
-          
-          
-          <a class="market-city-chip" href="/geopages-preview/billboard-locations/texas/pasadena-tx/">Pasadena <span class="market-chip-count">15</span></a>
+          <a class="dir-chip" href="/geopages-preview/billboard-locations/texas/houston-tx/">Houston <span>71</span></a>
           
           
           
-          <a class="market-city-chip" href="/geopages-preview/billboard-locations/texas/spring-tx/">Spring <span class="market-chip-count">9</span></a>
+          <a class="dir-chip" href="/geopages-preview/billboard-locations/texas/pasadena-tx/">Pasadena <span>15</span></a>
           
           
           
-          <a class="market-city-chip" href="/geopages-preview/billboard-locations/texas/missouri-city-tx/">Missouri City <span class="market-chip-count">8</span></a>
+          <a class="dir-chip" href="/geopages-preview/billboard-locations/texas/spring-tx/">Spring <span>9</span></a>
           
           
           
-          <a class="market-city-chip" href="/geopages-preview/billboard-locations/texas/humble-tx/">Humble <span class="market-chip-count">7</span></a>
+          <a class="dir-chip" href="/geopages-preview/billboard-locations/texas/missouri-city-tx/">Missouri City <span>8</span></a>
+          
+          
+          
+          <a class="dir-chip" href="/geopages-preview/billboard-locations/texas/humble-tx/">Humble <span>7</span></a>
           
           
         </div>
       </div>
       
+      <p class="market-map-action">
+        <a class="city-finder-browse-btn" href="/geopages-preview/billboard-locations/texas/#markets">Compare All Texas Media Markets</a>
+      </p>
     </div>
   </div>
 </section>

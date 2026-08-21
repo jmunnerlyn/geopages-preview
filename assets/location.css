@@ -11,6 +11,7 @@
   --btn-ghost-border: #2F8FA2; /* Figma btn-ghost outline (distinct from breadcrumb --seafoam) */
   --seafoam: #2E8696;       /* Blip Seafoam — secondary UI, breadcrumb borders/separators */
   --navy: #30406A;          /* Stormy Blue — headlines, nav, structure, dark bands */
+  --hour-cpm-line: #999999; /* Figma Timing chart buyer-CPM overlay */
   --blip-navy-deep: #2B395D; /* Blip Navy — Smarter Buys CTA button + step chrome */
   /* Secondary (slide 29) */
   --teal: #28C3C8;          /* UI highlights, charts, focus rings */
@@ -324,10 +325,12 @@ h3 { font-size: 1.15rem; font-weight: 600; }
 .breadcrumb-item { display: flex; align-items: center; min-width: 0; }
 .breadcrumb-item:not(:last-child)::after {
   content: ">";
-  margin: 0 10px;
+  margin: 0 6px;
   color: var(--seafoam);
   font-family: var(--font-body);
-  font-size: 0.82rem; font-weight: 500; line-height: 1;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1;
 }
 .breadcrumb-pill {
   display: inline-flex; align-items: center; justify-content: center;
@@ -1022,6 +1025,15 @@ a.breadcrumb-pill:focus-visible {
   border: 1px solid color-mix(in srgb, var(--blip-teal) 33%, transparent);
   border-radius: 16px;
   background: #fff;
+  /* Seasonality (12 month cols) is the bar-width reference. Audience uses the
+     same column width so 5 age pills don’t stretch across the full chart. */
+  --campaign-chart-gap: 5px;
+  --campaign-chart-cols: 12;
+  --campaign-insight-bar-width: calc((100% - (var(--campaign-chart-cols) - 1) * var(--campaign-chart-gap)) / var(--campaign-chart-cols));
+  /* Space below the About this data pill to the expanded body. */
+  --disclosure-stack-gap: 16px;
+  /* Space from chart/labels (or Seasonality fact) to the About this data pill. */
+  --campaign-chart-notes-gap: 20px;
 }
 .campaign-insight-top {
   display: flex;
@@ -1129,6 +1141,7 @@ a.breadcrumb-pill:focus-visible {
   text-transform: uppercase;
 }
 .campaign-hour-chart { height: 190px; margin: 0 0 12px; gap: 5px; }
+.campaign-hour-chart-wrap .hour-cpm-svg { height: 190px; }
 .campaign-hour-chart .hour-bar {
   background: color-mix(in srgb, var(--pink) 26%, #fff);
   border-radius: 999px;
@@ -1139,7 +1152,11 @@ a.breadcrumb-pill:focus-visible {
 .campaign-season-chart {
   height: 190px;
   margin: 0 0 12px;
-  gap: 5px;
+  gap: var(--campaign-chart-gap);
+}
+.campaign-season-chart .season-col {
+  flex: 0 0 var(--campaign-insight-bar-width);
+  min-width: 0;
 }
 .campaign-season-chart .season-bar {
   width: 100%;
@@ -1156,19 +1173,21 @@ a.breadcrumb-pill:focus-visible {
 .campaign-season-chart .season-col-peak .season-x { color: var(--pink); }
 .campaign-age-chart {
   height: 190px;
-  margin: 0 auto 12px;
-  gap: 5px;
-  max-width: min(100%, 260px);
+  width: 100%;
+  max-width: none;
+  margin: 0 0 12px;
+  gap: var(--campaign-chart-gap);
   justify-content: center;
+  padding: 0 2px;
 }
 .campaign-age-chart .age-col {
-  flex: 1 1 0;
+  flex: 0 0 var(--campaign-insight-bar-width);
   min-width: 0;
-  max-width: 52px;
+  max-width: none;
 }
 .campaign-age-chart .age-bar {
-  width: 36px;
-  max-width: 36px;
+  width: 100%;
+  max-width: none;
   background: color-mix(in srgb, var(--pink) 26%, #fff);
   border-radius: 999px;
 }
@@ -1179,15 +1198,34 @@ a.breadcrumb-pill:focus-visible {
   margin-top: 6px;
 }
 .campaign-age-chart .age-col-peak .age-x { color: var(--pink); }
-.campaign-insight .insight-card-body { padding: 18px 0 0; }
+.campaign-insight-fact {
+  margin: var(--campaign-chart-notes-gap) 0 0;
+  max-width: 660px;
+  color: var(--muted);
+  font: 400 16px/26px var(--font-body);
+}
+.campaign-insight-notes {
+  max-width: 660px;
+  margin: var(--campaign-chart-notes-gap) 0 0;
+}
+.campaign-insight-notes summary.disclosure-pill { list-style: none; }
+.campaign-insight-notes summary.disclosure-pill::-webkit-details-marker { display: none; }
+.campaign-insight-notes-body { padding: var(--disclosure-stack-gap) 0 0; }
+.campaign-insight-notes-body .module-lede { margin-bottom: 12px; }
+.campaign-insight-notes-body .efficiency-note { margin: 0 0 10px; }
+.campaign-insight-notes-body .efficiency-note:last-child,
+.campaign-insight-notes-body .body-copy:last-child,
+.campaign-insight-notes-body .plan-secondary-link:last-child { margin-bottom: 0; }
 @media (max-width: 480px) {
   .campaign-insight { padding: 16px; }
   .campaign-insight-top { align-items: flex-start; flex-direction: column; }
   .campaign-insight-menu, .campaign-insight-trigger { width: 100%; }
   .campaign-insight-options { left: 0; right: 0; min-width: 0; }
   .campaign-hour-chart { height: 150px; }
-  .campaign-season-chart { height: 150px; gap: 4px; }
-  .campaign-age-chart { height: 150px; gap: 4px; }
+  .campaign-hour-chart-wrap .hour-cpm-svg { height: 150px; }
+  .campaign-insight { --campaign-chart-gap: 4px; }
+  .campaign-season-chart { height: 150px; }
+  .campaign-age-chart { height: 150px; }
 }
 
 /* Legacy 2×2 insight cards retained only for historical output. */
@@ -1755,6 +1793,11 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
 .go-deeper-city-chip.is-near-city strong {
   font-weight: 650;
 }
+.go-deeper-near-star {
+  display: inline-block;
+  margin-right: 0.12em;
+  font-weight: 650;
+}
 .go-deeper-city-chip strong {
   flex-shrink: 0;
   color: var(--fuchsia);
@@ -1778,6 +1821,14 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
   font-weight: 400;
   line-height: 17px;
   text-align: left;
+}
+.go-deeper-near-note {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 17px;
 }
 .go-deeper-empty {
   margin-top: 20px;
@@ -2296,7 +2347,7 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
   width: calc(100% - 4px); pointer-events: none; overflow: visible;
 }
 .hour-cpm-line {
-  fill: none; stroke: var(--navy); stroke-width: 2.2;
+  fill: none; stroke: var(--hour-cpm-line); stroke-width: 1.75;
   stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke;
 }
 .hour-legend {
@@ -2308,7 +2359,7 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
   display: inline-block; width: 14px; height: 10px; border-radius: 2px; background: var(--pink);
 }
 .hour-legend-line {
-  display: inline-block; width: 18px; height: 0; border-top: 2.5px solid var(--navy);
+  display: inline-block; width: 18px; height: 0; border-top: 2.5px solid var(--hour-cpm-line);
 }
 .hour-col-best .hour-bar { box-shadow: inset 0 0 0 1.5px rgba(26, 32, 56, 0.35); }
 @media (max-width: 640px) {
@@ -2401,23 +2452,32 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
   border-radius: 999px;
   min-width: 4px;
 }
-.campaign-insight-panel .industry-bars + .insight-card-body { padding-top: 0; }
+.campaign-insight .campaign-hour-chart-wrap,
+.campaign-insight .campaign-hour-chart,
+.campaign-insight .campaign-season-chart,
+.campaign-insight .campaign-industry-bars {
+  margin-bottom: 0;
+}
+.campaign-insight-panel .industry-bars + .campaign-insight-fact,
+.campaign-insight-panel .industry-bars + .campaign-insight-notes {
+  margin-top: var(--campaign-chart-notes-gap);
+}
 @media (max-width: 760px) {
   .campaign-industry-bars { grid-template-columns: 1fr; gap: 16px; }
 }
 
-/* Sign detail panel — desktop side card; mobile fixed bottom sheet */
+/* Sign detail panel — Figma pin sheet (desktop side card; mobile bottom sheet) */
 .sign-detail {
-  position: absolute; top: 14px; right: 14px; bottom: 14px; width: 300px; max-width: calc(100% - 28px);
-  background: #fff; border-radius: var(--radius); box-shadow: 0 10px 34px rgba(0,0,0,0.18); z-index: 20;
+  position: absolute; top: 14px; right: 14px; bottom: 14px; width: 336px; max-width: calc(100% - 28px);
+  background: #fff; border-radius: 20px; box-shadow: 0 10px 34px rgba(0,0,0,0.18); z-index: 20;
   display: flex; flex-direction: column; overflow: hidden;
 }
 /* flex display overrides the UA [hidden] rule — keep closed panels fully gone */
 .sign-detail[hidden] { display: none !important; }
 .detail-tabs {
   display: flex; flex-wrap: wrap; gap: 6px;
-  flex-shrink: 0; padding: 10px 14px 10px;
-  border-bottom: 1px solid var(--line); background: #fff;
+  flex-shrink: 0; padding: 0 16px 10px;
+  background: #fff;
 }
 .detail-tab {
   appearance: none; border: 1px solid var(--line); background: var(--paper-alt);
@@ -2432,36 +2492,70 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
 .detail-tab:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
 .detail-header {
   flex-shrink: 0; display: flex; align-items: center; justify-content: space-between;
-  gap: 12px; padding: 10px 12px 10px 16px; border-bottom: 1px solid var(--line); background: #fff;
+  gap: 12px; padding: 14px 12px 10px 16px; background: #fff;
 }
-.detail-header-label {
-  margin: 0; font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.1em; color: var(--ink-soft);
+.detail-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin: 0; padding: 6px 12px 6px 10px;
+  border: 1px solid var(--seafoam); border-radius: 999px;
+  background: #fff; color: var(--seafoam);
+  font-family: var(--font-body); font-size: 13.6px; font-weight: 400; line-height: 1.3;
+  cursor: pointer;
 }
+.detail-back-chev {
+  display: block; width: 5px; height: 8px; flex-shrink: 0;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 8'%3E%3Cpath fill='black' d='M5 1.25L1 4L5 6.75L3.9 6.75L0 4L3.9 1.25Z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 8'%3E%3Cpath fill='black' d='M5 1.25L1 4L5 6.75L3.9 6.75L0 4L3.9 1.25Z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.detail-back:hover { background: color-mix(in srgb, var(--seafoam) 10%, #fff); }
+.detail-back:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
 .detail-close {
   flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
-  border: none; background: var(--paper-alt); color: var(--ink);
-  font-size: 1.4rem; line-height: 1; cursor: pointer;
+  border: none; background: transparent; color: var(--seafoam);
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
 }
-.detail-close:hover { background: var(--line); }
+.detail-close svg { display: block; }
+.detail-close:hover { background: color-mix(in srgb, var(--seafoam) 10%, #fff); }
 .detail-close:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
 .sign-detail .detail-scroll {
   flex: 1 1 auto; overflow-y: auto; min-height: 0; -webkit-overflow-scrolling: touch;
 }
 .sign-detail .detail-cta-bar {
-  flex-shrink: 0; padding: 12px 16px 16px; border-top: 1px solid var(--line); background: #fff;
+  flex-shrink: 0; display: flex; flex-direction: column; gap: 10px;
+  padding: 8px 16px 16px; background: #fff;
 }
-.sign-detail .detail-cta { display: block; text-align: center; width: 100%; min-height: 44px; }
+.sign-detail .detail-cta {
+  display: block; text-align: center; width: 100%; min-height: 48px;
+  background: var(--fuchsia); color: #fff;
+  font-family: var(--font-body); font-size: 15.2px; font-weight: 600; line-height: 1.3;
+  box-shadow: none;
+}
+.sign-detail .detail-cta:hover {
+  transform: none; box-shadow: none; filter: brightness(0.96);
+}
+.sign-detail .detail-cta-guide {
+  display: block; text-align: center; width: 100%; min-height: 48px;
+  background: #fff; color: var(--pink);
+  border: 1.5px solid var(--pink);
+  font-family: var(--font-body); font-size: 15.2px; font-weight: 600; line-height: 1.3;
+  box-shadow: none;
+}
+.sign-detail .detail-cta-guide:hover {
+  transform: none; box-shadow: none;
+  background: color-mix(in srgb, var(--pink) 8%, #fff);
+}
 @media (max-width: 640px) {
   /* Escape map-shell overflow clipping — true viewport bottom sheet */
   .sign-detail {
     position: fixed; top: auto; right: 0; bottom: 0; left: 0; width: 100%; max-width: none;
-    max-height: 80dvh; border-radius: var(--radius) var(--radius) 0 0;
+    max-height: 80dvh; border-radius: 20px 20px 0 0;
     box-shadow: 0 -8px 32px rgba(0,0,0,0.22); z-index: 200;
   }
   .detail-header {
     position: sticky; top: 0; z-index: 2;
-    padding-top: max(10px, env(safe-area-inset-top));
+    padding-top: max(14px, env(safe-area-inset-top));
   }
   .sign-detail .detail-cta-bar {
     position: sticky; bottom: 0; z-index: 2;
@@ -2469,28 +2563,47 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
   }
   body.sign-detail-open { overflow: hidden; }
 }
-.detail-photo { width: 100%; height: 160px; object-fit: cover; display: block; }
-.detail-photo-btn { display: block; width: 100%; padding: 0; border: none; background: none; cursor: pointer; }
-.detail-photo-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
 .detail-photo-slot {
-  width: 100%; min-height: 160px; background: #ece8e3;
+  margin: 4px 16px 0; min-height: 150px; background: #ece8e3;
+  border-radius: 12px; overflow: hidden;
   display: flex; align-items: center; justify-content: center;
 }
+.detail-photo { width: 100%; height: 168px; object-fit: cover; display: block; }
+.detail-photo-btn { display: block; width: 100%; padding: 0; border: none; background: none; cursor: pointer; }
+.detail-photo-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
 .detail-photo-pending, .detail-photo-missing {
   margin: 0; font-size: 0.82rem; color: var(--ink-soft); padding: 16px;
 }
-.detail-body { padding: 16px 18px 20px; }
-.detail-eyebrow { color: var(--pink-dark); }
-.detail-name { font-family: var(--font-body); font-size: 1.15rem; font-weight: 700; line-height: 1.25; margin: 4px 0 2px; }
-.detail-sub { font-size: 0.85rem; color: #6b7280; margin-bottom: 14px; }
-.detail-rows { margin-bottom: 14px; }
-.detail-rows div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
-.detail-rows dt { color: var(--ink-soft); font-size: 0.88rem; }
-.detail-rows dd { font-weight: 600; font-size: 0.88rem; text-align: right; }
+.detail-body { padding: 16px 16px 12px; }
+.detail-eyebrow { color: var(--pink-dark); margin: 0 0 12px; }
+.detail-name {
+  font-family: var(--font-body); font-size: 18px; font-weight: 700; line-height: 1.25;
+  color: var(--navy); margin: 0 0 12px;
+}
+.detail-sub { font-size: 0.85rem; font-weight: 400; color: #6b7280; margin: 0 0 16px; }
+.detail-tools { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; }
+.detail-tool {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1.5px solid var(--pink); background: #fff; color: var(--pink);
+  display: inline-flex; align-items: center; justify-content: center;
+  text-decoration: none;
+}
+.detail-tool svg { display: block; width: 18px; height: 18px; }
+.detail-tool:hover { background: color-mix(in srgb, var(--pink) 8%, #fff); }
+.detail-tool:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.detail-rows { margin: 0 0 16px; }
+.detail-rows div { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.detail-rows dt { color: var(--ink-soft); font-size: 0.88rem; font-weight: 400; }
+.detail-rows dd { font-weight: 400; font-size: 0.88rem; color: var(--navy); text-align: right; }
 .detail-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
-.detail-chip { background: color-mix(in srgb, var(--seafoam) 14%, #fff); color: var(--navy); border-radius: 999px; padding: 6px 14px; font-size: 0.8rem; font-weight: 600; }
-.detail-links { display: flex; gap: 16px; margin-bottom: 0; }
-.detail-links a { font-size: 0.85rem; font-weight: 600; }
+.detail-chip {
+  background: #fff; color: var(--seafoam);
+  border: 1px solid var(--seafoam); border-radius: 999px;
+  padding: 5px 12px; font-size: 0.8rem; font-weight: 400;
+}
+.detail-chip.is-booked {
+  border-color: var(--ink-soft); color: var(--ink-soft);
+}
 
 /* Sign cards — Figma sign cards V2 (shadow, radius, pill on photo).
    Desktop ≥1200 (.page-main ≈770px with TOC): 3-up flex columns (~245px/card).
@@ -2921,11 +3034,12 @@ body.lightbox-open { overflow: hidden; }
   max-width: 660px; margin: 14px 0 20px; font-size: 0.82rem; color: #6b7280; line-height: 1.5;
 }
 .cost-data-notes {
+  --disclosure-stack-gap: 16px;
   max-width: 660px; margin: 10px 0 20px;
 }
 .cost-data-notes summary.disclosure-pill { list-style: none; }
 .cost-data-notes summary.disclosure-pill::-webkit-details-marker { display: none; }
-.cost-data-notes-body { padding: 2px 0 4px 1.25rem; }
+.cost-data-notes-body { padding: var(--disclosure-stack-gap) 0 4px; }
 .cost-data-notes-body .efficiency-note { margin: 0 0 10px; }
 .cost-data-notes-body .efficiency-note:last-child { margin-bottom: 0; }
 .count-scope { font-weight: 400; color: var(--ink-soft); font-size: 0.92em; }
@@ -3808,14 +3922,14 @@ details[open].faq-item > .faq-answer::before {
 
 /* Campaign insight age chart — wins over legacy `.age-chart` block above (same specificity, later source order). */
 .campaign-insight-panel .age-chart.campaign-age-chart {
-  width: fit-content;
-  max-width: min(100%, 260px);
-  margin: 0 auto 12px;
+  width: 100%;
+  max-width: none;
+  margin: 0 0 12px;
   justify-content: center;
   height: 190px;
-  gap: 5px;
-  padding: 0;
+  gap: var(--campaign-chart-gap);
+  padding: 0 2px;
 }
 @media (max-width: 480px) {
-  .campaign-insight-panel .age-chart.campaign-age-chart { height: 150px; gap: 4px; }
+  .campaign-insight-panel .age-chart.campaign-age-chart { height: 150px; }
 }

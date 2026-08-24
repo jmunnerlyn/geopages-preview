@@ -47,6 +47,9 @@
   --font-stat: "Lexend", var(--font-body);          /* stat strip + section H2s */
   --nav-h: 70px;
   --preview-banner-h: 0px;
+  /* Foot Banner-CTA (~pad 55×2 + headline/sub/button). Sticky TOC clearance only. */
+  --banner-cta-h: 240px;
+  --toc-banner-gap: 14px;
   /* Sticky offset under site nav (+ preview banner). Redefined on .is-preview so
      the calc re-resolves — a :root-only calc would freeze preview-banner-h at 0. */
   --chrome-sticky-top: calc(var(--nav-h) + var(--preview-banner-h));
@@ -769,6 +772,8 @@ a.breadcrumb-pill:focus-visible {
     min-width: 0;
     /* Stretch to full grid-row height so position:sticky on .page-toc has room to stick */
     align-self: stretch;
+    /* Unstick before the foot Banner-CTA — do not change the banner itself. */
+    padding-bottom: calc(var(--banner-cta-h) + var(--toc-banner-gap));
   }
   .page-main {
     grid-column: 2 / -1;
@@ -983,6 +988,17 @@ a.breadcrumb-pill:focus-visible {
   #find-billboards .city-finder {
     padding: 16px var(--page-pad-x) 20px;
   }
+  /* Map — edge-to-edge (same 640 breakpoint as rental / smarter-buys / city-finder). */
+  #find-billboards .map-shell {
+    width: auto;
+    max-width: none;
+    margin-left: calc(-1 * var(--page-pad-x));
+    margin-right: calc(-1 * var(--page-pad-x));
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    box-sizing: border-box;
+  }
   /* Full card inner width; 63px Figma LH is single-line only — wrap without an orphan. */
   .city-finder h3 {
     width: 100%;
@@ -1179,8 +1195,7 @@ a.breadcrumb-pill:focus-visible {
   margin: 0 0 12px;
 }
 .campaign-chart-head .campaign-chart-label { margin: 0; }
-.campaign-hour-chart { height: 190px; margin: 0 0 12px; gap: 5px; overflow: visible; }
-.campaign-hour-chart-wrap .hour-cpm-svg { height: 190px; }
+.campaign-hour-chart { height: var(--hour-plot-h); margin: 0 0 12px; gap: 5px; overflow: visible; }
 .campaign-hour-chart .hour-bar {
   background: color-mix(in srgb, var(--pink) 26%, #fff);
   border-radius: 999px;
@@ -1255,8 +1270,7 @@ a.breadcrumb-pill:focus-visible {
 .campaign-insight-notes-body .plan-secondary-link:last-child { margin-bottom: 0; }
 @media (max-width: 480px) {
   .campaign-insight { padding: 16px; }
-  .campaign-hour-chart { height: 150px; }
-  .campaign-hour-chart-wrap .hour-cpm-svg { height: 150px; }
+  .campaign-hour-chart-wrap { --hour-plot-h: 150px; }
   .campaign-insight { --campaign-chart-gap: 4px; }
   .campaign-season-chart { height: 150px; }
   .campaign-age-chart { height: 150px; }
@@ -1828,7 +1842,7 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
 }
 .go-deeper-near-star {
   display: inline-block;
-  margin-right: 0.12em;
+  margin-left: 0.12em;
   font-weight: 650;
 }
 .go-deeper-city-chip strong {
@@ -2369,14 +2383,64 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
 }
 
 /* Hourly insight chart — bars = traffic; SVG line = buyer-scoped CPM */
-.hour-chart-wrap { position: relative; margin: 26px 0 4px; overflow: visible; }
-.hour-chart { display: flex; align-items: flex-end; gap: 4px; height: 220px; margin: 0; padding: 0 2px; }
+.hour-chart-wrap {
+  --hour-plot-h: 220px;
+  --hour-x-h: calc(1em + 6px);
+  --hour-cpm-axis-w: 2.4rem;
+  position: relative;
+  margin: 26px 0 4px;
+  overflow: visible;
+}
+.campaign-hour-chart-wrap { --hour-plot-h: 190px; }
+.hour-chart-wrap-cpm {
+  display: grid;
+  grid-template-columns: var(--hour-cpm-axis-w) minmax(0, 1fr);
+  column-gap: 6px;
+  align-items: start;
+}
+.hour-cpm-axis {
+  position: relative;
+  height: calc(var(--hour-plot-h) - var(--hour-x-h));
+  pointer-events: none;
+}
+.hour-cpm-tick {
+  position: absolute;
+  right: 0;
+  transform: translateY(50%);
+  color: var(--hour-cpm-line);
+  font: 500 10px/1 var(--font-body);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.hour-chart-plot { position: relative; min-width: 0; }
+.hour-chart { display: flex; align-items: flex-end; gap: 4px; height: var(--hour-plot-h); margin: 0; padding: 0 2px; }
 .hour-chart-mobile { display: none; margin: 26px 0 8px; }
 .hour-chart-wrap .hour-chart-mobile { margin: 0; }
 .hour-cpm-svg {
-  position: absolute; left: 2px; right: 2px; top: 0; height: 220px;
+  position: absolute; left: 2px; right: 2px; top: 0;
+  height: calc(var(--hour-plot-h) - var(--hour-x-h));
   width: calc(100% - 4px); pointer-events: none; overflow: visible; z-index: 1;
 }
+.hour-chart-tip {
+  position: absolute;
+  z-index: 4;
+  transform: translate(-50%, calc(-100% - 8px));
+  min-width: 7.5rem;
+  padding: 8px 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(30, 30, 30, 0.14);
+  color: var(--ink);
+  font: 500 12px/1.35 var(--font-body);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.hour-chart-tip[hidden] { display: none; }
+.hour-chart-tip-hour { font-weight: 700; color: var(--navy); }
+.hour-chart-tip-traffic,
+.hour-chart-tip-cpm { color: var(--muted); }
+.hour-chart-tip-cpm { color: var(--hour-cpm-line); }
 .hour-cpm-line {
   fill: none; stroke: var(--hour-cpm-line); stroke-width: 1.75;
   stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke;
@@ -2464,6 +2528,7 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
     width: 100%;
     min-width: 0;
   }
+  .hour-chart-wrap { --hour-x-h: calc(2.4em + 6px); }
   .hour-chart-mobile .hour-x {
     font-size: 0.62rem;
     white-space: normal;
@@ -2472,10 +2537,6 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
     height: 2.4em;
     min-height: 2.4em;
     margin-top: 6px;
-  }
-  .hour-chart-wrap .hour-cpm-svg,
-  .campaign-hour-chart-wrap .hour-cpm-svg {
-    height: calc(100% - 2.4em - 6px);
   }
   .hour-chart-key {
     flex-direction: column;
@@ -2486,7 +2547,15 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
 }
 .hour-col { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; min-width: 0; }
 .hour-bar { background: var(--pink); border-radius: 4px 4px 0 0; min-height: 6px; transition: opacity 0.15s; }
-.hour-bar:hover { opacity: 0.75; }
+.hour-col:not(.has-data) .hour-bar {
+  min-height: 0;
+  height: 0 !important;
+  pointer-events: none;
+  background: transparent;
+}
+.hour-col.has-data .hour-bar:hover,
+.hour-col.has-data .hour-bar:focus-visible { opacity: 0.75; }
+.hour-col.has-data .hour-bar:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
 .hour-x { font-size: 0.68rem; color: var(--ink-soft); text-align: center; margin-top: 6px; height: 1em; white-space: nowrap; }
 .hour-chart-wrap + .hour-legend + .insight-callouts,
 .hour-chart-mobile + .hour-legend + .insight-callouts { margin-top: 22px; }

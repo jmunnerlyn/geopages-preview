@@ -3063,7 +3063,25 @@ body.lightbox-open { overflow: hidden; }
 #market-context .city-finder-browse-btn { font-weight: 400; }
 @media (max-width: 800px) {
   .market-context-card { padding: 24px var(--page-pad-x); }
-  .market-context-top { flex-direction: column; gap: 16px; }
+  /* Desktop `.market-context-desc { flex: 1 1 16em }` is a width basis in the
+     stats|note row. Once this stack is a column, 16em becomes height and
+     leaves a mint void after the note. Hug content; keep ~42px stack gaps
+     (card 18px + 24px rule outset). */
+  .market-context-top {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    align-content: flex-start;
+    justify-content: flex-start;
+    gap: 18px;
+    margin-bottom: 24px;
+  }
+  .market-context-figures,
+  .market-context-desc {
+    flex: none;
+    width: 100%;
+    min-height: 0;
+  }
 }
 
 /* Market cards — 6 metros in an even grid, with the remainder card spanning the full row */

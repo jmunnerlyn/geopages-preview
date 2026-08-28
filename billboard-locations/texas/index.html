@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600;700;800&family=Lexend:wght@400;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/geopages-preview/assets/location.css?v=market-gap-1">
+<link rel="stylesheet" href="/geopages-preview/assets/location.css?v=designer-notes-1">
 
 </head>
 <body class="is-preview"><div style="background:#111;color:#fff;padding:10px 16px;font:14px system-ui;position:sticky;top:0;z-index:9999">AI interpretation overlay (Terra) — use the Fallback / AI control (bottom left) to compare. <a href="/compare/" style="color:#9cf">Section comparison</a> · <a href="http://127.0.0.1:8321/billboard-locations/texas/" style="color:#9cf">Original Texas</a></div>
@@ -3371,6 +3371,11 @@
     map.on('moveend', update);
   }
 
+  function detailPhotoUrl(pr) {
+    var raw = (pr && (pr.photo || pr.thumbnail || pr.image)) || '';
+    return String(raw).trim();
+  }
+
   function faceDetailBodyHtml(f) {
     var pr = f.properties;
     var lat = f.geometry.coordinates[1], lng = f.geometry.coordinates[0];
@@ -3385,9 +3390,10 @@
       ['Blip duration', formatBlipDuration(pr.duration)],
       ['Size', formatBoardSize(pr.board_size)]
     ];
-    return (pr.photo
+    var photoSrc = detailPhotoUrl(pr);
+    return (photoSrc
         ? '<div class="detail-photo-slot" aria-hidden="true"><span class="detail-photo-pending">Loading photo…</span></div>'
-        : '') +
+        : '<div class="detail-photo-slot"><p class="detail-photo-missing">Photo unavailable</p></div>') +
       '<div class="detail-body">' +
         '<p class="detail-eyebrow">' + detailEyebrow(pr) + '</p>' +
         '<h3 class="detail-name">' + (pr.address || pr.name) + '</h3>' +
@@ -3404,8 +3410,14 @@
 
   function wireDetailPhoto(el, f, detailGen) {
     var pr = f.properties;
-    if (!pr.photo) return;
     var slot = el.querySelector('.detail-photo-slot');
+    if (!slot) return;
+    var src = detailPhotoUrl(pr);
+    if (!src) {
+      slot.removeAttribute('aria-hidden');
+      slot.innerHTML = '<p class="detail-photo-missing">Photo unavailable</p>';
+      return;
+    }
     var photoAlt = 'Billboard at ' + (pr.address || '') + ', ' + (pr.city || '');
     var pre = new Image();
     pre.decoding = 'async';
@@ -3415,21 +3427,22 @@
       slot.removeAttribute('aria-hidden');
       slot.innerHTML =
         '<button type="button" class="detail-photo-btn" aria-label="View larger photo">' +
-          '<img class="detail-photo" src="' + pr.photo + '" alt="' + photoAlt + '" ' +
+          '<img class="detail-photo" src="' + src + '" alt="' + photoAlt + '" ' +
             'referrerpolicy="strict-origin-when-cross-origin" decoding="async">' +
         '</button>';
       var photoBtn = slot.querySelector('.detail-photo-btn');
       if (photoBtn) {
         photoBtn.addEventListener('click', function () {
-          openPhotoLightbox(pr.photo, photoAlt);
+          openPhotoLightbox(src, photoAlt);
         });
       }
     };
     pre.onerror = function () {
       if (el._detailGen !== detailGen || !slot) return;
+      slot.removeAttribute('aria-hidden');
       slot.innerHTML = '<p class="detail-photo-missing">Photo unavailable</p>';
     };
-    pre.src = pr.photo;
+    pre.src = src;
   }
 
   function openDetail(f) {

@@ -47,8 +47,8 @@
   --font-stat: "Lexend", var(--font-body);          /* stat strip + section H2s */
   --nav-h: 70px;
   --preview-banner-h: 0px;
-  /* Foot Banner-CTA (~pad 55×2 + headline/sub/button). Sticky TOC clearance only. */
-  --banner-cta-h: 240px;
+  /* Foot Banner-CTA (~pad 55×2 + headline/sub/button + subtext→btn air). Sticky TOC clearance only. */
+  --banner-cta-h: 254px;
   --toc-banner-gap: 14px;
   /* Sticky offset under site nav (+ preview banner). Redefined on .is-preview so
      the calc re-resolves — a :root-only calc would freeze preview-banner-h at 0. */
@@ -1264,6 +1264,18 @@ a.breadcrumb-pill:focus-visible {
 .campaign-insight-notes summary.disclosure-pill::-webkit-details-marker { display: none; }
 .campaign-insight-notes-body { padding: var(--disclosure-stack-gap) 0 0; }
 .campaign-insight-notes-body .module-lede { margin-bottom: 12px; }
+/* Unify Timing / Seasonality / Advertisers disclosure body to campaign-insight notes size
+   (Inter 16/26). Cost About this data keeps its own wash tokens — do not restyle it here. */
+.campaign-insight-notes-body .module-lede,
+.campaign-insight-notes-body .efficiency-note,
+.campaign-insight-notes-body .body-copy {
+  font-family: var(--font-body);
+  font-weight: var(--bodytext-weight);
+  font-size: var(--bodytext-size);
+  line-height: var(--bodytext-lh);
+  letter-spacing: var(--bodytext-spacing);
+  color: var(--bodytext-color);
+}
 .campaign-insight-notes-body .efficiency-note { margin: 0 0 10px; }
 .campaign-insight-notes-body .efficiency-note:last-child,
 .campaign-insight-notes-body .body-copy:last-child,
@@ -1357,6 +1369,8 @@ a.breadcrumb-pill:focus-visible {
   cursor: pointer; width: fit-content;
   background: #fff;
 }
+summary.disclosure-pill { list-style: none; }
+summary.disclosure-pill::-webkit-details-marker { display: none; }
 .disclosure-pill .disclosure-chev {
   display: inline-flex; align-items: center; flex-shrink: 0; color: var(--seafoam);
   transform: rotate(90deg); /* closed: point down */
@@ -3617,23 +3631,10 @@ details[open].faq-item > .faq-answer::before {
 }
 .surrounding-discovery-foot a:hover { color: var(--ink); text-decoration: underline; }
 
-/* City page: crawlable board index (collapsed for scanability; still in HTML for SEO) */
+/* City page: crawlable board index (collapsed for scanability; still in HTML for SEO).
+   Trigger is the same white/teal disclosure-pill as About this data (label + right chevron). */
 .board-index { margin-top: 0; }
-.board-index > summary {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--ink);
-  cursor: pointer;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 4px 0;
-}
-.board-index > summary::-webkit-details-marker { display: none; }
-.board-index-summary-label { flex: 1; }
+.board-index > summary.disclosure-pill { margin-bottom: 8px; }
 .board-index-bridge {
   list-style: none;
   margin: 4px 0 12px;
@@ -4012,6 +4013,8 @@ details[open].faq-item > .faq-answer::before {
   color: var(--blip-navy-deep);
   text-decoration: none;
   text-align: center;
+  /* Extra air after supporting copy (flex gap stays 10px for headline→subtext). */
+  margin-top: 14px;
 }
 .banner-cta-btn:hover { background: color-mix(in srgb, #fff 92%, var(--pink)); }
 @media (max-width: 1024px) {

@@ -14,6 +14,7 @@
   --hour-cpm-line: #999999; /* Figma Timing chart buyer-CPM overlay */
   --hour-chart-key-mark: 12px; /* shared swatch column: pink cube + gray line */
   --blip-navy-deep: #2B395D; /* Blip Navy — Smarter Buys CTA button + step chrome */
+  --hero-photo-strip: #1F2447; /* Figma ImageHighlight data strip */
   /* Secondary (slide 29) */
   --teal: #28C3C8;          /* UI highlights, charts, focus rings */
   --blip-teal: #2FBEBF;     /* Figma Blip Teal — active breadcrumb pill border */
@@ -58,7 +59,7 @@
   /* Vertical rhythm between major sections (equal top + bottom by default) */
   --section-pad-y: 28px;
   /* Per-section top pad; scroll-margin subtracts this so h2 lands on the align line.
-     Why it works overrides when rendered first — see #why-it-works rules. */
+     Find is first in .page-main — see #find-billboards first-section rules. */
   --section-pad-top: var(--section-pad-y);
   /* Desktop: match .page-toc padding-top so the first section h2 ≡ “On this page” */
   --find-pad-top-desktop: 20px;
@@ -416,6 +417,101 @@ a.breadcrumb-pill:focus-visible {
   max-width: 520px;
   margin-bottom: 22px;
 }
+.hero-split {
+  display: grid;
+  gap: 28px;
+  align-items: center;
+  margin-bottom: 28px;
+}
+.hero-copy .hero-ctas { margin-bottom: 0; }
+.hero-copy .hero-sub { max-width: 36em; }
+.hero-copy .hero-intro { max-width: 34em; margin-bottom: 22px; }
+.hero-photo {
+  margin: 0;
+  min-width: 0;
+  background: transparent;
+}
+.hero-photo-link {
+  display: block;
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.hero-photo img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center 40%;
+}
+.hero-photo-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  width: auto;
+  max-width: none;
+  padding: 10px 12px;
+  background: var(--hero-photo-strip);
+}
+.hero-photo-id {
+  font-family: var(--font-body);
+  font-size: 10.2px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blip-teal);
+  white-space: nowrap;
+}
+.hero-photo-kicker {
+  font-family: var(--font-body);
+  font-size: 12.2px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-transform: capitalize;
+  text-align: right;
+  color: #fff;
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+.hero-photo-link:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 3px;
+}
+@media (min-width: 800px) {
+  .hero-has-photo .hero-split {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 468px);
+    gap: 24px;
+    align-items: center;
+  }
+  .hero-photo-link {
+    max-width: 468px;
+    aspect-ratio: 468 / 280;
+  }
+  .hero-photo img {
+    height: 100%;
+    min-height: 0;
+  }
+}
+@media (max-width: 520px) {
+  .hero-photo-caption {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .hero-photo-kicker {
+    flex: 1 1 100%;
+    text-align: left;
+  }
+}
 .hero-ctas {
   display: flex; align-items: center; gap: 18px 22px; flex-wrap: wrap;
   margin-bottom: 28px;
@@ -505,6 +601,8 @@ a.breadcrumb-pill:focus-visible {
 }
 @media (max-width: 640px) {
   .hero { padding: 28px 0 0; }
+  .hero-split { gap: 18px; margin-bottom: 18px; }
+  .hero-photo img { height: 188px; }
   .hero-ctas { margin-bottom: 18px; gap: 14px 18px; }
   .hero-intro { margin-bottom: 14px; }
   /* Wrapped 2-col stat band: square outer corners, crosshair dividers (no grid gap).
@@ -887,7 +985,7 @@ a.breadcrumb-pill:focus-visible {
   border-radius: 10px;
   background: var(--city-finder-bg);
 }
-#city-finder .city-finder { margin: 0; }
+#city-finder,
 #find-billboards .city-finder { margin: 24px 0 0; }
 .city-finder h3 {
   font-family: var(--font-stat);
@@ -975,7 +1073,7 @@ a.breadcrumb-pill:focus-visible {
 @media (max-width: 640px) {
   #rental .rental-how,
   #smarter-buys .smarter-buys-cta,
-  #city-finder .city-finder,
+  #city-finder,
   #find-billboards .city-finder {
     width: auto;
     max-width: none;
@@ -984,7 +1082,7 @@ a.breadcrumb-pill:focus-visible {
     border-radius: 0;
     box-sizing: border-box;
   }
-  #city-finder .city-finder,
+  #city-finder,
   #find-billboards .city-finder {
     padding: 16px var(--page-pad-x) 20px;
   }
@@ -2244,15 +2342,15 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
 .section { padding: var(--section-pad-top) 0 var(--section-pad-y); }
 .section > .wrap > :first-child { margin-top: 0; }
 .section > .wrap > :last-child { margin-bottom: 0; }
-/* Why it works is conditionally first in .page-main. At ≥1200 it shares a grid row
-   with the sticky TOC — pad-top matches .page-toc (20px) so its h2 optically aligns
-   with “On this page” (not with the first nav link). Subsequent sections keep full
-   --section-pad-y. <1200: TOC hidden; use --find-pad-top-mobile under stats. */
-#why-it-works {
+/* Find is first in .page-main. At ≥1200 it shares a grid row with the sticky TOC —
+   pad-top matches .page-toc (20px) so its h2 optically aligns with “On this page”
+   (not with the first nav link). Subsequent sections keep full --section-pad-y.
+   <1200: TOC hidden; use --find-pad-top-mobile under stats. */
+#find-billboards {
   --section-pad-top: var(--find-pad-top-mobile);
 }
 @media (min-width: 1200px) {
-  #why-it-works {
+  #find-billboards {
     --section-pad-top: var(--find-pad-top-desktop);
   }
 }
@@ -2298,16 +2396,46 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
   overflow: visible;
 }
 
-/* Inventory class filter (doubles as map legend) */
+/* Trap MapLibre marker z-index (lat / stack count) so pins cannot paint
+   above the class-filter overlay or other map-shell chrome. */
+.map-shell > #map { z-index: 1; }
+
+/* Inventory class filter — map overlay (doubles as legend). Clears the
+   top-left reset control (~29px + 10px inset) and wraps before the zoom stack. */
 .inventory-class-filter {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px;
-  margin: 0 0 36px; padding: 0; border: 0;
+  position: absolute;
+  z-index: 12;
+  top: 10px;
+  left: 52px;
+  display: flex; flex-wrap: nowrap; align-items: center; gap: 8px 14px;
+  width: max-content;
+  max-width: calc(100% - 62px);
+  min-width: 0;
+  margin: 0;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(30, 30, 30, 0.12);
   font-size: 0.84rem; color: var(--ink-soft);
+  pointer-events: auto;
 }
-.inventory-class-filter-legend {
-  padding: 0; margin: 0 4px 0 0;
-  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em;
-  text-transform: uppercase; color: var(--micro-label-muted, #6b7280);
+.inventory-class-filter-short { display: none; }
+@media (max-width: 640px) {
+  .inventory-class-filter {
+    gap: 6px 10px;
+    font-size: 0.78rem;
+  }
+  .inventory-class-filter-full { display: none; }
+  .inventory-class-filter-short { display: inline; }
+}
+/* Narrow phones: not enough room between reset and zoom — sit under reset, hug content. */
+@media (max-width: 360px) {
+  .inventory-class-filter {
+    top: 52px;
+    left: 10px;
+    max-width: calc(100% - 52px);
+  }
 }
 .inventory-class-filter-option {
   display: inline-flex; align-items: center; gap: 8px;
@@ -3350,7 +3478,7 @@ body.lightbox-open { overflow: hidden; }
 }
 .count-scope { font-weight: 400; color: var(--ink-soft); font-size: 0.92em; }
 
-/* Built for Smarter Buys — mid-page (after cost) + final CTA band (Figma) */
+/* Built for Smarter Buys — dual-path close after Plan (choose-your-own vs Optimized) */
 .smarter-buys-cta {
   margin-top: 36px;
   display: grid;
@@ -3417,44 +3545,38 @@ body.lightbox-open { overflow: hidden; }
   text-align: center;
 }
 .smarter-buys-cta-btn:hover { background: color-mix(in srgb, #fff 92%, var(--seafoam)); }
-.smarter-buys-cta-steps {
+.smarter-buys-cta-paths {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
-.smarter-buys-step {
+.smarter-buys-path {
   display: flex;
-  gap: 12px;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 6px;
   padding: 16px;
   border-radius: 10px;
   background: #fff;
 }
-.smarter-buys-step-num {
-  flex-shrink: 0;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--blip-navy-deep);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-stat);
+.smarter-buys-path-label {
+  font-family: var(--font-body);
   font-weight: 700;
-  font-size: 12px;
-  line-height: 1;
-  color: #fff;
+  font-size: 10px;
+  line-height: 1.3;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--seafoam);
+  margin: 0;
 }
-.smarter-buys-step-text { min-width: 0; }
-.smarter-buys-step-title {
+.smarter-buys-path-title {
   font-family: var(--font-stat);
   font-weight: 700;
   font-size: 14px;
   line-height: 1.2;
   color: var(--blip-navy-deep);
-  margin: 0 0 6px;
+  margin: 0;
 }
-.smarter-buys-step-body {
+.smarter-buys-path-body {
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 12px;
@@ -3530,6 +3652,11 @@ body.lightbox-open { overflow: hidden; }
   flex: 1;
   min-width: 0;
   color: var(--seafoam);
+}
+h3.faq-question {
+  margin: 0;
+  font: inherit;
+  color: inherit;
 }
 details[open].faq-item > summary .faq-question { color: var(--blip-navy-deep); }
 .faq-toggle {

@@ -87,6 +87,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+html.is-hash-landing { scroll-behavior: auto; }
 /* In-page TOC / hero hash jumps (#find-billboards, #cost, #markets, #plan-campaign,
    #faqs): use scroll-margin only — pairing with html scroll-padding-top
    double-counted chrome (~244px) and buried headings. Subtract --section-pad-top
@@ -1805,6 +1806,14 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
   padding-left: 14px;
   border-left: 2px solid var(--pink);
 }
+.go-deeper-nav-note {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
 .go-deeper-directory {
   display: flex;
   flex-direction: column;
@@ -1833,27 +1842,102 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
   font-size: 0.8rem;
   font-weight: 700;
 }
-.go-deeper-search input {
-  width: 100%;
-  height: 38px;
+.go-deeper-search-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-height: 38px;
   box-sizing: border-box;
-  padding: 9px 13px;
+  padding: 4px 8px;
   border: 1px solid var(--blip-teal);
   border-radius: 7px;
   background: #fff;
+}
+.go-deeper-search-box:focus-within {
+  outline: 3px solid color-mix(in srgb, var(--blip-teal) 55%, transparent);
+  outline-offset: 2px;
+}
+.go-deeper-search input {
+  flex: 1 1 8em;
+  min-width: 8em;
+  width: auto;
+  height: 28px;
+  box-sizing: border-box;
+  padding: 4px 6px;
+  border: 0;
+  background: transparent;
   color: #1C1C1A;
   font-family: var(--font-body);
   font-size: 13px;
   font-weight: 400;
   line-height: 19px;
 }
+.go-deeper-search input:focus,
+.go-deeper-search input:focus-visible {
+  outline: none;
+}
 .go-deeper-search input::placeholder {
   color: var(--muted);
   font-weight: 400;
 }
-.go-deeper-search input:focus-visible,
+.go-deeper-market-token {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+  padding: 3px 4px 3px 9px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--blip-teal) 16%, #fff);
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+.go-deeper-market-token[hidden] {
+  display: none !important;
+}
+.go-deeper-market-token-clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--navy);
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+}
+.go-deeper-market-token-clear:hover,
+.go-deeper-market-token-clear:focus-visible {
+  background: color-mix(in srgb, var(--blip-teal) 28%, #fff);
+}
+.go-deeper-show-all {
+  justify-self: start;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--seafoam);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.go-deeper-show-all[hidden] {
+  display: none !important;
+}
 .go-deeper-city-chip:focus-visible,
-.go-deeper-toggle:focus-visible {
+.go-deeper-toggle:focus-visible,
+.go-deeper-market-token-clear:focus-visible,
+.go-deeper-show-all:focus-visible {
   outline: 3px solid color-mix(in srgb, var(--blip-teal) 55%, transparent);
   outline-offset: 2px;
 }
@@ -1941,13 +2025,34 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
   line-height: 19px;
   text-decoration: none;
 }
+.go-deeper-city-chip[hidden] {
+  display: none !important;
+}
 .go-deeper-city-chip:hover {
   border-color: var(--blip-teal);
 }
-.go-deeper-city-chip span {
+.go-deeper-city-chip .go-deeper-chip-label {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--blip-teal) 45%, transparent);
+  text-underline-offset: 2px;
+}
+.go-deeper-chip-open {
+  display: none;
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.go-deeper-city-chip:hover .go-deeper-chip-open,
+.go-deeper-city-chip:focus-visible .go-deeper-chip-open {
+  display: inline;
 }
 .go-deeper-city-chip.is-near-city strong {
   font-weight: 650;
@@ -2085,13 +2190,16 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
   }
   .go-deeper-market-chevron svg { width: 6px; height: 9px; transition: transform 0.15s ease; }
   .go-deeper-market.is-mobile-expanded .go-deeper-market-chevron svg,
-  .go-deeper-market.is-search-active .go-deeper-market-chevron svg { transform: rotate(90deg); }
+  .go-deeper-market.is-search-active .go-deeper-market-chevron svg,
+  .go-deeper-market.is-market-filtered .go-deeper-market-chevron svg { transform: rotate(90deg); }
   #go-deeper .go-deeper-city-grid { display: none; margin-top: 12px; }
   #go-deeper .go-deeper-market.is-mobile-expanded .go-deeper-city-grid,
-  #go-deeper .go-deeper-market.is-search-active .go-deeper-city-grid { display: flex; }
+  #go-deeper .go-deeper-market.is-search-active .go-deeper-city-grid,
+  #go-deeper .go-deeper-market.is-market-filtered .go-deeper-city-grid { display: flex; }
   #go-deeper .go-deeper-market.is-mobile-expanded .go-deeper-city-chip.is-go-deeper-hidden,
   #go-deeper .go-deeper-market.is-search-active .go-deeper-city-chip.is-go-deeper-hidden { display: flex; }
   #go-deeper .go-deeper-city-chip { min-width: 0; width: 100%; }
+  #go-deeper .go-deeper-chip-open { display: inline; }
   .go-deeper-toggle { display: none; }
 }
 
@@ -2361,6 +2469,24 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
   border-left: 2px solid var(--accent);
   padding-left: 14px;
 }
+.markets-from-back {
+  margin: 0 0 12px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 22px;
+}
+.markets-from-back[hidden] {
+  display: none;
+}
+.markets-from-back-link {
+  color: var(--seafoam);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.markets-from-back-link:hover {
+  color: var(--navy);
+}
 #why-it-works .why-it-works-body {
   color: var(--bodytext-color);
 }
@@ -2479,6 +2605,24 @@ details[open] > summary .disclosure-chev { transform: rotate(90deg); }
   text-decoration-color: color-mix(in srgb, var(--seafoam) 72%, var(--navy));
 }
 .map-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: var(--ink-soft); }
+/* Pin layout must live here — not only in the CDN maplibre-gl.css. */
+.map-shell .maplibregl-map {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.map-shell .maplibregl-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.map-shell .maplibregl-marker,
+.map-shell .map-sign-pin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
 /* DOM markers — MapLibre Worker never tiles GeoJSON on localhost, so WebGL pins never paint. */
 .map-sign-pin {
   display: block;
@@ -3201,7 +3345,9 @@ body.lightbox-open { overflow: hidden; }
   text-transform: uppercase;
   color: var(--navy);
 }
-.market-context-card .market-map-action { margin: 0; }
+.market-context-card .market-map-action {
+  margin: 0;
+}
 #market-context .city-finder-browse-btn { font-weight: 400; }
 @media (max-width: 800px) {
   .market-context-card { padding: 24px var(--page-pad-x); }
@@ -3653,10 +3799,11 @@ body.lightbox-open { overflow: hidden; }
   min-width: 0;
   color: var(--seafoam);
 }
+/* Why is an H3; do not inherit heading navy when closed. */
 h3.faq-question {
   margin: 0;
   font: inherit;
-  color: inherit;
+  color: var(--seafoam);
 }
 details[open].faq-item > summary .faq-question { color: var(--blip-navy-deep); }
 .faq-toggle {
@@ -3992,7 +4139,7 @@ details[open].faq-item > .faq-answer::before {
   border-radius: 10px;
   box-sizing: border-box;
 }
-.rental-how-title {
+h3.rental-how-title {
   font-family: var(--font-stat);
   font-size: 32px;
   font-weight: 700;
